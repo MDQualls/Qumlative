@@ -1,0 +1,20 @@
+{
+  "name": "qumlative",
+  "version": "1.0.0",
+  "description": "Qumlative Site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://michaelqualls@bitbucket.org/michaelqualls/qumlative.git"
+  },
+  "author": "Michael Qualls",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/michaelqualls/qumlative#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "pug": "^2.0.0-alpha6"
+  }
+}
