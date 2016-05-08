@@ -14,7 +14,11 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/michaelqualls/qumlative#readme",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "express": "^4.13.4",
-    "pug": "^2.0.0-alpha6"
+    "mongoose": "^4.4.15",
+    "morgan": "^1.7.0",
+    "pug": "^2.0.0-alpha6",
+    "stylus": "^0.54.5"
   }
 }
