@@ -9,16 +9,7 @@
         $locationProvider.html5Mode(true);
 
         $routeProvider
-          .when('/', { templateUrl: '/partials/main', controller: 'mainCtrl as ctrl'});
+          .when('/', { templateUrl: '/partials/main/main', controller: 'quMainCtrl as ctrl'});
       }
     ]);
-
-    angular.module('app').controller('mainCtrl',
-      [
-        function() {
-            var vm = this;
-
-            vm.myVar = "Hello Angular";
-        }
-      ]);
 })();

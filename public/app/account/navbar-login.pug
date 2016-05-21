@@ -1,0 +1,7 @@
+.navbar-right(ng-controller="quLoginCtrl as ctrl")
+  form.navbar-form(ng-hide="ctrl.identity.currentUser")
+    .form-group
+      input.form-control(placeholder="Email", ng-model="ctrl.username")
+    .form-group
+      input.form-control(placeholder="Password",  type="password", ng-model="ctrl.password")
+    button.btn.btn-primary(ng-click="ctrl.signin(ctrl.username, ctrl.password)") Signin

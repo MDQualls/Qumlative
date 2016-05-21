@@ -3,10 +3,16 @@ doctype
 html
   head
     base(href="/")
+    title Qumlative
     link(href="/favicon.ico", rel="shortcut icon", type="image/x-icon")
+    link(href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet' type='text/css')
     link(rel="stylesheet", href="/vendor/bootstrap/dist/css/bootstrap.css")
     link(rel="stylesheet", href="/vendor/toastr/toastr.css")
     link(rel="stylesheet", href="/css/site.css")
+    link(rel="stylesheet", href="/css/custom-panel.css")
   body(ng-app="app")
     block main-content
     include scripts
+
+  footer.container.text-center
+    p Qumlative
