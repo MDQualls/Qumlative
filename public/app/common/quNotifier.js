@@ -14,9 +14,21 @@
       console.log(msg);
     }
 
+    function infoMsg(msg) {
+      quToastr.info(msg);
+      console.log(msg);
+    }
+
+    function errorMsg(msg) {
+      quToastr.error(msg);
+      console.log(msg);
+    }
+
     return {
       successMsg: successMsg,
-      warningMsg: warningMsg
+      warningMsg: warningMsg,
+      infoMsg: infoMsg,
+      errorMsg: errorMsg
     }
   }]);
 })()

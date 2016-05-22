@@ -1,7 +1,17 @@
 .navbar-right(ng-controller="quLoginCtrl as ctrl")
-  form.navbar-form(ng-hide="ctrl.identity.currentUser")
+  form.navbar-form(ng-hide="ctrl.identity.isAuthenticated()")
     .form-group
       input.form-control(placeholder="Email", ng-model="ctrl.username")
     .form-group
-      input.form-control(placeholder="Password",  type="password", ng-model="ctrl.password")
-    button.btn.btn-primary(ng-click="ctrl.signin(ctrl.username, ctrl.password)") Signin
+      input.form-control(type="password", placeholder="Password", ng-model="ctrl.password")
+    button.btn.btn-primary(ng-click="ctrl.signin(ctrl.username, ctrl.password)") Sign In
+  ul.nav.navbar-nav.navbar-right(ng-show="ctrl.identity.isAuthenticated()")
+    li.dropdown
+      a.dropdown-toggle(href="", data-toggle="dropdown")
+        | {{ctrl.identity.currentUser().firstName + " " + ctrl.identity.currentUser().lastName}}
+        b.caret
+      ul.dropdown-menu
+        li(ng-show="ctrl.identity.isAdmin()")
+          a(href="/admin/users") User Admin
+        li
+          a(href="", ng-click="ctrl.signout()") Sign Out
