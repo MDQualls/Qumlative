@@ -1,5 +1,5 @@
 (function() {
-
+  var toastr;
   angular.module('app').value('quToastr', toastr);
 
   angular.module('app').factory('quNotifier', ["quToastr", function(quToastr)  {

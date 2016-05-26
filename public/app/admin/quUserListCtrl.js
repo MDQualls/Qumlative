@@ -8,4 +8,4 @@
       vm.users = quUserRsc.query();
     }
   ])
-})()
+})();
