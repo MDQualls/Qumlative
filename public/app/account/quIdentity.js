@@ -1,7 +1,7 @@
 (function() {
 
   angular.module('app').factory('quIdentity',
-    [ "$sessionStorage",
+    ['$sessionStorage',
     function($sessionStorage) {
 
       return {
@@ -18,12 +18,12 @@
           return !!$sessionStorage.currentUser && $sessionStorage.currentUser.roles.indexOf(role) > -1;
         },
         isAdmin: function() {
-          if($sessionStorage.currentUser === undefined)
+          if ($sessionStorage.currentUser === undefined)
           {
             return false;
           }
           return $sessionStorage.currentUser.roles && $sessionStorage.currentUser.roles.indexOf('admin') > -1;
         }
-      }
+      };
     }]);
-})()
+})();

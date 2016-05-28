@@ -1,14 +1,14 @@
 (function() {
 
   angular.module('app').factory('quAuth',
-    [ '$http', 'quIdentity', '$q',
+    ['$http', 'quIdentity', '$q',
       function($http, quIdentity, $q) {
         return{
           authenticateUser: function(username, password) {
             var defer = $q.defer();
             $http.post('/login', {username: username, password: password})
               .then(function(response)  {
-                if(response.data.success)  {
+                if (response.data.success) {
                   quIdentity.setCurrentUser(response.data.user);
                   defer.resolve(true);
                 } else {
@@ -27,14 +27,14 @@
               return defer.promise;
           },
           authorizeCurrentUserForRoute: function(role) {
-            if(quIdentity.isAuthorized(role)) {
+            if (quIdentity.isAuthorized(role)) {
               return true;
             } else {
               return $q.reject('not authorized');
             }
 
           }
-        }
+        };
     }
   ]);
-})()
+})();

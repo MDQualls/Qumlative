@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cmr-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{ctrl.menuItems.brand}}</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="cmr-navbar-collapse-1">
+                                                                             
+            <script type="text/ng-template" id="horizonlMenuTree">              
+                <a ng-if="!item.hasChildren" href="#">{{item.title}}</a>
+                <a ng-if="item.hasChildren" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.title}}<span ng-if="item.parentId===0" class="caret"></span></a>                                                                                               
+                <ul ng-if="item.hasChildren" class="dropdown-menu"> 
+                    <li ng-repeat="item in ctrl.menuItems.menuItems | filter:{parentId:item.id} | orderBy:['position']" 
+                        ng-class="{'dropdown-submenu':item.hasChildren===1}"
+                        ng-include="'horizonlMenuTree'">                            
+                    </li>
+                </ul>                                                                            
+            </script>
+            
+            <ul class="nav navbar-nav">    
+                <li ng-repeat="item in ctrl.menuItems.menuItems | filter:{alignment:'left'}  | orderBy:['parentId','position']  | filter:{parentId:0}"
+                    ng-class="{'dropdown' : item.hasChildren===1}" 
+                    ng-include="'horizonlMenuTree'">
+                </li>                                                                
+            </ul>
+                                                    
+            <ul class="nav navbar-nav navbar-right">                                
+                <li ng-repeat="item in ctrl.menuItems.menuItems | filter:{alignment:'right'}  | orderBy:['parentId','position']  | filter:{parentId:0}"
+                    ng-class="{'dropdown' : item.hasChildren===1}" 
+                    ng-include="'horizonlMenuTree'">
+                </li>
+            </ul>
+            
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
