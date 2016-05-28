@@ -15,20 +15,20 @@
     }
 
     function infoMsg(msg) {
-      quToastr.info(msg);
-      console.log(msg);
+        quToastr.info(msg);
+        console.log(msg);
     }
 
     function errorMsg(msg) {
-      quToastr.error(msg);
-      console.log(msg);
+        quToastr.error(msg);
+        console.log(msg);
     }
 
     return {
-      successMsg: successMsg,
-      warningMsg: warningMsg,
-      infoMsg: infoMsg,
-      errorMsg: errorMsg
+        successMsg: successMsg,
+        warningMsg: warningMsg,
+        infoMsg: infoMsg,
+        errorMsg: errorMsg
     }
   }]);
 })()
