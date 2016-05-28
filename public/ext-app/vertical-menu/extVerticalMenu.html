@@ -1,0 +1,37 @@
+<div id="extSideBarMenu">
+    <div >
+        <div class="sidebar-nav">
+            <div class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <span class="visible-xs navbar-brand">Sidebar menu</span>
+            </div>
+            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                
+                <ul class="nav navbar-nav">                    
+                    <li ng-repeat="item in ctrl.menuItems.menuItems | filter:{alignment:'left'}  | orderBy:['parentId','position']  | filter:{parentId:0}"
+                        ng-class="{'dropdown' : item.hasChildren===1}" 
+                        ng-include="'verticalMenuTree'">
+                    </li>                                                           
+                </ul>
+                
+                <script type="text/ng-template" id="verticalMenuTree">
+                    <a ng-if="!item.hasChildren" href="#">{{item.title}}</a>
+                    <a ng-if="item.hasChildren" href="#" class="dropdown-toggle" data-toggle="dropdown">{{item.title}} <b ng-if="item.parentId===0" class="caret"></b></a>
+                    
+                    <ul ng-if="item.hasChildren" class="dropdown-menu">
+                        <li ng-repeat="item in ctrl.menuItems.menuItems | filter:{parentId:item.id} | orderBy:['position']" 
+                            ng-class="{'dropdown-submenu':item.hasChildren===1}"
+                            ng-include="'verticalMenuTree'">                            
+                        </li>
+                    </ul>
+                </script>                                
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>

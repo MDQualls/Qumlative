@@ -1,0 +1,17 @@
+@import "./public/vendor/bootstrap/less/bootstrap.less";
+
+@import "./public/ext-app/horizontal-menu/extHorizontalMenu.less";
+@import "./public/ext-app/vertical-menu/extVerticalMenu.less";
+
+header { background-color: #E4E4E4; }
+.page-header { margin-top:0; padding-bottom:0; }
+.page-header-heading {padding-top:10px; padding-left: 5px; padding-bottom: 10px; margin:0;font-size:28px;}
+
+@font-family-sans-serif:'roboto mono';
+@body-bg:     #efefef;
+
+.container-fluid & {
+    border-radius: @border-radius-large; // Only round corners at higher resolutions if contained in a container
+    padding-left:  (@grid-gutter-width * 0);
+    padding-right: (@grid-gutter-width * 0);
+  }

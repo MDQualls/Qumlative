@@ -1,7 +1,7 @@
 {
   "name": "qumlative",
   "description": "Qumlative Site",
-  "main": "index.js",
+  "main": "index.html",
   "authors": [
     "Michael Qualls"
   ],
