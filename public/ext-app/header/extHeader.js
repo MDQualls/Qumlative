@@ -12,7 +12,8 @@
         bindings: {
             logoSrc: '<',
             menuItems: '<',
-            heading: '<'
+            heading: '<',
+            brand: '<'
         },
         controllerAs: 'ctrl',
         controller: [controller]

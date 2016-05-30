@@ -3,16 +3,28 @@
 
     var Menu = require('mongoose').model('Menu');
 
-    function getMenu(req, res, next)  {
+    exports.getMenu = function(req, res, next)  {
         Menu.find({}).exec(function(err, collection) {
             if (err) {
                 if (err) {return next(err);}
             }
             res.send(collection);
         });
-    }
+    };
 
-    function createMenuItem(req, res, next) {
+    exports.getMenuMembers = function(req, res, next) {
+
+        console.log(req.params);
+
+        Menu.find({memberOfMenu:req.params.memberOfMenu}).exec(function(err, collection) {
+            if (err) {
+                if (err) {return next(err);}
+            }
+            res.send(collection);
+        });
+    };
+
+    exports.createMenuItem = function(req, res, next) {
         var menuData = req.body;
         Menu.create(menuData, function(err, menu) {
             if (err) {
@@ -24,20 +36,14 @@
             }
             res.send(menu);
         });
-    }
+    };
 
-    function updateMenuItem(req, res) {
+    exports.updateMenuItem = function(req, res) {
         req.menu.save(function(err) {
             if (err) {
                 res.status(400); return res.send({reason:err.toString()});
             }
             res.send(req.menu);
         });
-    }
-
-    module.exports = {
-        getMenu : getMenu,
-        createMenuItem : createMenuItem,
-        updateMenuItem : updateMenuItem
     };
 })();

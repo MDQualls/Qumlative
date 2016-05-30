@@ -1,7 +1,7 @@
 
 (function()  {
 //'ngResource', 'ngRoute', 'ngStorage',
-angular.module('app', ['extHeaderModule', 'extFooterModule']);
+angular.module('app', ['ngResource', 'extHeaderModule', 'extFooterModule']);
 
 // angular.module('app').config(
 //   ['$routeProvider', '$locationProvider',

@@ -6638,6 +6638,11 @@ button.close {
     display: none !important;
   }
 }
+@media (min-width: 768px) {
+  .container-fluid .navbar-brand {
+    margin-left: -7px !important;
+  }
+}
 .dropdown-submenu {
   position: relative;
 }
