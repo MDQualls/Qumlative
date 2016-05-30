@@ -1,6 +1,7 @@
 var auth = require('./auth');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var menuController = require('../controllers/menuController');
 
 module.exports = function(app) {
 
@@ -10,10 +11,18 @@ module.exports = function(app) {
             });
         });
 
-    app.get('/partials/*', function(req, res) {
-        res.render('../../public/app/' + req.params[0]);
+    //handle menu
+    app.get('/api/menu', function(req, res)  {
+       menuController.getMenu();
+    });
+    app.post('/api/menu', auth.requiresRole('admin'), function(req, res) {
+       menuController.createMenuItem();
+    });
+    app.post('/api/menu', auth.requiresRole('admin'), function(req, res) {
+       menuController.updateMenuItem();
     });
 
+    //handle logging in and logging out
     app.post('/login', auth.authenticate);
 
     app.post('/logout', function(req, res)  {
@@ -21,7 +30,11 @@ module.exports = function(app) {
         res.end();
     });
 
-    app.get('*', function(req, res)  {
-        res.render('index');
+    //handle bad routes
+    app.all('/api/*', function(req, res) {
+        res.send(404);
+    });
+    app.get('*', function(req, res) {
+        res.send(404);
     });
 };
