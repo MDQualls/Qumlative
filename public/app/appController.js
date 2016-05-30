@@ -8,7 +8,7 @@
 
         ctrl.$onInit = function()  {
             ctrl.heading = 'Qumlative';
-            ctrl.brand = 'Demo Site of Michael Qualls'
+            //ctrl.brand = 'Demo Site of Michael Qualls';
             ctrl.menuItems = menuFactory.query({memberOfMenu: 'topMain'});
         };
     }
