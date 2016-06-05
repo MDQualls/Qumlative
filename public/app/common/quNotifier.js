@@ -2,7 +2,7 @@
   var toastr;
   angular.module('app').value('quToastr', toastr);
 
-  angular.module('app').factory('quNotifier', ["quToastr", function(quToastr)  {
+  angular.module('app').factory('quNotifier', ['quToastr',function(quToastr) {
 
     function successMsg(msg) {
       quToastr.success(msg);

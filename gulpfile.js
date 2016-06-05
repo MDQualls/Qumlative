@@ -48,7 +48,15 @@ gulp.task('inject',['build-css'], function () {
 
 });
 
-gulp.task('serve',['js-style','inject'], function() {
+
+gulp.task('watch', function() {
+    console.log('Compiling Less');
+    gulp.watch('./**/*.less', ['build-css']);  // Watch all the .less files, then run the less task
+});
+
+gulp.task('default', ['watch']);
+
+gulp.task('serve',['default', 'js-style','inject'], function() {
     var options = {
         script: 'server.js',
         delayTime: 1,
@@ -62,10 +70,3 @@ gulp.task('serve',['js-style','inject'], function() {
         console.log('Restarting');
     });
 });
-
-gulp.task('watch', function() {
-    console.log('Compiling Less');
-    gulp.watch('./**/*.less', ['build-css']);  // Watch all the .less files, then run the less task
-});
-
-gulp.task('default', ['watch']);

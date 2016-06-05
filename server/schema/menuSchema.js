@@ -9,7 +9,7 @@ var menuSchema = mongoose.Schema({
     position: {type: Number, required: true},
     extUrl: String,
     target: String,
-    href: {type: String, required: true},
+    link: {type: String, required: true},
     roles: [String],
     alignment: String,
     hasChildren: {type: Number, default: 0}
@@ -20,9 +20,10 @@ var Menu = mongoose.model('Menu', menuSchema);
 function createDefaultMenu() {
   Menu.find({}).exec(function(err, collection) {
     if (collection.length === 0) {
-      Menu.create({memberOfMenu: 'topMain', id: 1, parentId: 0, active: 1, title:'Home', position: 1, extUrl: '', target: '', href: '/', roles: [], alignment: 'Left', hasChildren: 0});
-      Menu.create({memberOfMenu: 'topMain', id: 2, parentId: 0, active: 1, title:'Blog', position: 2, extUrl: '', target: '', href: '/blog', roles: [], alignment: 'Left', hasChildren: 0});
-      Menu.create({memberOfMenu: 'topMain', id: 3, parentId: 0, active: 1, title:'About', position: 3, extUrl: '', target: '', href: '/about', roles: [], alignment: 'Right', hasChildren: 0});
+      Menu.create({memberOfMenu: 'topMain', id: 1, parentId: 0, active: 1, title:'Home', position: 1, extUrl: '', target: '', link: "['Home']", roles: [], alignment: 'Left', hasChildren: 0});
+      Menu.create({memberOfMenu: 'topMain', id: 2, parentId: 0, active: 1, title:'Blog', position: 2, extUrl: '', target: '', link: "['Blog']", roles: [], alignment: 'Left', hasChildren: 0});
+      Menu.create({memberOfMenu: 'topMain', id: 3, parentId: 0, active: 1, title:'Demo', position: 3, extUrl: '', target: '', link: "['Demo']", roles: [], alignment: 'Left', hasChildren: 0});
+      Menu.create({memberOfMenu: 'topMain', id: 4, parentId: 0, active: 1, title:'About', position: 4, extUrl: '', target: '', link: "['About']", roles: [], alignment: 'Left', hasChildren: 0});
     }
   });
 }

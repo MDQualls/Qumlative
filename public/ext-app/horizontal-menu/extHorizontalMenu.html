@@ -13,8 +13,8 @@
         <div class="collapse navbar-collapse" id="ext-navbar-collapse-1">
                                                                              
             <script type="text/ng-template" id="horizonlMenuTree">              
-                <a ng-if="!item.hasChildren" href="#">{{item.title}}</a>
-                <a ng-if="item.hasChildren" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.title}}<span ng-if="item.parentId===0" class="caret"></span></a>                                                                                               
+                <a ng-if="!item.hasChildren" ng-link="{{item.link}}">{{item.title}}</a>
+                <a ng-if="item.hasChildren" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.title}}<span ng-if="item.parentId===0" class="caret"></span></a>                                                                                               
                 <ul ng-if="item.hasChildren" class="dropdown-menu"> 
                     <li ng-repeat="item in ctrl.menuItems | filter:{parentId:item.id} | orderBy:['position']" 
                         ng-class="{'dropdown-submenu':item.hasChildren===1}"

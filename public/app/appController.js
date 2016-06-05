@@ -15,9 +15,15 @@
 
     module.component('appController', {
         templateUrl: '/app/appContent.html',
-        transclude: true,
         controllerAs: 'ctrl',
-        controller: ['menuFactory', controller]
+        controller: ['menuFactory', controller],
+        $routeConfig: [
+            {path: '/home', component: 'quHome', name: 'Home'},
+            {path: '/blog', component: 'quBlog', name: 'Blog'},
+            {path:'/demo', component: 'quDemo', name: 'Demo'},
+            {path:'/About', component:'quAbout', name: 'About'},
+            {path: '/**', redirectTo: ['Home', '']}
+        ]
     });
 
 })();

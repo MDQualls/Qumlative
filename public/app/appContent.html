@@ -1,15 +1,10 @@
-<div class="container-fluid">     
+<div class="container-fluid">
     <ext-header menu-items="ctrl.menuItems" heading="ctrl.heading" brand='ctrl.brand'></ext-header>
-    
-    <section>
-        <ng-transclude></ng-transclude>
-        
-        <row>
-            <div class="col-sm-2">       
-                {{ctrl.menuItems}}          
-            </div>
-            <div class="col-sm-10">
-            </div>
-        </row>   
-    </section>    
+</div>
+<div class="container">
+    <ng-outlet></ng-outlet>
+</div>
+
+<div class="container-fluid">
+    <ext-footer></ext-footer>
 </div>
