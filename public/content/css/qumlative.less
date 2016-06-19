@@ -4,30 +4,13 @@
 @import "./public/ext-app/vertical-menu/extVerticalMenu.less";
 @import "./public/ext-app/footer/extFooter.less";
 @import "./public/ext-app/jumbotron/extJumbotron.less";
-
-header { background-color: #E4E4E4; }
-.page-header { margin-top:0; padding-bottom:0; }
-.page-header-heading {padding-top:10px; padding-left: 5px; padding-bottom: 10px; margin:0;font-size:28px;}
+@import "./public/ext-app/header/extHeader.less";
+@import "./public/ext-app/panel/extPanel.less";
 
 @font-family-sans-serif:'roboto mono';
 @body-bg:     #efefef;
 @panel-bg: darken(@body-bg, 4%); 
 @well-bg: darken(@body-bg, 4%); 
-
-.panel {
-  border: 1px solid @well-border;
-  border-radius: @border-radius-base;
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
-}
-
-.panel-body 
-{
-  h1, .h1, h2, .h2, h3, .h3
-  {
-    margin-top: 0;
-    margin-bottom: 0px;
-  } 
-}
 
 .container-fluid & {
     border-radius: @border-radius-large; // Only round corners at higher resolutions if contained in a container

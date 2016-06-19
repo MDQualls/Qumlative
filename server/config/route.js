@@ -15,7 +15,7 @@ module.exports = function(app) {
     app.get('/api/menu', function(req, res, next) { menuController.getMenu(req, res, next); });
     app.get('/api/menu/:memberOfMenu', function(req, res, next) { menuController.getMenuMembers(req, res, next); });
     app.post('/api/menu', auth.requiresRole('admin'), function(req, res, next) { menuController.createMenuItem(req, res, next); });
-    app.post('/api/menu', auth.requiresRole('admin'), function(req, res, next) {  menuController.updateMenuItem(req, res, next); });
+    app.put('/api/menu', auth.requiresRole('admin'), function(req, res, next) { menuController.updateMenuItem(req, res, next); });
 
     //handle logging in and logging out
     app.post('/login', auth.authenticate);
