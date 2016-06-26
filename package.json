@@ -17,6 +17,7 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.1",
+    "cors": "^2.7.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "gulp": "^3.9.1",
@@ -38,6 +39,7 @@
     "wiredep": "^4.0.0"
   },
   "devDependencies": {
+    "gulp-angular-filesort": "^1.1.1",
     "karma": "^0.13.22",
     "karma-chai-plugins": "^0.7.0",
     "karma-chrome-launcher": "^1.0.1",

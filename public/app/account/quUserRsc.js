@@ -1,6 +1,10 @@
-angular.module('app').factory('quUserRsc', function($resource) {
 
-  var UserResource = $resource('/api/users/:id', {_id: "@id"});
+(function() {
+  'use strict';
+  angular.module('app').factory('quUserRsc', function($resource) {
 
-  return UserResource;
-});
+    var UserResource = $resource('/api/users/:id', {_id: '@id'});
+
+    return UserResource;
+  });
+})();

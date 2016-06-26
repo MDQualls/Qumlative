@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var userSchema = require('../schema/userSchema');
 var menuSchema = require('../schema/menuSchema');
+var blogSchema = require('../schema/blogSchema');
 
 module.exports = function(config) {
   mongoose.connect(config.db);

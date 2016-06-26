@@ -6,5 +6,5 @@
 */
 (function() {
     'use strict';
-    angular.module('extNotifierModule', []);
+    angular.module('extNotifierModule', []).value('quToaster',toastr);
 })();

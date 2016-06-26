@@ -24,6 +24,7 @@ gulp.task('build-css', function() {
 gulp.task('inject',['build-css'], function () {
     var wiredep = require('wiredep').stream;
     var inject = require('gulp-inject');
+    //var angularFilesort = require('gulp-angular-filesort');
 
     var injectSrc = gulp.src([
         './public/content/css/*.css',
@@ -44,6 +45,7 @@ gulp.task('inject',['build-css'], function () {
     return gulp.src('./*.html')
         .pipe(wiredep(options))
         .pipe(inject(injectSrc, injectOptions))
+//        .pipe(angularFilesort())
         .pipe(gulp.dest('./'));
 
 });

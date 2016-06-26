@@ -11,7 +11,7 @@ module.exports = function() {
           if (!user) { return done(null, false); }
           if (!user.authenticate(password)) { return done(null, false); }
           return done(null, user);
-        })
+        });
       })
   );
 
@@ -28,7 +28,7 @@ module.exports = function() {
         } else {
           return done(null, false);
         }
-      })
-    })
+      });
+    });
 
-}
+};

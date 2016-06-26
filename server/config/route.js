@@ -2,6 +2,7 @@ var auth = require('./auth');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var menuController = require('../controllers/menuController');
+var blogController = require('../controllers/blogController');
 
 module.exports = function(app) {
 
@@ -16,6 +17,13 @@ module.exports = function(app) {
     app.get('/api/menu/:memberOfMenu', function(req, res, next) { menuController.getMenuMembers(req, res, next); });
     app.post('/api/menu', auth.requiresRole('admin'), function(req, res, next) { menuController.createMenuItem(req, res, next); });
     app.put('/api/menu', auth.requiresRole('admin'), function(req, res, next) { menuController.updateMenuItem(req, res, next); });
+
+    //handle blog
+    app.get('/api/blog', function(req, res, next) { blogController.getBlogs(req, res, next); });
+    app.get('/api/blog/:id', function(req, res, next) { blogController.getBlog(req, res, next); });
+    app.get('/api/blog/:status', function(req, res, next) { blogController.getBlogsByStatus(req, res, next); });
+    app.post('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.createBlog(req, res, next); });
+    app.put('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.updateBlog(req, res, next); });
 
     //handle logging in and logging out
     app.post('/login', auth.authenticate);

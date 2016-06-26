@@ -1,26 +1,26 @@
 (function() {
     'use strict';
-    angular.module('extNotifierModule').value('quToastr', toastr);
     angular.module('extNotifierModule').factory('extNotifierSvc',
-        ['quToastr',
-        function(quToastr) {
+        ['quToaster',
+        function(quToaster) {
+
             function successMsg(msg) {
-                quToastr.success(msg);
+                quToaster.success(msg);
                 console.log(msg);
             }
 
             function warningMsg(msg) {
-                quToastr.warning(msg);
+                quToaster.warning(msg);
                 console.log(msg);
             }
 
             function infoMsg(msg) {
-                quToastr.info(msg);
+                quToaster.info(msg);
                 console.log(msg);
             }
 
             function errorMsg(msg) {
-                quToastr.error(msg);
+                quToaster.error(msg);
                 console.log(msg);
             }
 

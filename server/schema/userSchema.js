@@ -11,7 +11,7 @@ var userSchema = mongoose.Schema({
   });
   userSchema.methods = {
     authenticate: function(passwordToMatch)  {
-      return hashPwd(this.salt, passwordToMatch) === this.hashedPwd;
+      return encrypt.hashPwd(this.salt, passwordToMatch) === this.hashedPwd;
     }
   };
 
