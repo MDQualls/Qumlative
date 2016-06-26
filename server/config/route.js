@@ -25,6 +25,14 @@ module.exports = function(app) {
     app.post('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.createBlog(req, res, next); });
     app.put('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.updateBlog(req, res, next); });
 
+    //handle blog categories
+    app.get('/api/blogCategory', function(req, res, next) {});
+    app.get('/api/blogCategory/:id', function(req, res, next) {});
+    app.post('/api/blogCategory', auth.requiresRole('admin'), function(req, res, next) { });
+    app.put('/api/blogCategory', auth.requiresRole('admin'), function(req, res, next) {  });
+
+    //handle blog statuses
+
     //handle logging in and logging out
     app.post('/login', auth.authenticate);
 

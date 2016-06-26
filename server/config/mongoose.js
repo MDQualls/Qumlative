@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var userSchema = require('../schema/userSchema');
 var menuSchema = require('../schema/menuSchema');
 var blogSchema = require('../schema/blogSchema');
+var blogCategorySchema = require('../schema/blogCategorySchema');
+var statusCategorySchema = require('../schema/blogStatusSchema');
 
 module.exports = function(config) {
   mongoose.connect(config.db);
@@ -13,5 +15,7 @@ module.exports = function(config) {
 
   userSchema.createDefaultUsers();
   menuSchema.createDefaultMenu();
+  blogCategorySchema.createDefaultCategories();
+  statusCategorySchema.createDefaultStatuses();
 
 };
