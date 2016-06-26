@@ -21,6 +21,10 @@
         ctrl.returnToAdmin = function()  {
             ctrl.$router.navigate(['Admin']);
         };
+
+        ctrl.newBlogPost = function() {
+            ctrl.$router.navigate(['NewBlog']);
+        }
     }
 
     module.component('quBlogAdmin', {
