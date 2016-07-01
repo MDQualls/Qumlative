@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var menuController = require('../controllers/menuController');
 var blogController = require('../controllers/blogController');
+var blogCategoryController = require('../controllers/blogCategoryController');
+var blogStatusController = require('../controllers/blogStatusController');
 
 module.exports = function(app) {
 
@@ -26,12 +28,16 @@ module.exports = function(app) {
     app.put('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.updateBlog(req, res, next); });
 
     //handle blog categories
-    app.get('/api/blogCategory', function(req, res, next) {});
-    app.get('/api/blogCategory/:id', function(req, res, next) {});
-    app.post('/api/blogCategory', auth.requiresRole('admin'), function(req, res, next) { });
-    app.put('/api/blogCategory', auth.requiresRole('admin'), function(req, res, next) {  });
+    app.get('/api/blogCategory', function(req, res, next) { blogCategoryController.getBlogCategories(req, res, next); });
+    app.get('/api/blogCategory/:id', function(req, res, next) { blogCategoryController.getBlogCategory(req, res, next); });
+    app.post('/api/blogCategory', auth.requiresRole('admin'), function(req, res, next) { blogCategoryController.createBlogCategory(req, res, next); });
+    app.put('/api/blogCategory', auth.requiresRole('admin'), function(req, res, next) { blogCategoryController.updateBlogCategory(req, res, next); });
 
     //handle blog statuses
+    app.get('/api/blogStatus', function(req, res, next) { blogStatusController.getBlogStatuses(req, res, next); });
+    app.get('/api/blogStatus/:id', function(req, res, next) { blogStatusController.getBlogStatus(req, res, next); });
+    app.post('/api/blogStatus', auth.requiresRole('admin'), function(req, res, next) { blogStatusController.createBlogStatus(req, res, next); });
+    app.put('/api/blogStatus', auth.requiresRole('admin'), function(req, res, next) { blogStatusController.updateBlogStatus(req, res, next); });
 
     //handle logging in and logging out
     app.post('/login', auth.authenticate);

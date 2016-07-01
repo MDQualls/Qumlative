@@ -4,7 +4,9 @@
     angular.module('app').factory('quBlogFactory',
         ['$resource',
         function($resource) {
-            var blogResource = $resource('/api/blog/:id', {id:'@id', isArray:true});
+            var blogResource = $resource('/api/blog/:id',
+                {id:'@id', isArray:true}
+            );
             return blogResource;
         }
     ]);

@@ -20,7 +20,7 @@
               },function(err)  {
                 extNotifierSvc.warningMsg('An error occurred while logging out.');
             });
-        }
+        };
     }
 
     module.component('quAdmin', {

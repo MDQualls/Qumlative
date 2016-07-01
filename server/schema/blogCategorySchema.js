@@ -15,8 +15,8 @@
             if (collection.length === 0)  {
                 BlogCategory.create({category: 'AngularJS', description: ''});
                 BlogCategory.create({category: 'NodeJS', description: ''});
-                BlogCategory.create({category: 'Home Life', description: ''});
-                BlogCategory.create({category: 'My Causes', description: ''});
+                BlogCategory.create({category: 'Day to Day', description: ''});
+                BlogCategory.create({category: 'Causes I Support', description: ''});
             }
         });
     }

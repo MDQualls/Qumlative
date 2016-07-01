@@ -21,34 +21,34 @@ gulp.task('build-css', function() {
         .pipe(gulp.dest('./public/content/css'));
 });
 
-gulp.task('inject',['build-css'], function () {
-    var wiredep = require('wiredep').stream;
-    var inject = require('gulp-inject');
-    //var angularFilesort = require('gulp-angular-filesort');
+// gulp.task('inject',['build-css'], function () {
+//     var wiredep = require('wiredep').stream;
+//     var inject = require('gulp-inject');
+//     //var angularFilesort = require('gulp-angular-filesort');
 
-    var injectSrc = gulp.src([
-        './public/content/css/*.css',
-        './public/ext-app/**/*Module.js',
-        './public/ext-app/**/*.js',
-        './public/app/**/*.js'], {read:false});
+//     var injectSrc = gulp.src([
+//         './public/content/css/*.css',
+//         './public/ext-app/**/*Module.js',
+//         './public/ext-app/**/*.js',
+//         './public/app/**/*.js'], {read:false});
 
-    var injectOptions = {
-        ignorePath: '/public'
-    };
+//     var injectOptions = {
+//         ignorePath: '/public'
+//     };
 
-    var options = {
-        bowerJson: require('./bower.json'),
-        directory: './public/vendor',
-        ignorePath: 'public',
-    };
+//     var options = {
+//         bowerJson: require('./bower.json'),
+//         directory: './public/vendor',
+//         ignorePath: 'public',
+//     };
 
-    return gulp.src('./*.html')
-        .pipe(wiredep(options))
-        .pipe(inject(injectSrc, injectOptions))
-//        .pipe(angularFilesort())
-        .pipe(gulp.dest('./'));
+//     return gulp.src('./*.html')
+//         .pipe(wiredep(options))
+//         .pipe(inject(injectSrc, injectOptions))
+// //        .pipe(angularFilesort())
+//         .pipe(gulp.dest('./'));
 
-});
+// });
 
 
 gulp.task('watch', function() {
