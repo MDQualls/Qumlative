@@ -3,13 +3,30 @@
 
     var module = angular.module('app');
 
-    function controller(quBlogCategoryFactory, quBlogStatusFactory, $uibModal, extNotifierSvc) {
+    function controller(quBlogFactory, quBlogCategoryFactory, quBlogStatusFactory, $uibModal, extNotifierSvc) {
         var ctrl = this;
 
         ctrl.blogCategories = [];
         ctrl.blogStatuses = [];
+        ctrl.blogSchema = {title: '',summary: '',post: '',datePosted: '',status: '',category: '',images: []};
 
-        ctrl.postNewBlog = function() {};
+        ctrl.postNewBlog = function () {
+
+            if (ctrl.frmBlog.$valid === false) {
+                return false;
+            } else {
+
+                quBlogFactory.save(ctrl.blogSchema, function(result) {
+                    extNotifierSvc.successMsg('New blog successfully posted');
+                    ctrl.$router.navigate(['BlogAdmin']);
+                },
+                function (error) {
+                    extNotifierSvc.errorMsg(error);
+                    console.log(error);
+                });
+            }
+        };
+
         ctrl.returnToAdmin = function() {
             ctrl.$router.navigate(['BlogAdmin']);
         };
@@ -37,7 +54,7 @@
     module.component('quNewBlogAdmin', {
         templateUrl: '/app/admin/blog/quNewBlogAdmin.html',
         controllerAs: 'ctrl',
-        controller: ['quBlogCategoryFactory', 'quBlogStatusFactory', '$uibModal', 'extNotifierSvc', controller],
+        controller: ['quBlogFactory', 'quBlogCategoryFactory', 'quBlogStatusFactory', '$uibModal', 'extNotifierSvc', controller],
         bindings: {
             '$router': '<'
         }

@@ -11,7 +11,8 @@ angular.module('app',
         'extNotifierModule',
         'textAngular',
         'ngSanitize',
-        'ui.bootstrap']);
+        'ui.bootstrap',
+        'extPrivacyModule']);
 
 angular.module('app').value('$routerRootComponent', 'appController');
 

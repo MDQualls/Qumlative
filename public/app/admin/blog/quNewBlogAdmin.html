@@ -1,84 +1,115 @@
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="pull-right">
-                <button ng-click="ctrl.postNewBlog()" class="btn btn-primary">Submit New Post</button>            
-                <button ng-click="ctrl.returnToAdmin()" class="btn btn-default">Cancel</button>
-            </div>
-            <h4>Add New Blog</h4>            
-        </div>
-        <div class="panel-body">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Title</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+<form id="ctrl.frmBlog" name="ctrl.frmBlog" novalidate>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <button ng-click="ctrl.postNewBlog()" class="btn btn-primary">Submit New Post</button>            
+                    <button ng-click="ctrl.returnToAdmin()" class="btn btn-default">Cancel</button>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Summary</label> <small>Chars: {{blogDetail.blog.summary.length || 0}}</small>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <h4>Add New Blog</h4>            
+            </div>
+            <div class="panel-body">            
+                <div class="form-group" ng-class="{'has-error':ctrl.frmBlog.blogTitle.$invalid && (ctrl.frmBlog.$submitted || ctrl.frmBlog.blogTitle.$touched)}" >
+                    <label class="control-label" for="blotTitle">Title</label>
+                    <input type="text" class="form-control" 
+                            id="blogTitle"
+                            name="blogTitle" 
+                            placeholder="Post Title" 
+                            ng-model="ctrl.blogSchema.title"
+                            required >
+                    <span class="help-block has-error" ng-show="ctrl.frmBlog.$submitted || ctrl.frmBlog.blogTitle.$touched">
+                        <span ng-show="ctrl.frmBlog.blogTitle.$invalid">
+                            Blog Title is required.
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group" ng-class="{'has-error':ctrl.frmBlog.blogSummary.$invalid && (ctrl.frmBlog.$submitted || ctrl.frmBlog.blogSummary.$touched)}" >
+                    <label class="control-label" for="blogSummary">Summary</label> <small>Chars: {{blogDetail.blog.summary.length || 0}}</small>
+                    <input type="text" class="form-control" 
+                            id="blogSummary"
+                            name="blogSummary" 
+                            placeholder="Post Summary" 
+                            ng-model="ctrl.blogSchema.summary"
+                            required >
+                    <span class="help-block has-error" ng-show="ctrl.frmBlog.$submitted || ctrl.frmBlog.blogSummary.$touched">
+                        <span ng-show="ctrl.frmBlog.blogSummary.$invalid">
+                            Blog Summary is required.
+                        </span>
+                    </span>
                 </div>            
-                <div class="form-group">
-                    <label for="exampleInputFile">Post Date</label>
-                    <input type="date" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <div class="form-group" ng-class="{'has-error':ctrl.frmBlog.blogDate.$invalid && (ctrl.frmBlog.$submitted || ctrl.frmBlog.blogDate.$touched)}" >
+                    <label class="control-label" for="blogDate">Post Date</label>
+                    <input type="date" class="form-control" 
+                            id="blogDate" 
+                            name="blogDate"
+                            ng-model="ctrl.blogSchema.datePosted"
+                            required >
+                    <span class="help-block has-error" ng-show="ctrl.frmBlog.$submitted || ctrl.frmBlog.blogDate.$touched">
+                        <span ng-show="ctrl.frmBlog.blogDate.$invalid">
+                            Blog Date is required.
+                        </span>
+                    </span>                            
                 </div>
-                <div class="form-group">
-
+                <div class="form-group"  ng-class="{'has-error':ctrl.frmBlog.blogPost.$invalid && (ctrl.frmBlog.$submitted || ctrl.frmBlog.blogPost.$touched)}"  >
                     <label class="control-label" for="blogPost">Blog Post Content</label>
-                    <div text-angular id="blogPost" name="blogPost" ng-model="blogDetail.blog.post"></div>
-
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>    
-<div class="col-lg-6">                            
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Blog Category - <small>The category that this post fits into</small>
-        </div>
-        <div class="panel-body">                                                                        
-            <div class="form-group" ng-class="{'has-error':frmBlog.selectCategory.$invalid && (frmBlog.$submitted || frmBlog.selectCategory.$touched)}">
-                <div class="input-group">
-                    <select required class="form-control" id="selectCategory" name="selectCategory" 
-                        ng-model="blogDetail.blog.blogCategory.categoryId" 
-                        ng-options="value._id as value.category for (key,value) in ctrl.blogCategories">
-                        <option value="">Select</option>
-                    </select>
-                    <span class="input-group-btn">
-                        <a ng-click="ctrl.openCategoryModal()" href="" class="btn btn-info">New</a>
+                    <div text-angular id="blogPost" name="blogPost"  ng-model="ctrl.blogSchema.post" required></div>
+                    <span class="help-block has-error" ng-show="ctrl.frmBlog.$submitted || ctrl.frmBlog.blogPost.$touched">
+                        <span ng-show="ctrl.frmBlog.blogPost.$invalid">
+                            Blog Post is required.
+                        </span>
                     </span>
-                </div>
-                <span class="help-block has-error" ng-show="frmBlog.$submitted || frmBlog.selectCategory.$touched">
-                    <span ng-show="frmBlog.selectCategory.$invalid">
-                        Blog Category is required.
-                    </span>
-                </span>
-            </div>                                    
-        </div>
-    </div>                                                        
-</div>
-<div class="col-lg-6">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Blog Status
-        </div>
-        <div class="panel-body">
-            <div class="form-group" ng-class="{'has-error':frmBlog.blogStatuses.$invalid && (frmBlog.$submitted || frmBlog.blogStatuses.$touched)}">
-                <div class="radio" ng-repeat="status in ctrl.blogStatuses">
-                    <label>
-                        <input required type="radio" name="blogStatuses" id="blogStatuses" 
-                            ng-model="blogDetail.blog.blogStatus.blogStatusId" 
-                            ng-value="status.blogStatusId" >
-                        {{status.status}}
-                    </label>
-                </div>
-                <span class="help-block has-error" ng-show="frmBlog.$submitted || frmBlog.blogStatuses.$touched">
-                    <span ng-show="frmBlog.blogStatuses.$invalid">
-                        Blog Status is required.
-                    </span>
-                </span>
+                </div>                               
             </div>
         </div>
+    </div>    
+    <div class="col-lg-6">                            
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Blog Category - <small>The category that this post fits into</small>
+            </div>
+            <div class="panel-body">                                                                        
+                <div class="form-group" ng-class="{'has-error':ctrl.frmBlog.selectCategory.$invalid && (ctrl.frmBlog.$submitted || ctrl.frmBlog.selectCategory.$touched)}">
+                    <div class="input-group">
+                        <select required class="form-control" id="selectCategory" name="selectCategory" 
+                            ng-model="ctrl.blogSchema.category" 
+                            ng-options="value.category as value.category for (key,value) in ctrl.blogCategories">
+                            <option value="">Select</option>
+                        </select>
+                        <span class="input-group-btn">
+                            <a ng-click="ctrl.openCategoryModal()" href="" class="btn btn-info">New</a>
+                        </span>
+                    </div>
+                    <span class="help-block has-error" ng-show="ctrl.frmBlog.$submitted || ctrl.frmBlog.selectCategory.$touched">
+                        <span ng-show="ctrl.frmBlog.selectCategory.$invalid">
+                            Blog Category is required.
+                        </span>
+                    </span>
+                </div>                                    
+            </div>
+        </div>                                                        
     </div>
-</div>        
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Blog Status
+            </div>
+            <div class="panel-body">
+                <div class="form-group" ng-class="{'has-error':ctrl.frmBlog.blogStatuses.$invalid && (ctrl.frmBlog.$submitted || ctrl.frmBlog.blogStatuses.$touched)}">
+                    <div class="radio" ng-repeat="status in ctrl.blogStatuses">
+                        <label>
+                            <input required type="radio" name="blogStatuses" id="blogStatuses" 
+                                ng-model="ctrl.blogSchema.status"
+                                ng-value="status.status" >
+                            {{status.status}}
+                        </label>
+                    </div>
+                    <span class="help-block has-error" ng-show="ctrl.frmBlog.$submitted || ctrl.frmBlog.blogStatuses.$touched">
+                        <span ng-show="ctrl.frmBlog.blogStatuses.$invalid">
+                            Blog Status is required.
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>        
+</form>

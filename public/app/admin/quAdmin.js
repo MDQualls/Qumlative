@@ -16,7 +16,7 @@
             quAuth.logoutUser()
             .then(function() {
                 extNotifierSvc.successMsg('You have successfully logged out!');
-                ctrl.$router.navigate(['Home']);
+                ctrl.$router.navigate(['BlogAdmin']);
               },function(err)  {
                 extNotifierSvc.warningMsg('An error occurred while logging out.');
             });

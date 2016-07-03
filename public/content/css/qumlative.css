@@ -6713,14 +6713,14 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 90px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 90px;
   background-color: #E4E4E4;
   text-align: center;
 }
@@ -6764,6 +6764,15 @@ header {
 .panel-heading h3,
 .panel-body .h3,
 .panel-heading .h3 {
+  margin-top: 0;
+  margin-bottom: 0px;
+}
+.well h1,
+.well .h1,
+.well h2,
+.well .h2,
+.well h3,
+.well .h3 {
   margin-top: 0;
   margin-bottom: 0px;
 }

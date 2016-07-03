@@ -1,5 +1,47 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        <h1>Blog Page</h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="well well-sm"><h4>Recent Blog Posts</h4></div>
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-info" ng-repeat="blog in ctrl.blogs | orderBy:'-datePosted'">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    {{blog.datePosted | date}}
+                </div>
+                {{blog.title}}
+            </div>
+            <div class="panel-body">
+                <span ng-bind-html="blog.post"></span>                                
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <button class="btn btn-info">Read More <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                        </div>
+                        Category: {{blog.category}}
+                    </div>
+                </div>                
+            </div>
+
+        </div>
+    </div>        
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Categories</h4>
+            </div>
+            <div class="panel-body">
+                ...
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Time Line</h4>
+            </div>
+            <div class="panel-body">
+                ...
+            </div>
+        </div>
     </div>
 </div>
