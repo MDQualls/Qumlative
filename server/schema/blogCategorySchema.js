@@ -16,11 +16,11 @@
                 BlogCategory.create({category: 'AngularJS', description: ''});
                 BlogCategory.create({category: 'NodeJS', description: ''});
                 BlogCategory.create({category: 'Day to Day', description: ''});
-                BlogCategory.create({category: 'Causes I Support', description: ''});
+                BlogCategory.create({category: 'Causes', description: ''});
             }
+
         });
     }
-
     module.exports = {
         BlogCategory: BlogCategory,
         createDefaultCategories: createDefaultCategories

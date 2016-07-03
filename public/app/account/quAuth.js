@@ -14,7 +14,7 @@
                 } else {
                   defer.resolve(false);
                 }
-              }, function (err) { console.log(err) });
+              }, function (err) { console.log(err); });
             return defer.promise;
           },
           logoutUser: function () {

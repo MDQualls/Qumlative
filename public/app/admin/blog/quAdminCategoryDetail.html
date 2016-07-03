@@ -1,0 +1,20 @@
+<form novalidate  id="ctrl.frmBlogCategory" name="ctrl.frmBlogCategory">
+    <div class="modal-header">
+        <h3 class="modal-title">Add a new Blog Category</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group" ng-class="{'has-error': ctrl.frmBlogCategory.$submitted && ctrl.frmBlogCategory.newBlogCategory.$error.required}">
+            <label class="control-label" for="inputProductCode">New Category</label>
+            <div>
+                <input class="form-control" id="newBlogCategory" name="newBlogCategory" type="text" placeholder="Category (required)" ng-model="ctrl.category.category" required>
+            </div>
+            <span class="help-block has-error" ng-show="ctrl.frmBlogCategory.$submitted && ctrl.frmBlogCategory.newBlogCategory.$error.required">
+                Category Name is required
+            </span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ctrl.ok()">OK</button>
+        <button class="btn btn-warning" ng-click="ctrl.cancel()">Cancel</button>
+    </div>
+</form>

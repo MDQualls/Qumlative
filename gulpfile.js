@@ -58,7 +58,7 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['watch']);
 
-gulp.task('serve',['default', 'js-style','inject'], function() {
+gulp.task('serve',['default', 'js-style'], function() {
     var options = {
         script: 'server.js',
         delayTime: 1,
