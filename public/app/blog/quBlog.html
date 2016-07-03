@@ -32,7 +32,12 @@
                 <h4>Categories</h4>
             </div>
             <div class="panel-body">
-                ...
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="category in ctrl.categories | orderBy:'category'">
+                        <span class="badge">14</span>
+                        {{category.category}}
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="panel panel-default">
