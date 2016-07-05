@@ -1,18 +1,12 @@
 var auth = require('./auth');
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
 var menuController = require('../controllers/menuController');
 var blogController = require('../controllers/blogController');
 var blogCategoryController = require('../controllers/blogCategoryController');
 var blogStatusController = require('../controllers/blogStatusController');
+var userController = require('../controllers/userController');
 
 module.exports = function(app) {
-
-    app.get('/api/users', auth.requiresRole('admin'), function(req, res) {
-            User.find({}).exec(function(err, collection)  {
-                res.send(collection);
-            });
-        });
 
     //handle menu
     app.get('/api/menu', function(req, res, next) { menuController.getMenu(req, res, next); });
@@ -39,18 +33,20 @@ module.exports = function(app) {
     app.post('/api/blogStatus', auth.requiresRole('admin'), function(req, res, next) { blogStatusController.createBlogStatus(req, res, next); });
     app.put('/api/blogStatus', auth.requiresRole('admin'), function(req, res, next) { blogStatusController.updateBlogStatus(req, res, next); });
 
-    //handle logging in and logging out
-    app.post('/login', auth.authenticate);
+    //handle users
+    app.get('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.getUsers(req, res, next); });
+    app.post('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.createUser(req, res, next); });
+    app.put('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.updateUser(req, res, next); });
 
-    app.post('/logout', function(req, res)  {
-        req.logout();
-        res.end();
-    });
+    //handle authentication
+    app.post('/login', auth.authenticate);
+    app.post('/logout', function(req, res) {  req.logout(); res.end(); });
 
     //handle bad routes
     app.all('/api/*', function(req, res) {
         res.send(404);
     });
+
     app.get('*', function(req, res) {
         res.send(404);
     });

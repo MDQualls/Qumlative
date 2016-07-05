@@ -4,9 +4,13 @@ var encrypt = require('../util/encryption');
 var userSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
-    username: String,
-    salt: String,
-    hashedPwd: String,
+    username: {type: String, required: true},
+    emailAddress: {type: String, required: true},
+    salt: {type: String, required: true},
+    hashedPwd: {type: String, required: true},
+    banned: Number,
+    deleted: Number,
+    suspended: Number,
     roles: [String]
   });
   userSchema.methods = {
@@ -22,14 +26,8 @@ function createDefaultUsers() {
     if (collection.length === 0) {
       var salt, hash;
       salt = encrypt.createSalt();
-      hash = encrypt.hashPwd(salt, 'MichaelQ');
-      User.create({firstName: 'Michael', lastName: 'Qualls', username:'MichaelQ', salt: salt, hashedPwd: hash, roles: ['admin']});
-      salt = encrypt.createSalt();
-      hash = encrypt.hashPwd(salt, 'MichaelaQ');
-      User.create({firstName: 'Michaela', lastName: 'Qualls', username:'MichaelaQ', salt: salt, hashedPwd: hash, roles: []});
-      salt = encrypt.createSalt();
-      hash = encrypt.hashPwd(salt, 'HollyQ');
-      User.create({firstName: 'Holly', lastName: 'Qualls', username:'HollyQ', salt: salt, hashedPwd: hash});
+      hash = encrypt.hashPwd(salt, '[*p00p#t0wn!]');
+      User.create({firstName: 'Michael', lastName: 'Qualls', username:'MichaelQ', emailAddress:'qumlative@gmail.com', salt: salt, hashedPwd: hash, banned:0, deleted:0, suspended:0,  roles: ['admin']});
     }
   });
 }
