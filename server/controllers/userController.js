@@ -4,6 +4,33 @@
     var User = require('mongoose').model('User');
     var Encrypt = require('../util/encryption');
 
+    function buildUser(userInstance)  {
+        var user = {};
+
+        user.firstName = userInstance.firstName;
+        user.lastName = userInstance.lastName;
+        user.username = userInstance.username;
+        user.emailAddress = userInstance.emailAddress;
+        user.roles = userInstance.roles;
+
+        return user;
+    }
+
+    function buildUserResponse(users)  {
+
+        if (users.isArray() === false) {
+            var user = {};
+            user = buildUser(users);
+            return user;
+        } else {
+            var userResponse = [];
+            for (var u = 0; u < users.length; u++) {
+                userResponse.push(buildUser(users[u]));
+            }
+            return userResponse;
+        }
+    }
+
     exports.getUsers = function(req, res, next) {
         User.find({}).exec(function(err, collection)  {
 
@@ -11,7 +38,7 @@
                 if (err) {return next(err);}
             }
 
-            res.send(collection);
+            res.send(this.buildUserResponse(collection));
         });
     };
 
@@ -27,7 +54,7 @@
             if (err) {
                 if (err) {return next(err);}
             }
-            res.send(collection);
+            res.send(this.buildUserResponse(collection));
         });
     };
 
@@ -48,7 +75,7 @@
             }
             req.logIn(user, function(err) {
                 if (err) {return next(err);}
-                    res.send(user);
+                    res.send(this.buildUserResponse(user));
                 });
             }
         );
