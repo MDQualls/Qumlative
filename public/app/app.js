@@ -12,7 +12,8 @@ angular.module('app',
         'textAngular',
         'ngSanitize',
         'ui.bootstrap',
-        'extPrivacyModule']);
+        'extPrivacyModule',
+        'extUserModule']);
 
 angular.module('app').value('$routerRootComponent', 'appController');
 

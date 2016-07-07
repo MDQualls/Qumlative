@@ -26,7 +26,8 @@
             {path:'/admin/login', component:'quLogin', name: 'AdminLogin'},
             {path:'/admin/blog', component:'quBlogAdmin', name: 'BlogAdmin'},
             {path:'/admin/blog/:id', component:'quEditBlogAdmin', name: 'EditBlog'},
-            {path:'/admin/blog/add', component:'quNewBlogAdmin', name: 'NewBlog'},           
+            {path:'/admin/blog/add', component:'quNewBlogAdmin', name: 'NewBlog'},
+            {path:'/admin/user', component:'quUserAdmin', name: 'UserAdmin'},
             {path: '/**', redirectTo: ['Home', '']}
         ]
     });

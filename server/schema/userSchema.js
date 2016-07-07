@@ -9,7 +9,6 @@ var userSchema = mongoose.Schema({
     salt: {type: String, required: true},
     hashedPwd: {type: String, required: true},
     banned: Number,
-    deleted: Number,
     suspended: Number,
     roles: [String]
   });
@@ -27,7 +26,7 @@ function createDefaultUsers() {
       var salt, hash;
       salt = encrypt.createSalt();
       hash = encrypt.hashPwd(salt, '[*p00p#t0wn!]');
-      User.create({firstName: 'Michael', lastName: 'Qualls', username:'MichaelQ', emailAddress:'qumlative@gmail.com', salt: salt, hashedPwd: hash, banned:0, deleted:0, suspended:0,  roles: ['admin']});
+      User.create({firstName: 'Michael', lastName: 'Qualls', username:'MichaelQ', emailAddress:'qumlative@gmail.com', salt: salt, hashedPwd: hash, banned:0, suspended:0,  roles: ['admin']});
     }
   });
 }

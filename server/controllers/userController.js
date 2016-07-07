@@ -12,23 +12,20 @@
         user.username = userInstance.username;
         user.emailAddress = userInstance.emailAddress;
         user.roles = userInstance.roles;
+        user.banned = userInstance.banned;
+        user.suspended = userInstance.suspended;
 
         return user;
     }
 
     function buildUserResponse(users)  {
 
-        if (users.isArray() === false) {
-            var user = {};
-            user = buildUser(users);
-            return user;
-        } else {
-            var userResponse = [];
-            for (var u = 0; u < users.length; u++) {
-                userResponse.push(buildUser(users[u]));
-            }
-            return userResponse;
+        var userResponse = [];
+
+        for (var u = 0; u < users.length; u++) {
+            userResponse.push(buildUser(users[u]));
         }
+        return userResponse;
     }
 
     exports.getUsers = function(req, res, next) {
@@ -37,8 +34,8 @@
             if (err) {
                 if (err) {return next(err);}
             }
-
-            res.send(this.buildUserResponse(collection));
+            var result = buildUserResponse(collection);
+            res.send(result);
         });
     };
 
@@ -54,7 +51,7 @@
             if (err) {
                 if (err) {return next(err);}
             }
-            res.send(this.buildUserResponse(collection));
+            res.send(buildUserResponse(collection));
         });
     };
 
@@ -75,7 +72,7 @@
             }
             req.logIn(user, function(err) {
                 if (err) {return next(err);}
-                    res.send(this.buildUserResponse(user));
+                    res.send(buildUserResponse(user));
                 });
             }
         );

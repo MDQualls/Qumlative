@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="pull-right">                        
+            <button ng-click="ctrl.returnToAdmin()" class="btn btn-default">Return to Admin</button>
+        </div>
+        <h4>User Administration</h4>            
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-bordered">
+            <tr class="info">
+                <th>User Name</th>
+                <th>Email Address</th>
+                <th>Banned</th>
+                <th>Suspended</th>
+                <th>Action</th>
+            </tr>
+            <tr ng-class="{danger: user.banned, warning: user.suspended}" ng-repeat="user in ctrl.users">
+                <td ng-class="{'text-danger': user.banned, 'text-warning': user.suspended}">{{user.username}}</td>
+                <td ng-class="{'text-danger': user.banned, 'text-warning': user.suspended}">{{user.emailAddress}}</td>
+                <td ng-class="{'text-danger': user.banned, 'text-warning': user.suspended}">{{user.banned}}</td>
+                <td ng-class="{'text-danger': user.banned, 'text-warning': user.suspended}">{{user.suspended}}</td>                
+                <td>
+                    <ext-ban current-status="user.banned" set-status="ctrl.setBanStatus(user, ban)"></ext-ban>
+                    <ext-suspend current-status="user.suspended" set-status="ctrl.setSuspendStatus(user, suspend)"></ext-suspend>                                                            
+                </td>
+            </tr>              
+        </table>
+    </div>
+</div>
+
+{{ctrl.users}}
