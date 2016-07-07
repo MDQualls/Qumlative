@@ -4,6 +4,7 @@
     function buildUser(userInstance)  {
         var user = {};
 
+        user._id = userInstance._id;
         user.firstName = userInstance.firstName;
         user.lastName = userInstance.lastName;
         user.username = userInstance.username;

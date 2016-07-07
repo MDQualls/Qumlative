@@ -41,7 +41,7 @@
 
             user.save(function(err) {
                 if (err) { res.status(400); return res.send({reason:err.toString()}); }
-                req.send(builder.buildUserResponse(user));
+                res.send(builder.buildUserResponse(user));
             });
         });
     };

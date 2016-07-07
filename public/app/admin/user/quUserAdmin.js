@@ -17,8 +17,15 @@
             } else {
                 user.banned = 0;
             }
+            quUserFactory.BanResource.query({id:user._id},
+                function(result) {
+                    extNotifierSvc.successMsg('User successfully banned');
+                },
+                function(err) {
+                    extNotifierSvc.errorMsg(err);
+                });
             console.log(user.banned);
-        }
+        };
 
         ctrl.setSuspendStatus = function(user, suspend) {
             if (suspend === 1) {
@@ -26,11 +33,18 @@
             } else {
                 user.suspended = 0;
             }
+            quUserFactory.SuspendResource.query({id:user._id},
+                function(result) {
+                    extNotifierSvc.successMsg('User successfully Suspended');
+                },
+                function(err) {
+                    extNotifierSvc.errorMsg(err);
+                });
             console.log(user.suspended);
-        }
+        };
 
         ctrl.$onInit = function() {
-            quUserFactory.query(
+            quUserFactory.UserResource.query(
                 function(result) {
                     ctrl.users = result;
                 },
