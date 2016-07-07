@@ -3,30 +3,7 @@
 
     var User = require('mongoose').model('User');
     var Encrypt = require('../util/encryption');
-
-    function buildUser(userInstance)  {
-        var user = {};
-
-        user.firstName = userInstance.firstName;
-        user.lastName = userInstance.lastName;
-        user.username = userInstance.username;
-        user.emailAddress = userInstance.emailAddress;
-        user.roles = userInstance.roles;
-        user.banned = userInstance.banned;
-        user.suspended = userInstance.suspended;
-
-        return user;
-    }
-
-    function buildUserResponse(users)  {
-
-        var userResponse = [];
-
-        for (var u = 0; u < users.length; u++) {
-            userResponse.push(buildUser(users[u]));
-        }
-        return userResponse;
-    }
+    var builder = require('../util/userDtos');
 
     exports.getUsers = function(req, res, next) {
         User.find({}).exec(function(err, collection)  {
@@ -34,7 +11,7 @@
             if (err) {
                 if (err) {return next(err);}
             }
-            var result = buildUserResponse(collection);
+            var result = builder.buildUserResponse(collection);
             res.send(result);
         });
     };
@@ -51,7 +28,7 @@
             if (err) {
                 if (err) {return next(err);}
             }
-            res.send(buildUserResponse(collection));
+            res.send(builder.buildUserResponse(collection));
         });
     };
 
@@ -72,7 +49,7 @@
             }
             req.logIn(user, function(err) {
                 if (err) {return next(err);}
-                    res.send(buildUserResponse(user));
+                    res.send(builder.buildUserResponse(user));
                 });
             }
         );

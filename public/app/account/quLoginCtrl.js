@@ -7,12 +7,15 @@
 
         vm.signin = function(username, password)  {
           quAuth.authenticateUser(username, password)
-            .then(function(success) {
-              if (success) {
-                quNotifier.successMsg('You have successfully signed in!');
-              } else {
-                quNotifier.warningMsg('Username/Password combination incorrect');
-              }
+            .then(function(response) {
+                if (response.data.success === true)  {
+                  quNotifier.successMsg('You have successfully signed in!');
+                } else {
+                  quNotifier.warningMsg(response.data.reason);
+                }
+
+            }, function(err) {
+                quNotifier.errorMsg(err);
             });
         };
 

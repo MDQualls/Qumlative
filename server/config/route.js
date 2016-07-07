@@ -5,6 +5,8 @@ var blogController = require('../controllers/blogController');
 var blogCategoryController = require('../controllers/blogCategoryController');
 var blogStatusController = require('../controllers/blogStatusController');
 var userController = require('../controllers/userController');
+var banController = require('../controllers/banController');
+var suspendController = require('../controllers/suspendController');
 
 module.exports = function(app) {
 
@@ -37,6 +39,15 @@ module.exports = function(app) {
     app.get('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.getUsers(req, res, next); });
     app.post('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.createUser(req, res, next); });
     app.put('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.updateUser(req, res, next); });
+
+    //handle banning
+    app.get('/api/ban', auth.requiresRole('admin'), function(req, res, next) { banController.getBans(req, res, next); });
+    app.get('/api/ban/:id', auth.requiresRole('admin'), function(req, res, next) { banController.banUser(req, res, next); });
+
+    //handle suspending
+    app.get('/api/suspend', auth.requiresRole('admin'), function(req, res, next) { suspendController.getSuspends(req, res, next); });
+    app.get('/api/suspend/:id', auth.requiresRole('admin'), function(req, res, next) { suspendController.suspendUser(req, res, next); });
+
 
     //handle authentication
     app.post('/login', auth.authenticate);

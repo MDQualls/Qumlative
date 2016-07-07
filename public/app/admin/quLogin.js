@@ -10,12 +10,12 @@
 
         ctrl.signin = function(username, password)  {
           quAuth.authenticateUser(username, password)
-            .then(function(success) {
-              if (success) {
+            .then(function(response) {
+              if (response.data.success === true) {
                 extNotifierSvc.successMsg('You have successfully signed in!');
                 ctrl.$router.navigate(['Admin']);
               } else {
-                extNotifierSvc.warningMsg('Username/Password combination incorrect');
+                extNotifierSvc.warningMsg(response.data.reason);
               }
             });
         };

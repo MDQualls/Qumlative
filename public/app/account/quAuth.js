@@ -8,13 +8,13 @@
             var defer = $q.defer();
             $http.post('/login', {username: username, password: password})
               .then(function (response) {
-                if (response.data.success) {
+                if (response.data.success === true) {
                   quIdentity.setCurrentUser(response.data.user);
-                  defer.resolve(true);
-                } else {
-                  defer.resolve(false);
                 }
-              }, function (err) { console.log(err); });
+                defer.resolve(response);
+              }, function (err) {
+                defer.reject(err);
+            });
             return defer.promise;
           },
           logoutUser: function () {
