@@ -8,7 +8,8 @@
 
         ctrl.$routerOnActivate = function(next, previous) {
             if (!quIdentity.isAdmin())  {
-                ctrl.$router.navigate(['AdminLogin']);
+                extNotifierSvc.warningMsg('You are not authenicated for that route.');
+                ctrl.$router.navigate(['Home']);
             }
         };
 

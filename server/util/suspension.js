@@ -9,9 +9,9 @@
 
     exports.isSuspended = function(id)  {
         var user = {};
+        var suspended = false;
 
         User.findById({_id: id}).exec(function(err, collection) {
-
             if (err) {
                 return err;
             }
@@ -25,11 +25,13 @@
                     user.save(function(err) {
                         if (err) { return err.toString(); }
                     });
-                    return false;
+                    suspended = false;
+                } else {
+                    suspended = true;
                 }
-                return true;
             }
-            return false;
+        }).then(function() {
+            return suspended;
         });
-    }
+    };
 })();

@@ -26,4 +26,9 @@
         return userResponse;
     };
 
+    exports.buildUserResponseSingle = function(user)  {
+        var result = buildUser(user);
+        return result;
+    };
+
 })();

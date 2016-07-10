@@ -6776,6 +6776,16 @@ header {
   margin-top: 0;
   margin-bottom: 0px;
 }
+#extLogin {
+  margin-right: 25px;
+  margin-top: 7px;
+}
+#extLogin li:hover {
+  cursor: hand;
+}
+#extLogin .dropdown-menu {
+  min-width: 110px;
+}
 .container-fluid  {
   border-radius: 6px;
   padding-left: 0px;

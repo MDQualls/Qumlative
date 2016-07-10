@@ -10,7 +10,7 @@
 
         ctrl.$routerOnActivate = function(next, previous) {
             if (!quIdentity.isAdmin())  {
-                ctrl.$router.navigate(['AdminLogin']);
+                ctrl.$router.navigate(['Home']);
             }
         };
 

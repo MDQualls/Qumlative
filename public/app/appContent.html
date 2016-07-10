@@ -1,7 +1,8 @@
 <div class="container-fluid">
+    <ext-login class="pull-right" user="ctrl.currentUser" do-login="ctrl.doLogin(username, password)" do-log-out="ctrl.doLogOut()"></ext-login>
     <ext-header menu-items="ctrl.menuItems" heading="ctrl.heading" brand='ctrl.brand'></ext-header>
 </div>
-<div class="container">
+<div class="container">    
     <ng-outlet></ng-outlet>
 </div>
 
@@ -14,3 +15,5 @@
         <p class="text-muthed"><a ng-link="['Privacy']">Privacy Policy</a> 
     </ext-footer>
 </div>
+
+{{ctrl.currentUser}}

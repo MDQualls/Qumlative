@@ -13,7 +13,8 @@ angular.module('app',
         'ngSanitize',
         'ui.bootstrap',
         'extPrivacyModule',
-        'extUserModule']);
+        'extUserModule',
+        'extLoginModule']);
 
 angular.module('app').value('$routerRootComponent', 'appController');
 
