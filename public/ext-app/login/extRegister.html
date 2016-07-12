@@ -1,36 +1,110 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="well well-sm"><h4>Register @ Qumlative.io</h4></div>
-    </div>
-    <div class="col-md-12">
-        <div class="well well-sm">
-            If you wish to post comments or ask questions, I ask that you register first ... 
-            Nothing onerous and <a ng-link="['Privacy']" href="#">I'll never share your information</a> ... 
-            I would just like to have some minor control over Web site use. 
+ <form id="ctrl.frmRegister" name="ctrl.frmRegister" novalidate>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm"><h4>Register @ Qumlative.io</h4></div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="panel panel-info" ng-repeat="blog in ctrl.blogs | orderBy:'-datePosted'">
-            <div class="panel-heading">
-                <div class="pull-right">
-                    {{blog.datePosted | date}}
-                </div>
-                {{blog.title}}
+        <div class="col-md-12">
+            <div class="well well-sm">
+                If you wish to post comments or ask questions, I ask that you register first ... 
+                Nothing onerous and <a ng-link="['Privacy']" href="#">I'll never share your information</a> ... 
+                I would just like to have some minor control over Web site use. 
             </div>
-            <div class="panel-body">
-                <span ng-bind-html="blog.post"></span>                                
-            </div>
-            <div class="panel-footer">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="pull-right">
-                            <button class="btn btn-info">Read More <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-                        </div>
-                        Category: {{blog.category}}
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+       
+            
+            <div class="panel panel-default">                   
+                <div class="panel-body">            
+                    <div class="form-group" ng-class="{'has-error':ctrl.frmRegister.firstName.$invalid && (ctrl.frmRegister.$submitted || ctrl.frmRegister.firstName.$touched)}" >
+                        <label class="control-label" for="firstName">First Name</label>  <small>Chars: {{ctrl.firstName.length || 0}}</small>
+                        <input type="text" class="form-control" 
+                                id="firstName"
+                                name="firstName" 
+                                placeholder="First name ... or cool Internet alias" 
+                                ng-model="ctrl.registration.firstName"
+                                required >
+                        <span class="help-block has-error" ng-show="ctrl.frmRegister.$submitted || ctrl.frmRegister.firstName.$touched">
+                            <span ng-show="ctrl.frmRegister.firstName.$invalid">
+                                First name between 3 and 20 characters is required
+                            </span>
+                        </span>
                     </div>
-                </div>                
-            </div>
+                    <div class="form-group" ng-class="{'has-error':ctrl.frmRegister.lastName.$invalid && (ctrl.frmRegister.$submitted || ctrl.frmRegister.lastName.$touched)}" >
+                        <label class="control-label" for="lastName">Last Name</label> <small>Chars: {{ctrl.lastName.length || 0}}</small>
+                        <input type="text" class="form-control" 
+                                id="lastName"
+                                name="lastName" 
+                                placeholder="Enter Last Name" 
+                                ng-model="ctrl.registration.lastName"
+                                required >
+                        <span class="help-block has-error" ng-show="ctrl.frmRegister.$submitted || ctrl.frmRegister.lastName.$touched">
+                            <span ng-show="ctrl.frmRegister.lastName.$invalid">
+                                Last name between 3 and 20 characters is required.
+                            </span>
+                        </span>
+                    </div>                                           
+                    <div class="form-group" ng-class="{'has-error':ctrl.frmRegister.username.$invalid && (ctrl.frmRegister.$submitted || ctrl.frmRegister.username.$touched)}" >
+                        <label class="control-label" for="username">User Name</label> <small>Chars: {{ctrl.username.length || 0}}</small>
+                        <input type="text" class="form-control" 
+                                id="username"
+                                name="username" 
+                                placeholder="Enter desired user name" 
+                                ng-model="ctrl.registration.username"
+                                required >
+                        <span class="help-block has-error" ng-show="ctrl.frmRegister.$submitted || ctrl.frmRegister.username.$touched">
+                            <span ng-show="ctrl.frmRegister.username.$invalid">
+                                User name between 3 and 20 characters is required
+                            </span>
+                        </span>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':ctrl.frmRegister.emailAddress.$invalid && (ctrl.frmRegister.$submitted || ctrl.frmRegister.emailAddress.$touched)}" >
+                        <label class="control-label" for="emailAddress">Email Address</label>
+                        <input type="text" class="form-control" 
+                                id="emailAddress"
+                                name="emailAddress" 
+                                placeholder="Enter email address" 
+                                ng-model="ctrl.registration.emailAddress"
+                                required >
+                        <span class="help-block has-error" ng-show="ctrl.emailAddress.$submitted || ctrl.frmRegister.emailAddress.$touched">
+                            <span ng-show="ctrl.frmRegister.emailAddress.$invalid">
+                                Email address is required
+                            </span>
+                        </span>
+                    </div>
 
-        </div>
-    </div>        
-</div>
+                    <div class="form-group" ng-class="{'has-error':ctrl.frmRegister.password.$invalid && (ctrl.frmRegister.$submitted || ctrl.frmRegister.password.$touched)}" >
+                        <label class="control-label" for="password">Password</label>
+                        <input type="password" class="form-control" 
+                                id="password"
+                                name="password" 
+                                placeholder="Enter password" 
+                                ng-model="ctrl.registration.password"
+                                required >
+                        <span class="help-block has-error" ng-show="ctrl.password.$submitted || ctrl.frmRegister.password.$touched">
+                            <span ng-show="ctrl.frmRegister.password.$invalid">
+                                A password between 8 and 15 characters is required
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error':ctrl.frmRegister.passwordRepeat.$invalid && (ctrl.frmRegister.$submitted || ctrl.frmRegister.passwordRepeat.$touched)}" >
+                        <label class="control-label" for="passwordRepeat">Confirm Password</label>
+                        <input type="password" class="form-control" 
+                                id="passwordRepeat"
+                                name="passwordRepeat" 
+                                placeholder="Confirm password" 
+                                ng-model="ctrl.registration.passwordRepeat"
+                                required >
+                        <span class="help-block has-error" ng-show="ctrl.passwordRepeat.$submitted || ctrl.frmRegister.passwordRepeat.$touched">
+                            <span ng-show="ctrl.frmRegister.passwordRepeat.$invalid">
+                                You must confirm your password - passwords do not match
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>                                        
+        </div>        
+        <div class="col-md-3"></div>
+    </div>
+</form>
