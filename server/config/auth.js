@@ -1,13 +1,14 @@
 var passport = require('passport');
 var suspend = require('../util/suspension');
 var builder = require('../util/userDtos');
+var suspension = require('../util/suspension');
 
 exports.authenticate = function(req, res, next) {
   var auth = passport.authenticate('local', function(err, user) {
     if (err) {console.log(err);return next(err);}
-    if (!user) { res.send({success:false, reason: 'Username/Password combination incorrect'});}
-    if (user.banned === 1) { res.send({success:false, reason:'User is Banned'});}
-    if (user.suspended === 1) { res.send({success:false, reason:'User is Suspended'});}
+    if (!user) {return res.send({success:false, reason: 'Username/Password combination incorrect'});}
+    if (user.banned === 1) {return res.send({success:false, reason:'User is Banned'});}
+    if (user.suspended === 1) {return res.send({success:false, reason:'User is Suspended'});}
 
     req.logIn(user, function(err) {
       if (err) {return next(err);}

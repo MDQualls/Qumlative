@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="well well-sm"><h4>Register @ Qumlative.io</h4></div>
+    </div>
+    <div class="col-md-12">
+        <div class="well well-sm">
+            If you wish to post comments or ask questions, I ask that you register first ... 
+            Nothing onerous and <a ng-link="['Privacy']" href="#">I'll never share your information</a> ... 
+            I would just like to have some minor control over Web site use. 
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-info" ng-repeat="blog in ctrl.blogs | orderBy:'-datePosted'">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    {{blog.datePosted | date}}
+                </div>
+                {{blog.title}}
+            </div>
+            <div class="panel-body">
+                <span ng-bind-html="blog.post"></span>                                
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <button class="btn btn-info">Read More <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                        </div>
+                        Category: {{blog.category}}
+                    </div>
+                </div>                
+            </div>
+
+        </div>
+    </div>        
+</div>

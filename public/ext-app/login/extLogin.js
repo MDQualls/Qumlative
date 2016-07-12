@@ -10,8 +10,18 @@
         ctrl.username = '';
         ctrl.password = '';
 
+        function reset() {
+            ctrl.showLoginForm = false;
+            ctrl.username = '';
+            ctrl.password = '';
+        }
+
         ctrl.toggleLogin = function() {
-            ctrl.showLoginForm = (ctrl.showLoginForm) ? false : true;
+            if (ctrl.showLoginForm === true) {
+                reset();
+            } else {
+                ctrl.showLoginForm = true;
+            };
         };
 
         ctrl.callParentLogin = function() {
@@ -20,15 +30,13 @@
             } else {
                 //call parent scope to log into application
                 ctrl.doLogin({'username': ctrl.username, 'password': ctrl.password});
-                ctrl.showLoginForm = false;
+                reset();
             }
         };
 
         ctrl.callParentLogout = function() {
             ctrl.doLogOut();
-            ctrl.showLoginForm = false;
-            ctrl.username = '';
-            ctrl.password = '';
+            reset();
         };
 
         ctrl.isAdmin = function()  {

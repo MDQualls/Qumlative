@@ -44,6 +44,7 @@
             {path:'/demo', component: 'quDemo', name: 'Demo'},
             {path:'/about', component:'quAbout', name: 'About'},
             {path:'/privacy', component:'extPrivacy', name: 'Privacy'},
+            {path:'/register', component:'extRegister', name: 'Register'},
             {path:'/admin', component:'quAdmin', name: 'Admin'},
             {path:'/admin/blog', component:'quBlogAdmin', name: 'BlogAdmin'},
             {path:'/admin/blog/:id', component:'quEditBlogAdmin', name: 'EditBlog'},
