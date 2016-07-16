@@ -37,7 +37,7 @@ module.exports = function(app) {
 
     //handle users
     app.get('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.getUsers(req, res, next); });
-    app.post('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.createUser(req, res, next); });
+    app.post('/api/users', function(req, res, next) { userController.createUser(req, res, next); });
     app.put('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.updateUser(req, res, next); });
 
     //handle banning

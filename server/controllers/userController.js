@@ -28,7 +28,7 @@
             if (err) {
                 if (err) {return next(err);}
             }
-            res.send(builder.buildUserResponse(collection));
+            res.send(builder.buildUserResponseSingle(collection));
         });
     };
 
@@ -49,7 +49,7 @@
             }
             req.logIn(user, function(err) {
                 if (err) {return next(err);}
-                    res.send(builder.buildUserResponse(user));
+                    res.send(builder.buildUserResponseSingle(user));
                 });
             }
         );
@@ -75,7 +75,7 @@
 
         req.user.save(function(err) {
             if (err) { res.status(400); return res.send({reason:err.toString()}); }
-            res.send(req.user);
+            res.send(builder.buildUserResponseSingle(req.user));
         });
     };
 

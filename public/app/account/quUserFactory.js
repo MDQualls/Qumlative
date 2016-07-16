@@ -3,7 +3,9 @@
   'use strict';
   angular.module('app').factory('quUserFactory', function($resource) {
 
-    var UserResource = $resource('/api/users/:id', {id: '@id', isArray:true});
+    var UserResource = $resource('/api/users/:id', {id: '@id', isArray:true},
+      {update: {method:'PUT',isArray:false}
+    });
 
     var BanResource = $resource('/api/ban/:id', {id: '@id', isArray:true});
 
