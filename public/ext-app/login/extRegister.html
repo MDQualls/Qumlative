@@ -15,13 +15,13 @@
             <div class="panel panel-default">                   
                 <div class="panel-body">            
                     <div class="form-group" ng-class="{'has-error':ctrl.frmRegister.firstName.$invalid && (ctrl.frmRegister.$submitted || ctrl.frmRegister.firstName.$touched)}" >
-                        <label class="control-label" for="firstName">First Name</label>  <small>Chars: {{ctrl.firstName.length || 0}}</small>
+                        <label class="control-label" for="firstName">First Name</label>  <small>Chars: {{ctrl.registration.firstName.length || 0}}</small>
                         <input type="text" class="form-control" 
                                 id="firstName"
                                 name="firstName" 
                                 placeholder="First name ... or cool Internet alias" 
                                 ng-model="ctrl.registration.firstName"
-                                required >
+                                required ng-minlength="3" ng-maxlength="20" >
                         <span class="help-block has-error" ng-show="ctrl.frmRegister.$submitted || ctrl.frmRegister.firstName.$touched">
                             <span ng-show="ctrl.frmRegister.firstName.$invalid">
                                 First name between 3 and 20 characters is required
@@ -29,13 +29,13 @@
                         </span>
                     </div>
                     <div class="form-group" ng-class="{'has-error':ctrl.frmRegister.lastName.$invalid && (ctrl.frmRegister.$submitted || ctrl.frmRegister.lastName.$touched)}" >
-                        <label class="control-label" for="lastName">Last Name</label> <small>Chars: {{ctrl.lastName.length || 0}}</small>
+                        <label class="control-label" for="lastName">Last Name</label> <small>Chars: {{ctrl.registration.lastName.length || 0}}</small>
                         <input type="text" class="form-control" 
                                 id="lastName"
                                 name="lastName" 
                                 placeholder="Enter Last Name" 
                                 ng-model="ctrl.registration.lastName"
-                                required >
+                                required ng-minlength="3" ng-maxlength="20" >
                         <span class="help-block has-error" ng-show="ctrl.frmRegister.$submitted || ctrl.frmRegister.lastName.$touched">
                             <span ng-show="ctrl.frmRegister.lastName.$invalid">
                                 Last name between 3 and 20 characters is required.
@@ -43,13 +43,13 @@
                         </span>
                     </div>                                           
                     <div class="form-group" ng-class="{'has-error':ctrl.frmRegister.username.$invalid && (ctrl.frmRegister.$submitted || ctrl.frmRegister.username.$touched)}" >
-                        <label class="control-label" for="username">User Name</label> <small>Chars: {{ctrl.username.length || 0}}</small>
+                        <label class="control-label" for="username">User Name</label> <small>Chars: {{ctrl.registration.username.length || 0}}</small>
                         <input type="text" class="form-control" 
                                 id="username"
                                 name="username" 
                                 placeholder="Enter desired user name" 
                                 ng-model="ctrl.registration.username"
-                                required >
+                                required  ng-minlength="3" ng-maxlength="20" >
                         <span class="help-block has-error" ng-show="ctrl.frmRegister.$submitted || ctrl.frmRegister.username.$touched">
                             <span ng-show="ctrl.frmRegister.username.$invalid">
                                 User name between 3 and 20 characters is required
@@ -58,13 +58,13 @@
                     </div>
                     <div class="form-group" ng-class="{'has-error':ctrl.frmRegister.emailAddress.$invalid && (ctrl.frmRegister.$submitted || ctrl.frmRegister.emailAddress.$touched)}" >
                         <label class="control-label" for="emailAddress">Email Address</label>
-                        <input type="text" class="form-control" 
+                        <input type="email" class="form-control" 
                                 id="emailAddress"
                                 name="emailAddress" 
                                 placeholder="Enter email address" 
                                 ng-model="ctrl.registration.emailAddress"
                                 required >
-                        <span class="help-block has-error" ng-show="ctrl.emailAddress.$submitted || ctrl.frmRegister.emailAddress.$touched">
+                        <span class="help-block has-error" ng-show="ctrl.frmRegister.emailAddress.$submitted || ctrl.frmRegister.emailAddress.$touched">
                             <span ng-show="ctrl.frmRegister.emailAddress.$invalid">
                                 Email address is required
                             </span>
@@ -77,7 +77,7 @@
                                 name="password" 
                                 placeholder="Enter password" 
                                 ng-model="ctrl.registration.password"
-                                required >
+                                required  ng-minlength="8" ng-maxlength="15">
                         <span class="help-block has-error" ng-show="ctrl.password.$submitted || ctrl.frmRegister.password.$touched">
                             <span ng-show="ctrl.frmRegister.password.$invalid">
                                 A password between 8 and 15 characters is required
@@ -91,8 +91,9 @@
                                 name="passwordRepeat" 
                                 placeholder="Confirm password" 
                                 ng-model="ctrl.registration.passwordRepeat"
-                                required >
-                        <span class="help-block has-error" ng-show="ctrl.passwordRepeat.$submitted || ctrl.frmRegister.passwordRepeat.$touched">
+                                required 
+                                compare-to="ctrl.registration.password" >
+                        <span class="help-block has-error" ng-show="ctrl.frmRegister.passwordRepeat.$submitted || ctrl.frmRegister.passwordRepeat.$touched">
                             <span ng-show="ctrl.frmRegister.passwordRepeat.$invalid">
                                 You must confirm your password - passwords do not match
                             </span>
