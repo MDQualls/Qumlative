@@ -1,14 +1,14 @@
 (function() {
     'use strict';
 
-    var module = angular.module('');
+    var module = angular.module('extLoginModule');
 
     function controller() {
 
     }
 
-    module.component('', {
-        templateUrl: '',
+    module.component('extRegisterConfirm', {
+        templateUrl: '/ext-app/login/extRegisterConfirm.html',
         controllerAs: 'ctrl',
         controller: [controller]
     });

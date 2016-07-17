@@ -45,10 +45,11 @@
             {path:'/about', component:'quAbout', name: 'About'},
             {path:'/privacy', component:'extPrivacy', name: 'Privacy'},
             {path:'/register', component:'quRegister', name: 'Register'},
+            {path:'/registered', component:'extRegisterConfirm', name: 'Registered'},
             {path:'/admin', component:'quAdmin', name: 'Admin'},
             {path:'/admin/blog', component:'quBlogAdmin', name: 'BlogAdmin'},
-            {path:'/admin/blog/:id', component:'quEditBlogAdmin', name: 'EditBlog'},
-            {path:'/admin/blog/add', component:'quNewBlogAdmin', name: 'NewBlog'},
+            {path:'/admin/blog/:id', component:'quBlogAdminDetail', name: 'EditBlog'},
+            {path:'/admin/blog/add', component:'quBlogAdminDetail', name: 'NewBlog'},
             {path:'/admin/user', component:'quUserAdmin', name: 'UserAdmin'},
             {path: '/**', redirectTo: ['Home', '']}
         ]

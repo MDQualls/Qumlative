@@ -5,7 +5,8 @@
         ['$resource',
         function($resource) {
             var blogResource = $resource('/api/blog/:id',
-                {id:'@id', isArray:true}
+                {id:'@id', isArray:true},
+                {update: {method: 'PUT'}}
             );
             return blogResource;
         }

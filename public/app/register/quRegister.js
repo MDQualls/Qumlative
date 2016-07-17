@@ -10,7 +10,7 @@
             quUserFactory.UserResource.save(registration,
                 function(response) {
                     extNotifierSvc.successMsg('New user registered for qumlative.io');
-                    ctrl.$router.navigate(['Home']);
+                    ctrl.$router.navigate(['Registered']);
                 },
                 function(err) {
                     extNotifierSvc.errorMsg('An error occurred during the user registration process.  Please refresh and try again.');

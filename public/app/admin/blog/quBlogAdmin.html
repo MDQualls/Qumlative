@@ -7,29 +7,16 @@
         <h4>Blog Administration</h4>            
     </div>
     <div class="panel-body">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                This is a Blog Post Heading
+        <div class="panel panel-info" ng-repeat="blog in ctrl.blogs">
+            <div class="panel-heading">                
+                {{blog.title}} @ {{blog.datePosted | date}} In "{{blog.category}}" Category
             </div>
             <div class="panel-body">
-                <div>This is a blog post body</div>
+                <div>{{blog.summary}}</div>
+            </div>
+            <div class="panel-footer text-right">
+                <a href="#" ng-link="['EditBlog',{id:blog._id}]" class="btn btn-info">Update</a>
             </div>
         </div>                
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                This is a Blog Post Heading
-            </div>
-            <div class="panel-body">
-                <div>This is a blog post body</div>
-            </div>
-        </div>
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                This is a Blog Post Heading
-            </div>
-            <div class="panel-body">
-                <div>This is a blog post body</div>
-            </div>
-        </div>
     </div>
 </div>

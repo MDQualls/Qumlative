@@ -24,7 +24,7 @@
 
         ctrl.newBlogPost = function() {
             ctrl.$router.navigate(['NewBlog']);
-        }
+        };
     }
 
     module.component('quBlogAdmin', {
