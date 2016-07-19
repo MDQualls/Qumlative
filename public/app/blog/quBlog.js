@@ -8,19 +8,24 @@
 
         ctrl.blogs = [];
         ctrl.categories = [];
+        ctrl.catCounts = [];
 
         ctrl.$onInit = function()  {
-            quBlogFactory.query(function(result) {
+            quBlogFactory.blogResource.query(function(result) {
                 ctrl.blogs = result;
-                quBlogCategoryFactory.query(function(cats) {
-                    ctrl.categories = cats;
-                });
             },
             function (error) {
                 extNotifierSvc.errorMsg(error);
                 console.log(error);
             });
-        }
+            quBlogFactory.blogCatResource.query(function(result) {
+                ctrl.catCounts = result;
+            },
+            function(error) {
+                extNotifierSvc.errorMsg(error);
+                console.log(error);
+            });
+        };
     }
 
     module.component('quBlog', {

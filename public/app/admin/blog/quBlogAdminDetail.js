@@ -18,7 +18,7 @@
             } else {
 
                 if (ctrl.id === 0)  {
-                    quBlogFactory.save(ctrl.blogSchema, function(result) {
+                    quBlogFactory.blogResource.save(ctrl.blogSchema, function(result) {
                         extNotifierSvc.successMsg('New blog successfully posted');
                         ctrl.$router.navigate(['BlogAdmin']);
                     },
@@ -28,7 +28,7 @@
                     });
                 } else {
 
-                    quBlogFactory.update(ctrl.blogSchema, function(result) {
+                    quBlogFactory.blogResource.update(ctrl.blogSchema, function(result) {
                         extNotifierSvc.successMsg('Blog has been successfully updated');
                         ctrl.$router.navigate(['BlogAdmin']);
                     },
@@ -61,7 +61,7 @@
         ctrl.$routerOnActivate = function(next, previous) {
             if (next.params.id !== undefined) {
                 ctrl.id = next.params.id;
-                ctrl.blogSchema = quBlogFactory.get({id:ctrl.id}, function() {
+                ctrl.blogSchema = quBlogFactory.blogResource.get({id:ctrl.id}, function() {
                     ctrl.blogSchema.datePosted = $filter('extUtcDateFilter')(ctrl.blogSchema.datePosted);
                     ctrl.blogSchema._id = ctrl.id;
                 });

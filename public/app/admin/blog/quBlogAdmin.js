@@ -15,7 +15,7 @@
         };
 
         ctrl.$onInit = function()  {
-            ctrl.blogs = quBlogFactory.query();
+            ctrl.blogs = quBlogFactory.blogResource.query();
         };
 
         ctrl.returnToAdmin = function()  {

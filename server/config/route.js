@@ -7,6 +7,7 @@ var blogStatusController = require('../controllers/blogStatusController');
 var userController = require('../controllers/userController');
 var banController = require('../controllers/banController');
 var suspendController = require('../controllers/suspendController');
+var blogCatController = require('../controllers/blogCatController');
 
 module.exports = function(app) {
 
@@ -48,6 +49,8 @@ module.exports = function(app) {
     app.get('/api/suspend', auth.requiresRole('admin'), function(req, res, next) { suspendController.getSuspends(req, res, next); });
     app.get('/api/suspend/:id', auth.requiresRole('admin'), function(req, res, next) { suspendController.suspendUser(req, res, next); });
 
+    //get aggregate counts of blog posts by category
+    app.get('/api/blogCat/', function(req, res, next) { blogCatController.getAggregateCount(req, res, next);});
 
     //handle authentication
     app.post('/login', auth.authenticate);
