@@ -59,7 +59,7 @@
     };
 
     exports.updateBlog = function(req, res, next) {
-        var id = req.params.id;
+        var id = req.body._id;
         var blogData = req.body;
 
         Blog.findById({_id:id}, function(err, blog)  {
@@ -72,7 +72,8 @@
             blog.post = blogData.post;
             blog.status = blogData.status;
             blog.category = blogData.category;
-            blog.images = blog.images;
+            blog.images = blogData.images;
+            blog.datePosted = blogData.datePosted;
 
             blog.save(function(err) {
                 if (err) {

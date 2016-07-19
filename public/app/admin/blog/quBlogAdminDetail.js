@@ -3,7 +3,7 @@
 
     var module = angular.module('app');
 
-    function controller(quBlogFactory, quBlogCategoryFactory, quBlogStatusFactory, $uibModal, extNotifierSvc) {
+    function controller(quBlogFactory, quBlogCategoryFactory, quBlogStatusFactory, $uibModal, extNotifierSvc, $filter) {
         var ctrl = this;
 
         ctrl.blogCategories = [];
@@ -27,12 +27,13 @@
                         console.log(error);
                     });
                 } else {
+
                     quBlogFactory.update(ctrl.blogSchema, function(result) {
                         extNotifierSvc.successMsg('Blog has been successfully updated');
                         ctrl.$router.navigate(['BlogAdmin']);
                     },
                     function (error) {
-                        extNotifierSvc.errorMsg(error);
+                        extNotifierSvc.errorMsg(error.statusText);
                         console.log(error);
                     });
                 }
@@ -58,8 +59,13 @@
         };
 
         ctrl.$routerOnActivate = function(next, previous) {
-            ctrl.id = next.params.id;
-            ctrl.blogSchema = quBlogFactory.get({id:ctrl.id});
+            if (next.params.id !== undefined) {
+                ctrl.id = next.params.id;
+                ctrl.blogSchema = quBlogFactory.get({id:ctrl.id}, function() {
+                    ctrl.blogSchema.datePosted = $filter('extUtcDateFilter')(ctrl.blogSchema.datePosted);
+                    ctrl.blogSchema._id = ctrl.id;
+                });
+            }
         };
 
         ctrl.$onInit = function() {
@@ -71,7 +77,7 @@
     module.component('quBlogAdminDetail', {
         templateUrl: '/app/admin/blog/quBlogAdminDetail.html',
         controllerAs: 'ctrl',
-        controller: ['quBlogFactory', 'quBlogCategoryFactory', 'quBlogStatusFactory', '$uibModal', 'extNotifierSvc', controller],
+        controller: ['quBlogFactory', 'quBlogCategoryFactory', 'quBlogStatusFactory', '$uibModal', 'extNotifierSvc', '$filter', controller],
         bindings: {
             '$router': '<'
         }
