@@ -8,6 +8,7 @@ var userController = require('../controllers/userController');
 var banController = require('../controllers/banController');
 var suspendController = require('../controllers/suspendController');
 var blogCatController = require('../controllers/blogCatController');
+var blogsForCatController = require('../controllers/blogsForCatController');
 
 module.exports = function(app) {
 
@@ -51,6 +52,9 @@ module.exports = function(app) {
 
     //get aggregate counts of blog posts by category
     app.get('/api/blogCat/', function(req, res, next) { blogCatController.getAggregateCount(req, res, next);});
+
+    //get blogs for a selected category
+    app.get('/api/blog/category/:category', function(req, res, next) { blogsForCatController.getBlogs(req, res, next);});
 
     //handle authentication
     app.post('/login', auth.authenticate);

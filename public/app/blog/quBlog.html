@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="well well-sm"><h4>Recent Blog Posts</h4></div>
+        <div class="well well-sm"><h4>{{ctrl.title}}</h4></div>
     </div>
     <div class="col-md-8">
         <div class="panel panel-info" ng-repeat="blog in ctrl.blogs | orderBy:'-datePosted'">
@@ -33,9 +33,9 @@
             </div>
             <div class="panel-body">
                 <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="category in ctrl.catCounts | orderBy:'category'">
-                        <span class="badge">{{category.total}}</span>
-                        {{category._id}}
+                    <li class="list-group-item" ng-repeat="cat in ctrl.catCounts">
+                        <span class="badge">{{cat.total}}</span>
+                        <a ng-link="['BlogsForCat',{category:cat._id}]" href="#">{{cat._id}}</a> 
                     </li>
                 </ul>
             </div>
