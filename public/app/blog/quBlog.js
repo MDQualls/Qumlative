@@ -3,7 +3,7 @@
 
     var module = angular.module('app');
 
-    function controller(quBlogFactory, quBlogCategoryFactory, extNotifierSvc) {
+    function controller(quBlogFactory, quBlogCategoryFactory, extNotifierSvc, $filter) {
         var ctrl = this;
 
         ctrl.blogs = [];
@@ -14,7 +14,7 @@
         ctrl.$routerOnActivate = function(next, previous) {
             if (next.params.category !== undefined)  {
                 quBlogFactory.blogByCatResource.query({category:next.params.category}, function(result) {
-                    ctrl.blogs = result;
+                    ctrl.blogs = $filter('quShortenBlog')(result);
                     ctrl.title = '"' + decodeURI(next.params.category) + '" Category Posts';
                 }, function (error) { extNotifierSvc.errorMsg(error); console.log(error); });
             } else {
@@ -23,7 +23,7 @@
                     ctrl.title = '"' + decodeURI(ctrl.blogs[0].title) + '" blog Post';
                 } else {
                     quBlogFactory.blogResource.query(function(result) {
-                        ctrl.blogs = result;
+                        ctrl.blogs = $filter('quShortenBlog')(result);
                     }, function (error) { extNotifierSvc.errorMsg(error); console.log(error); });
                 }
             }
@@ -43,7 +43,7 @@
     module.component('quBlog', {
         templateUrl: '/app/blog/quBlog.html',
         controllerAs: 'ctrl',
-        controller: ['quBlogFactory','quBlogCategoryFactory', 'extNotifierSvc', controller],
+        controller: ['quBlogFactory','quBlogCategoryFactory', 'extNotifierSvc', '$filter', controller],
         bindings: {
             '$router': '<'
         }

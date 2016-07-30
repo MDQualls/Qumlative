@@ -15,7 +15,7 @@ angular.module('app',
         'extPrivacyModule',
         'extUserModule',
         'extLoginModule',
-        'extUtilModule'
+        'extUtilModule',
     ]);
 
 angular.module('app').value('$routerRootComponent', 'appController');

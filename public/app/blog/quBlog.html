@@ -4,7 +4,7 @@
     </div>
     <div class="col-md-8">
         <div class="panel panel-info" ng-repeat="blog in ctrl.blogs | orderBy:'-datePosted'">
-            <div class="panel-heading">
+            <div class="panel-heading border-left">
                 <div class="pull-right">
                     {{blog.datePosted | date}}
                 </div>
@@ -23,7 +23,6 @@
                     </div>
                 </div>                
             </div>
-
         </div>
     </div>        
     <div class="col-md-4">

@@ -43,7 +43,7 @@
             {path: '/blog', component: 'quBlog', name: 'Blog'},
             {path: '/blog/:id', component: 'quBlog', name: 'BlogDetail'},
             {path: '/blog/category/:category', component: 'quBlog', name: 'BlogsForCat'},
-            {path:'/demo', component: 'quDemo', name: 'Demo'},
+            {path:'/code', component: 'quDemo', name: 'Code'},
             {path:'/about', component:'quAbout', name: 'About'},
             {path:'/privacy', component:'extPrivacy', name: 'Privacy'},
             {path:'/register', component:'quRegister', name: 'Register'},
@@ -56,5 +56,4 @@
             {path: '/**', redirectTo: ['Home', '']}
         ]
     });
-
 })();
