@@ -4,7 +4,12 @@
 
     function shorten(val)  {
             var matches = val.match('^<p>(.*?)</p><p>(.*?)</p>');
-            return matches[0];
+
+            if (matches !== null)  {
+                return matches[0];
+            } else {
+                return val;
+            }
     }
 
     module.filter('quShortenBlog', function() {

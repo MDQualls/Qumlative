@@ -47,6 +47,19 @@
         });
     };
 
+    //query all blogs regardless of status
+    exports.getBlogsByPage = function(req, res, next)  {
+        var page = parseFloat(req.params.page);
+        var pageSize = parseFloat(req.params.pageSize);
+
+        Blog.find().skip((page * pageSize) - pageSize).limit(pageSize).exec(function(err, collection) {
+            if (err) {
+                if (err) {return next(err);}
+            }
+            res.send(collection);
+        });
+    };
+
     exports.createBlog = function(req, res, next) {
         var blogData = req.body;
         Blog.create(blogData, function(err, blog) {
@@ -83,13 +96,16 @@
                 res.send(blog);
             });
         });
+    };
 
-        // req.blog.save(function(err) {
-        //     if (err) {
-        //         res.status(400); return res.send({reason:err.toString()});
-        //     }
-        //     res.send(req.menu);
-        // });
+    exports.blogCount = function(req, res, next) {
+        Blog.find({}).count().exec(function(err, collection) {
+            if (err) {
+                if (err) {return next(err);}
+            }
+            res.status(200);
+            res.send({count:collection});
+        });
     };
 
 })();

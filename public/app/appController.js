@@ -41,7 +41,7 @@
         $routeConfig: [
             {path: '/home', component: 'quHome', name: 'Home'},
             {path: '/blog', component: 'quBlog', name: 'Blog'},
-            {path: '/blog/:id', component: 'quBlog', name: 'BlogDetail'},
+            {path: '/blog/:id', component: 'quBlogPost', name: 'BlogPost'},
             {path: '/blog/category/:category', component: 'quBlog', name: 'BlogsForCat'},
             {path:'/code', component: 'quDemo', name: 'Code'},
             {path:'/about', component:'quAbout', name: 'About'},

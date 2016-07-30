@@ -1,0 +1,7 @@
+<button 
+    ng-click="ctrl.callParentNavigate()" 
+    class="btn btn-info"
+    ng-class="{'btn-info':ctrl.moreRecords, 'btn-default': !ctrl.moreRecords}"
+    ng-disabled="ctrl.moreRecords"
+    >Next <i class="fa fa-chevron-right" />
+</button>

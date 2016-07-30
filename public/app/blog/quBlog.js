@@ -7,25 +7,66 @@
         var ctrl = this;
 
         ctrl.blogs = [];
+        ctrl.blogCategory = undefined;
         ctrl.categories = [];
         ctrl.catCounts = [];
         ctrl.title = 'Recent Blog Posts';
+        ctrl.pageModel = {page:1, pageSize:3, totalRecords:''};
+
+        function updatePageModel(page)  {
+            ctrl.pageModel.page = page;
+        }
+
+        function queryBlogs(page)  {
+            quBlogFactory.blogResourcePaged.query({page:page, pageSize:ctrl.pageModel.pageSize}, function(result) {
+                ctrl.blogs = $filter('quShortenBlog')(result);
+                updatePageModel(page);
+            }, function (error) { extNotifierSvc.errorMsg(error); console.log(error); });
+        }
+
+        function queryBlogCategory(category,page)  {
+            quBlogFactory.blogCatResourcePaged.query({category:category, page:page, pageSize:ctrl.pageModel.pageSize}, function(result) {
+                ctrl.blogs = $filter('quShortenBlog')(result);
+                ctrl.title = '"' + decodeURI(category) + '" Category Posts';
+                updatePageModel(page);
+            }, function (error) { extNotifierSvc.errorMsg(error); console.log(error); });
+        }
+
+        ctrl.NavNextPage = function()  {
+            //next page
+            if (ctrl.blogCategory !== undefined)  {
+                queryBlogCategory(ctrl.blogCategory,ctrl.pageModel.page += 1);
+            } else {
+                queryBlogs(ctrl.pageModel.page += 1);
+            }
+        };
+
+        ctrl.NavPrevPage = function() {
+            //prev page
+            if (ctrl.blogCategory !== undefined)  {
+                queryBlogCategory(ctrl.blogCategory,ctrl.pageModel.page -= 1);
+            } else {
+                queryBlogs(ctrl.pageModel.page -= 1);
+            }
+        };
 
         ctrl.$routerOnActivate = function(next, previous) {
-            if (next.params.category !== undefined)  {
-                quBlogFactory.blogByCatResource.query({category:next.params.category}, function(result) {
-                    ctrl.blogs = $filter('quShortenBlog')(result);
-                    ctrl.title = '"' + decodeURI(next.params.category) + '" Category Posts';
-                }, function (error) { extNotifierSvc.errorMsg(error); console.log(error); });
-            } else {
-                if (next.params.id !== undefined) {
-                    ctrl.blogs = quBlogFactory.blogResource.get({id:next.params.id}, function() {});
-                    ctrl.title = '"' + decodeURI(ctrl.blogs[0].title) + '" blog Post';
-                } else {
-                    quBlogFactory.blogResource.query(function(result) {
-                        ctrl.blogs = $filter('quShortenBlog')(result);
-                    }, function (error) { extNotifierSvc.errorMsg(error); console.log(error); });
+
+            ctrl.blogCategory = next.params.category || undefined;
+
+            quBlogFactory.blogResourceCount.get(
+                function(result)  {
+                    ctrl.pageModel.totalRecords = result.count;
+                }, function(error) {
+                    extNotifierSvc.errorMsg(error);
+                    console.log(error);
                 }
+            );
+
+            if (ctrl.blogCategory !== undefined)  {
+                queryBlogCategory(next.params.category, 1);
+            } else {
+                queryBlogs(1);
             }
         };
 

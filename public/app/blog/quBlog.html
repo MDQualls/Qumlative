@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="well well-sm"><h4>{{ctrl.title}}</h4></div>
+        <div class="well well-sm"><h2>{{ctrl.title}}</h2></div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8">        
         <div class="panel panel-info" ng-repeat="blog in ctrl.blogs | orderBy:'-datePosted'">
             <div class="panel-heading border-left">
                 <div class="pull-right">
                     {{blog.datePosted | date}}
                 </div>
-                {{blog.title}}
+                <h4>{{blog.title}}</h4>
             </div>
             <div class="panel-body">
                 <span ng-bind-html="blog.post"></span>                                
@@ -17,12 +17,24 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="pull-right">
-                            <button class="btn btn-info">Read More <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                            <a ng-link="['BlogPost',{id:blog._id}]" href="#" class="btn btn-info">Read More <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                         </div>
                         Category: {{blog.category}}
                     </div>
                 </div>                
             </div>
+        </div>
+        <div class="panel">
+            <div class="panel-body">
+                <div class="pull-right">
+                    <ext-page-next 
+                        page-model="ctrl.pageModel"                          
+                        do-navigate-next="ctrl.NavNextPage()" />
+                </div>
+                <ext-page-prev 
+                    page-model="ctrl.pageModel"  
+                    do-navigate-prev="ctrl.NavPrevPage()" />
+            </div>                        
         </div>
     </div>        
     <div class="col-md-4">
@@ -39,5 +51,5 @@
                 </ul>
             </div>
         </div>              
-    </div>
+    </div>    
 </div>

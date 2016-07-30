@@ -1,0 +1,7 @@
+<button 
+    ng-click="ctrl.callParentNavigate()" 
+    class="btn btn-info"
+    ng-class="{'btn-info':ctrl.prevRecords, 'btn-default': !ctrl.prevRecords}"
+    ng-disabled="!ctrl.prevRecords"
+    ><i class="fa fa-chevron-left"/> Prev 
+</button>

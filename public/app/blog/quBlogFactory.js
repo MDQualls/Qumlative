@@ -10,6 +10,12 @@
                 {update: {method: 'PUT'}}
             );
 
+            var blogResourceCount = $resource('/api/blogCount');
+
+            var blogResourcePaged = $resource('/api/blog/:page/:pageSize/page',
+                {page:'@page',pageSize:'@pageSize',isArray:true}
+            );
+
             //get an aggregate listing of the count of posts by category
             var blogCatCountResource = $resource('/api/blogCat/');
 
@@ -17,10 +23,17 @@
                 {category: '@category', isArray:true}
             );
 
+            var blogCatResourcePaged = $resource('/api/blog/category/:category/:page/:pageSize/page',
+                {category: '@category', page:'@page',pageSize:'@pageSize',isArray:true}
+            );
+
             return {
                 blogResource: blogResource,
                 blogCatCountResource: blogCatCountResource,
-                blogByCatResource: blogByCatResource
+                blogByCatResource: blogByCatResource,
+                blogResourcePaged: blogResourcePaged,
+                blogCatResourcePaged: blogCatResourcePaged,
+                blogResourceCount: blogResourceCount
             };
         }
     ]);

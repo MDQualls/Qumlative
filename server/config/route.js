@@ -21,6 +21,7 @@ module.exports = function(app) {
     //handle blog
     app.get('/api/blog', function(req, res, next) { blogController.getBlogs(req, res, next); });
     app.get('/api/blog/:id', function(req, res, next) { blogController.getBlog(req, res, next); });
+    app.get('/api/blog/:page/:pageSize/page', function(req, res, next) { blogController.getBlogsByPage(req, res, next); });
     app.get('/api/blog/:status', function(req, res, next) { blogController.getBlogsByStatus(req, res, next); });
     app.post('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.createBlog(req, res, next); });
     app.put('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.updateBlog(req, res, next); });
@@ -55,6 +56,10 @@ module.exports = function(app) {
 
     //get blogs for a selected category
     app.get('/api/blog/category/:category', function(req, res, next) { blogsForCatController.getBlogs(req, res, next);});
+    app.get('/api/blog/category/:category/:page/:pageSize/page', function(req, res, next) { blogsForCatController.getBlogsByPage(req, res, next);});
+
+    //get blog counts
+    app.get('/api/blogCount', function(req, res, next) { blogController.blogCount(req, res, next);});
 
     //handle authentication
     app.post('/login', auth.authenticate);
