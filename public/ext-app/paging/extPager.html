@@ -1,0 +1,24 @@
+<div class="panel">
+    <div class="panel-body">
+        <div class="col-sm-4">
+            <button ng-if="ctrl.prevRecords==true" ng-click="ctrl.callParentNavPrev()" class="btn btn-info">
+                <i class="fa fa-chevron-left"/> Prev 
+            </button>
+            <button ng-if="ctrl.prevRecords==false" class="btn btn-default" disabled>
+                <i class="fa fa-chevron-left"/> Prev 
+            </button>
+        </div>
+        <div class="col-sm-4 text-center" style="margin-top:8px;margin-left:-15px;">
+            Page {{ctrl.isoPage}} of {{ctrl.isoPages}}
+        </div>
+        <div class="col-sm-4 text-right">
+            <button ng-if="ctrl.moreRecords==true" ng-click="ctrl.callParentNavNext()" class="btn btn-info">
+                Next <i class="fa fa-chevron-right" />
+            </button>
+            <button ng-if="ctrl.moreRecords==false" class="btn btn-default" disabled>
+                Next <i class="fa fa-chevron-right" />
+            </button>
+        </div>
+    </div>                        
+</div>
+

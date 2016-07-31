@@ -60,6 +60,7 @@ module.exports = function(app) {
 
     //get blog counts
     app.get('/api/blogCount', function(req, res, next) { blogController.blogCount(req, res, next);});
+    app.get('/api/blogCount/:category', function(req, res, next) { blogController.blogCountCategory(req, res, next);});
 
     //handle authentication
     app.post('/login', auth.authenticate);

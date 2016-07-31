@@ -108,4 +108,16 @@
         });
     };
 
+    exports.blogCountCategory = function(req, res, next) {
+        var cat = req.params.category;
+
+        Blog.find({category:cat}).count().exec(function(err, collection) {
+            if (err) {
+                if (err) {return next(err);}
+            }
+            res.status(200);
+            res.send({count:collection});
+        });
+    }
+
 })();

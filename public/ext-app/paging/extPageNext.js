@@ -6,10 +6,17 @@
     function controller() {
         var ctrl = this;
 
-        ctrl.moreRecords = (ctrl.pageModel.page * ctrl.pageModel.pageSize) <= ctrl.pageModel.totalRecords;
+        ctrl.nextButtonEnabled = function()  {
+            ctrl.moreRecords = (ctrl.pageModel.page * ctrl.pageModel.pageSize) <= ctrl.pageModel.totalRecords;
+        };
 
         ctrl.callParentNavigate = function() {
+            ctrl.nextButtonEnabled();
             ctrl.doNavigateNext();
+        };
+
+        ctrl.$onInit = function() {
+            ctrl.nextButtonEnabled();
         };
     }
 

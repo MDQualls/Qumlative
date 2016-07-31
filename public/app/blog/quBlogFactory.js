@@ -10,7 +10,9 @@
                 {update: {method: 'PUT'}}
             );
 
-            var blogResourceCount = $resource('/api/blogCount');
+            var blogResourceCount = $resource('/api/blogCount/:category',
+                {category: '@category', isArray:true}
+            );
 
             var blogResourcePaged = $resource('/api/blog/:page/:pageSize/page',
                 {page:'@page',pageSize:'@pageSize',isArray:true}

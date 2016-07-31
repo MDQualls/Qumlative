@@ -54,23 +54,31 @@
 
             ctrl.blogCategory = next.params.category || undefined;
 
-            quBlogFactory.blogResourceCount.get(
-                function(result)  {
-                    ctrl.pageModel.totalRecords = result.count;
-                }, function(error) {
-                    extNotifierSvc.errorMsg(error);
-                    console.log(error);
-                }
-            );
-
             if (ctrl.blogCategory !== undefined)  {
+
+                quBlogFactory.blogResourceCount.get({category:ctrl.blogCategory},
+                    function(result)  {
+                        ctrl.pageModel.totalRecords = result.count;
+                    }, function(error) {
+                        extNotifierSvc.errorMsg(error);
+                        console.log(error);
+                    }
+                );
                 queryBlogCategory(next.params.category, 1);
+
             } else {
+
+                quBlogFactory.blogResourceCount.get(function(result)  {
+                        ctrl.pageModel.totalRecords = result.count;
+                    }, function(error) {
+                        extNotifierSvc.errorMsg(error);
+                        console.log(error);
+                    }
+                );
+
                 queryBlogs(1);
             }
-        };
 
-        ctrl.$onInit = function()  {
             quBlogFactory.blogCatCountResource.query(function(result) {
                 ctrl.catCounts = result;
             },
@@ -86,7 +94,7 @@
         controllerAs: 'ctrl',
         controller: ['quBlogFactory','quBlogCategoryFactory', 'extNotifierSvc', '$filter', controller],
         bindings: {
-            '$router': '<'
+            $router: '<'
         }
     });
 

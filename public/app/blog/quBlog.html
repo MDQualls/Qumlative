@@ -3,6 +3,11 @@
         <div class="well well-sm"><h2>{{ctrl.title}}</h2></div>
     </div>
     <div class="col-md-8">        
+        <ext-pager page="ctrl.pageModel.page" 
+            page-size="ctrl.pageModel.pageSize" 
+            total-records="ctrl.pageModel.totalRecords" 
+            do-navigate-next="ctrl.NavNextPage()" 
+            do-navigate-prev="ctrl.NavPrevPage()" />
         <div class="panel panel-info" ng-repeat="blog in ctrl.blogs | orderBy:'-datePosted'">
             <div class="panel-heading border-left">
                 <div class="pull-right">
@@ -24,18 +29,11 @@
                 </div>                
             </div>
         </div>
-        <div class="panel">
-            <div class="panel-body">
-                <div class="pull-right">
-                    <ext-page-next 
-                        page-model="ctrl.pageModel"                          
-                        do-navigate-next="ctrl.NavNextPage()" />
-                </div>
-                <ext-page-prev 
-                    page-model="ctrl.pageModel"  
-                    do-navigate-prev="ctrl.NavPrevPage()" />
-            </div>                        
-        </div>
+        <ext-pager page="ctrl.pageModel.page" 
+            page-size="ctrl.pageModel.pageSize" 
+            total-records="ctrl.pageModel.totalRecords" 
+            do-navigate-next="ctrl.NavNextPage()" 
+            do-navigate-prev="ctrl.NavPrevPage()" />
     </div>        
     <div class="col-md-4">
         <div class="panel panel-default">

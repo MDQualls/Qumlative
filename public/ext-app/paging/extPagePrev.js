@@ -6,10 +6,17 @@
     function controller() {
         var ctrl = this;
 
-        ctrl.prevRecords = (ctrl.pageModel.page > 1);
+        ctrl.prevButtonEnabled = function() {
+            ctrl.prevRecords = (ctrl.pageModel.page > 1);
+        };
 
         ctrl.callParentNavigate = function() {
+            ctrl.prevButtonEnabled();
             ctrl.doNavigatePrev();
+        };
+
+        ctrl.$onInit = function() {
+            ctrl.prevButtonEnabled();
         };
     }
 
