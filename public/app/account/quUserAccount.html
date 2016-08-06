@@ -1,0 +1,38 @@
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>Account Settings</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <table class="table table-bordered table-striped">
+                <tr class="info">
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Registered Name</td>
+                    <td>{{ctrl.user.firstName}} {{ctrl.user.lastName}}</td>
+                </tr>                
+                <tr>
+                    <td>User Name</td>
+                    <td>{{ctrl.user.username}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{ctrl.user.emailAddress}}</td>
+                </tr>
+            </table>             
+        </div>
+        <div class="col-sm-3"></div>        
+    </div>
+    <div class="panel-footer text-right">        
+        <button class="btn btn-primary">Submit</button>
+        <button class="btn btn-default">Cancel</button>        
+    </div>
+</div>
+
+

@@ -7,6 +7,14 @@
         var ctrl = this;
 
         ctrl.$routerOnActivate = function(next, previous) {
+
+            //set the back button ... to previous page if defined; otherwise to blog page
+            if (previous === undefined)  {
+                ctrl.back = 'blog';
+            } else {
+                ctrl.back = previous.urlPath;
+            }
+
             if (next.params.id !== undefined) {
                 ctrl.id = next.params.id;
                 ctrl.blogPost = quBlogFactory.blogResource.get({id:ctrl.id});

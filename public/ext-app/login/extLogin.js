@@ -21,7 +21,7 @@
                 reset();
             } else {
                 ctrl.showLoginForm = true;
-            };
+            }
         };
 
         ctrl.callParentLogin = function() {

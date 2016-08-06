@@ -39,10 +39,10 @@
         controllerAs: 'ctrl',
         controller: ['quMenuFactory', 'quAuth', 'quIdentity', 'extNotifierSvc', controller],
         $routeConfig: [
-            {path: '/home', component: 'quHome', name: 'Home'},
-            {path: '/blog', component: 'quBlog', name: 'Blog'},
-            {path: '/blog/:id', component: 'quBlogPost', name: 'BlogPost'},
-            {path: '/blog/category/:category', component: 'quBlog', name: 'BlogsForCat'},
+            {path:'/home', component: 'quHome', name: 'Home'},
+            {path:'/blog', component: 'quBlog', name: 'Blog'},
+            {path:'/blog/:id', component: 'quBlogPost', name: 'BlogPost'},
+            {path:'/blog/category/:category', component: 'quBlog', name: 'BlogsForCat'},
             {path:'/code', component: 'quDemo', name: 'Code'},
             {path:'/about', component:'quAbout', name: 'About'},
             {path:'/privacy', component:'extPrivacy', name: 'Privacy'},
@@ -53,7 +53,8 @@
             {path:'/admin/blog/:id', component:'quBlogAdminDetail', name: 'EditBlog'},
             {path:'/admin/blog/add', component:'quBlogAdminDetail', name: 'NewBlog'},
             {path:'/admin/user', component:'quUserAdmin', name: 'UserAdmin'},
-            {path: '/**', redirectTo: ['Home', '']}
+            {path:'/account', component:'quAccount', name:'Account'},
+            {path:'/**', redirectTo: ['Home', '']}
         ]
     });
 })();

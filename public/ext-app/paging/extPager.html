@@ -1,7 +1,7 @@
 <div class="panel">
     <div class="panel-body">
         <div class="col-sm-4">
-            <button ng-if="ctrl.prevRecords==true" ng-click="ctrl.callParentNavPrev()" class="btn btn-info">
+            <button ng-if="ctrl.prevRecords==true" ng-click="ctrl.callParentNavPrev()" class="btn btn-primary">
                 <i class="fa fa-chevron-left"/> Prev 
             </button>
             <button ng-if="ctrl.prevRecords==false" class="btn btn-default" disabled>
@@ -12,7 +12,7 @@
             Page {{ctrl.isoPage}} of {{ctrl.isoPages}}
         </div>
         <div class="col-sm-4 text-right">
-            <button ng-if="ctrl.moreRecords==true" ng-click="ctrl.callParentNavNext()" class="btn btn-info">
+            <button ng-if="ctrl.moreRecords==true" ng-click="ctrl.callParentNavNext()" class="btn btn-primary">
                 Next <i class="fa fa-chevron-right" />
             </button>
             <button ng-if="ctrl.moreRecords==false" class="btn btn-default" disabled>
@@ -21,4 +21,3 @@
         </div>
     </div>                        
 </div>
-
