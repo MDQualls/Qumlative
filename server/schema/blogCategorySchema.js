@@ -15,8 +15,8 @@
             if (collection.length === 0)  {
                 BlogCategory.create({category: 'AngularJS', description: ''});
                 BlogCategory.create({category: 'NodeJS', description: ''});
-                BlogCategory.create({category: 'Day to Day', description: ''});
-                BlogCategory.create({category: 'Causes', description: ''});
+                BlogCategory.create({category: 'C# Language', description: ''});
+                BlogCategory.create({category: 'Scatter Shot', description: ''});
             }
 
         });
@@ -25,5 +25,4 @@
         BlogCategory: BlogCategory,
         createDefaultCategories: createDefaultCategories
     };
-
 })();

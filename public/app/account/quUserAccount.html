@@ -1,38 +1,68 @@
 
 
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2>Account Settings</h2>
-    </div>
-    <div class="panel-body">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
-            <table class="table table-bordered table-striped">
-                <tr class="info">
-                    <th>Key</th>
-                    <th>Value</th>
-                </tr>
-                <tr>
-                    <td>Registered Name</td>
-                    <td>{{ctrl.user.firstName}} {{ctrl.user.lastName}}</td>
-                </tr>                
-                <tr>
-                    <td>User Name</td>
-                    <td>{{ctrl.user.username}}</td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>{{ctrl.user.emailAddress}}</td>
-                </tr>
-            </table>             
+<form id="ctrl.frmPasswordUpd" name="ctrl.frmPasswordUpd"  ng-submit="ctrl.callParentUpdPassword()" novalidate>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>Account Settings</h2>
         </div>
-        <div class="col-sm-3"></div>        
+        <div class="panel-body">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <table class="table table-bordered">
+                    <tr class="info">
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Registered Name</td>
+                        <td>{{ctrl.user.firstName}} {{ctrl.user.lastName}}</td>
+                    </tr>                
+                    <tr>
+                        <td>User Name</td>
+                        <td>{{ctrl.user.username}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{ctrl.user.emailAddress}}</td>
+                    </tr>
+                </table>            
+                <div class="form-group" ng-class="{'has-error':ctrl.frmPasswordUpd.password.$invalid && (ctrl.frmPasswordUpd.$submitted || ctrl.frmPasswordUpd.password.$touched)}" >
+                    <label class="control-label" for="password">Password</label>
+                    <input type="password" class="form-control" 
+                            id="password"
+                            name="password" 
+                            placeholder="Enter password" 
+                            ng-model="ctrl.passwordUpdate.password"
+                            required  ng-minlength="8" ng-maxlength="15">
+                    <span class="help-block has-error" ng-show="ctrl.password.$submitted || ctrl.frmPasswordUpd.password.$touched">
+                        <span ng-show="ctrl.frmPasswordUpd.password.$invalid">
+                            A password between 8 and 15 characters is required
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group" ng-class="{'has-error':ctrl.frmPasswordUpd.passwordRepeat.$invalid && (ctrl.frmPasswordUpd.$submitted || ctrl.frmPasswordUpd.passwordRepeat.$touched)}" >
+                    <label class="control-label" for="passwordRepeat">Confirm Password</label>
+                    <input type="password" class="form-control" 
+                            id="passwordRepeat"
+                            name="passwordRepeat" 
+                            placeholder="Confirm password" 
+                            ng-model="ctrl.passwordUpdate.passwordRepeat"
+                            required 
+                            compare-to="ctrl.passwordUpdate.password" >
+                    <span class="help-block has-error" ng-show="ctrl.frmPasswordUpd.passwordRepeat.$submitted || ctrl.frmPasswordUpd.passwordRepeat.$touched">
+                        <span ng-show="ctrl.frmPasswordUpd.passwordRepeat.$invalid">
+                            You must confirm your password - passwords do not match
+                        </span>
+                    </span>
+                </div>                                            
+            </div>
+            <div class="col-sm-3"></div>        
+        </div>        
+        <div class="panel-footer text-right">        
+            <div class="button-group">
+                <button ng-disabled="ctrl.frmPasswordUpd.$invalid" type="submit" class="btn btn-primary">Submit</button>
+                <button ng-click="ctrl.callParentCancel()" class="btn btn-default">Cancel</button>
+            </div>        
+        </div>
     </div>
-    <div class="panel-footer text-right">        
-        <button class="btn btn-primary">Submit</button>
-        <button class="btn btn-default">Cancel</button>        
-    </div>
-</div>
-
-
+</form>

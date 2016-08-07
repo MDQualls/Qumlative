@@ -39,7 +39,7 @@
 
     //query all blogs regardless of status
     exports.getBlogs = function(req, res, next)  {
-        Blog.find({}).exec(function(err, collection) {
+        Blog.find().exec(function(err, collection) {
             if (err) {
                 if (err) {return next(err);}
             }
@@ -52,7 +52,7 @@
         var page = parseFloat(req.params.page);
         var pageSize = parseFloat(req.params.pageSize);
 
-        Blog.find().skip((page * pageSize) - pageSize).limit(pageSize).exec(function(err, collection) {
+        Blog.find({'datePosted': {$lte: new Date()}, 'status': 'Post'}).skip((page * pageSize) - pageSize).limit(pageSize).exec(function(err, collection) {
             if (err) {
                 if (err) {return next(err);}
             }
@@ -118,6 +118,16 @@
             res.status(200);
             res.send({count:collection});
         });
-    }
+    };
+
+    //get the most recent blog
+    exports.topBlog = function(req, res, next)  {
+        Blog.find({'datePosted': {$lte: new Date()}, 'status': 'Post'}).exec(function(err, collection) {
+            if (err) {
+                if (err) {return next(err);}
+            }
+            res.send(collection);
+        });
+    };
 
 })();

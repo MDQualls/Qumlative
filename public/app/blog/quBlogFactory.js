@@ -10,6 +10,8 @@
                 {update: {method: 'PUT'}}
             );
 
+            var maxResource = $resource('/api/blogtop');
+
             var blogResourceCount = $resource('/api/blogCount/:category',
                 {category: '@category', isArray:true}
             );
@@ -35,7 +37,8 @@
                 blogByCatResource: blogByCatResource,
                 blogResourcePaged: blogResourcePaged,
                 blogCatResourcePaged: blogCatResourcePaged,
-                blogResourceCount: blogResourceCount
+                blogResourceCount: blogResourceCount,
+                maxResource: maxResource
             };
         }
     ]);

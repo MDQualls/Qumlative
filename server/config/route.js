@@ -9,6 +9,7 @@ var banController = require('../controllers/banController');
 var suspendController = require('../controllers/suspendController');
 var blogCatController = require('../controllers/blogCatController');
 var blogsForCatController = require('../controllers/blogsForCatController');
+var passwordController = require('../controllers/passwordController');
 
 module.exports = function(app) {
 
@@ -25,6 +26,8 @@ module.exports = function(app) {
     app.get('/api/blog/:status', function(req, res, next) { blogController.getBlogsByStatus(req, res, next); });
     app.post('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.createBlog(req, res, next); });
     app.put('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.updateBlog(req, res, next); });
+
+    app.get('/api/blogtop', function(req, res, next) { blogController.topBlog(req, res, next); });
 
     //handle blog categories
     app.get('/api/blogCategory', function(req, res, next) { blogCategoryController.getBlogCategories(req, res, next); });
@@ -65,6 +68,9 @@ module.exports = function(app) {
     //handle authentication
     app.post('/login', auth.authenticate);
     app.post('/logout', function(req, res) {  req.logout(); res.end(); });
+
+    //update password
+    app.put('/api/password/:id', auth.requiresRole('user'), function(req, res, next) { passwordController.updatePassword(req, res, next);});
 
     //handle bad routes
     app.all('/api/*', function(req, res) {

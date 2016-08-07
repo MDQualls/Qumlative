@@ -14,6 +14,7 @@
                 },
                 function(err) {
                     extNotifierSvc.errorMsg('An error occurred during the user registration process.  Please refresh and try again.');
+                    console.log(err);
                 }
             );
 

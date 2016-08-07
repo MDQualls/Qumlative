@@ -38,6 +38,7 @@
         userData.username = userData.username.toLowerCase();
         userData.salt = Encrypt.createSalt();
         userData.hashedPwd = Encrypt.hashPwd(userData.salt, userData.password);
+        userData.roles = ['user'];
 
         User.create(userData, function(err, user) {
             if (err) {
@@ -78,5 +79,4 @@
             res.send(builder.buildUserResponseSingle(req.user));
         });
     };
-
 })();

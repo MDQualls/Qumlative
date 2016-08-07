@@ -23,7 +23,7 @@ function createDefaultMenu() {
     if (collection.length === 0) {
       Menu.create({memberOfMenu: 'topMain', id: 1, parentId: 0, active: 1, icon:'fa fa-home', title:'Home', position: 1, extUrl: '', target: '', link: "['Home']", roles: [], alignment: 'Left', hasChildren: 0});
       Menu.create({memberOfMenu: 'topMain', id: 2, parentId: 0, active: 1, icon:'fa fa-book', title:'Blog', position: 2, extUrl: '', target: '', link: "['Blog']", roles: [], alignment: 'Left', hasChildren: 0});
-      Menu.create({memberOfMenu: 'topMain', id: 3, parentId: 0, active: 1, icon:'fa fa-cogs', title:'Code', position: 3, extUrl: '', target: '', link: "['Code']", roles: [], alignment: 'Left', hasChildren: 0});
+      // Menu.create({memberOfMenu: 'topMain', id: 3, parentId: 0, active: 1, icon:'fa fa-cogs', title:'Code', position: 3, extUrl: '', target: '', link: "['Code']", roles: [], alignment: 'Left', hasChildren: 0});
       Menu.create({memberOfMenu: 'topMain', id: 4, parentId: 0, active: 1, icon:'fa fa-map-signs', title:'About', position: 4, extUrl: '', target: '', link: "['About']", roles: [], alignment: 'Left', hasChildren: 0});
     }
   });

@@ -10,6 +10,19 @@
             console.log('inside user account component');
             console.log(ctrl.user);
         };
+
+        ctrl.callParentCancel = function()  {
+            ctrl.doCancel();
+        };
+
+        ctrl.callParentUpdPassword = function()  {
+            if (ctrl.frmPasswordUpd.$valid === false) {
+                return false;
+            } else {
+                //call parent scope to update password
+                ctrl.doPasswordUpdate({'passwordUpdate': ctrl.passwordUpdate});
+            }
+        }
     }
 
     module.component('quUserAccount', {
@@ -17,7 +30,9 @@
         controllerAs: 'ctrl',
         controller: [controller],
         bindings: {
-            user: '<'
+            user: '<',
+            doCancel: '&',
+            doPasswordUpdate: '&'
         }
     });
 

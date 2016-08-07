@@ -1,0 +1,21 @@
+<div class="panel panel-info">
+    <div class="panel-heading border-left">
+        <div class="pull-right">
+            {{ctrl.post.datePosted | date}}
+        </div>
+        <h4>{{ctrl.post.title}}</h4>
+    </div>
+    <div class="panel-body">
+        <span ng-bind-html="ctrl.post.post"></span>                                
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <a ng-link="['BlogPost',{id:ctrl.post._id}]" href="#" class="btn btn-info">Read More <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+                Category: {{ctrl.post.category}}
+            </div>
+        </div>                
+    </div>
+</div>

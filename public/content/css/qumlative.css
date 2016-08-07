@@ -4920,7 +4920,7 @@ a.badge:focus {
 }
 .jumbotron p {
   margin-bottom: 15px;
-  font-size: 21px;
+  font-size: 16px;
   font-weight: 200;
 }
 .jumbotron > hr {
@@ -6731,7 +6731,7 @@ body {
 .jumbotron h3,
 .jumbotron .h3 {
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: 10px !important;
 }
 header {
   background-color: #E4E4E4;
@@ -6785,6 +6785,15 @@ header {
 }
 #extLogin .dropdown-menu {
   min-width: 110px;
+}
+.blogTransformable {
+  transition: height 100ms linear;
+}
+.blogSmall {
+  height: 100px;
+}
+.blogBig {
+  max-height: 10000px;
 }
 .container-fluid  {
   border-radius: 6px;
