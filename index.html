@@ -17,10 +17,16 @@
         <link rel="stylesheet" href="/vendor/textAngular/dist/textAngular.css" />
         <!-- endbower -->
         
-        <!--inject:css-->
-        <link rel="stylesheet" href="/content/css/qumlative.css">
+        <!--inject:css-->        
+        <link rel="stylesheet" href="/public/content/css/qumlative.css">        
         <!--endinject-->
         
+        
+    </head>
+    <body>
+        <app-controller>                            
+        </app-controller>                           
+
         <!-- bower:js -->
         <script src="/vendor/jquery/dist/jquery.js"></script>
         <script src="/vendor/toastr/toastr.js"></script>
@@ -30,7 +36,7 @@
         <script src="/vendor/angular-animate/angular-animate.js"></script>
         <script src="/vendor/angular-touch/angular-touch.js"></script>
         <script src="/vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
         <script src="/vendor/ngstorage/ngStorage.js"></script>
         <script src="/vendor/angular-component-router/angular_1_router.js"></script>
         <script src="/vendor/angular-component-router/ng_route_shim.js"></script>
@@ -40,67 +46,65 @@
         <script src="/vendor/rangy/rangy-selectionsaverestore.js"></script>
         <script src="/vendor/rangy/rangy-serializer.js"></script>
         <script src="/vendor/rangy/rangy-textrange.js"></script>
-        <script src="/vendor/angular-sanitize/angular-sanitize.js"></script>
         <script src="/vendor/textAngular/dist/textAngular.js"></script>
         <script src="/vendor/textAngular/dist/textAngular-sanitize.js"></script>
-        <script src="/vendor/textAngular/dist/textAngularSetup.js"></script>        
+        <script src="/vendor/textAngular/dist/textAngularSetup.js"></script>
         <!-- endbower -->
                 
-        <!--inject:js-->
-        <script src="/app/app.js"></script>                
-        <script src="/ext-app/login/extLoginModule.js"></script>
-        <script src="/ext-app/login/extLogin.js"></script>
-        <script src="/ext-app/util/extUtilModule.js"></script>
-        <script src="/ext-app/util/extCompareTo.js"></script>
-        <script src="/ext-app/util/extUtcDateFilter.js"></script>
-        <script src="/ext-app/login/extRegister.js"></script>
-        <script src="/ext-app/login/extRegisterConfirm.js"></script>
-        <script src="/ext-app/user/extUserModule.js"></script>
-        <script src="/ext-app/user/extBan.js"></script>
-        <script src="/ext-app/user/extSuspend.js"></script>
-        <script src="/ext-app/privacy/extPrivacyModule.js"></script>
-        <script src="/ext-app/footer/extFooterModule.js"></script>
-        <script src="/ext-app/header/extHeaderModule.js"></script>
-        <script src="/ext-app/horizontal-menu/extHorizontalMenuModule.js"></script>
-        <script src="/ext-app/notifier/extNotifierModule.js"></script>
-        <script src="/ext-app/vertical-menu/extVerticalMenuModule.js"></script>
-        <script src="/ext-app/privacy/extPrivacy.js"></script>
-        <script src="/ext-app/footer/extFooter.js"></script>
-        <script src="/ext-app/header/extHeader.js"></script>
-        <script src="/ext-app/horizontal-menu/extHorizontalMenu.js"></script>
-        <script src="/ext-app/notifier/extNotifierSvc.js"></script>
-        <script src="/ext-app/vertical-menu/extVerticalMenu.js"></script>
-        <script src="/ext-app/paging/extPagingModule.js"></script>
-        <script src="/ext-app/paging/extPager.js"></script>        
-        <script src="/app/admin/blog/quBlogAdmin.js"></script>        
-        <script src="/app/admin/blog/quBlogAdminDetail.js"></script>       
-        <script src="/app/admin/blog/quAdminCategoryController.js"></script>
-        <script src="/app/appController.js"></script>
-        <script src="/app/appRouter.js"></script>
-        <script src="/app/account/quAuth.js"></script>
-        <script src="/app/account/quIdentity.js"></script>
-        <script src="/app/account/quUserFactory.js"></script>
-        <script src="/app/admin/quAdmin.js"></script>        
-        <script src="/app/about/quAbout.js"></script>
-        <script src="/app/blog/quShortenBlog.js"></script>
-        <script src="/app/blog/quBlog.js"></script>
-        <script src="/app/blog/quBlogPost.js"></script>
-        <script src="/app/blog/quTopPost.js"></script>
-        <script src="/app/blog/quBlogFactory.js"></script>
-        <script src="/app/common/quNotifier.js"></script>
-        <script src="/app/demo/quDemo.js"></script>
-        <script src="/app/home/quHome.js"></script>
-        <script src="/app/menu/quMenuFactory.js"></script>
-        <script src="/app/blog/quBlogCategoryFactory.js"></script>
-        <script src="/app/blog/quBlogStatusFactory.js"></script>
-        <script src="/app/admin/user/quUserAdmin.js"></script>
-        <script src="/app/register/quRegister.js"></script>
-        <script src="/app/account/quAccount.js"></script>
-        <script src="/app/account/quUserAccount.js"></script>
+        <!--inject:js-->            
+        <script src="/public/ext-app/footer/extFooterModule.js"></script>            
+        <script src="/public/ext-app/header/extHeaderModule.js"></script>            
+        <script src="/public/ext-app/horizontal-menu/extHorizontalMenuModule.js"></script>            
+        <script src="/public/ext-app/login/extLoginModule.js"></script>            
+        <script src="/public/ext-app/notifier/extNotifierModule.js"></script>            
+        <script src="/public/ext-app/paging/extPagingModule.js"></script>            
+        <script src="/public/ext-app/privacy/extPrivacyModule.js"></script>            
+        <script src="/public/ext-app/user/extUserModule.js"></script>            
+        <script src="/public/ext-app/vertical-menu/extVerticalMenuModule.js"></script>            
+        <script src="/public/ext-app/util/extUtilModule.js"></script>            
+        <script src="/public/ext-app/footer/extFooterCmpnt.js"></script>            
+        <script src="/public/ext-app/header/extHeaderCmpnt.js"></script>            
+        <script src="/public/ext-app/horizontal-menu/extHorizontalMenuCmpnt.js"></script>            
+        <script src="/public/ext-app/login/extLoginCmpnt.js"></script>            
+        <script src="/public/ext-app/login/extRegisterCmpnt.js"></script>            
+        <script src="/public/ext-app/login/extRegisterConfirmCmpnt.js"></script>            
+        <script src="/public/ext-app/notifier/extNotifierCmpnt.js"></script>            
+        <script src="/public/ext-app/paging/extPageNextCmpnt.js"></script>            
+        <script src="/public/ext-app/paging/extPagePrevCmpnt.js"></script>            
+        <script src="/public/ext-app/paging/extPagerCmpnt.js"></script>            
+        <script src="/public/ext-app/privacy/extPrivacyCmpnt.js"></script>            
+        <script src="/public/ext-app/user/extBanCmpnt.js"></script>            
+        <script src="/public/ext-app/user/extSuspendCmpnt.js"></script>            
+        <script src="/public/ext-app/vertical-menu/extVerticalMenuCmpnt.js"></script>            
+        <script src="/public/ext-app/util/extCompareToCmpnt.js"></script>            
+        <script src="/public/ext-app/util/extUtcDateFilterCmpnt.js"></script>            
+        <script src="/public/app/app.js"></script>            
+        <script src="/public/app/admin/blog/quAdminCategoryController.js"></script>            
+        <script src="/public/app/admin/blog/quBlogAdmin.js"></script>            
+        <script src="/public/app/admin/blog/quBlogAdminDetail.js"></script>            
+        <script src="/public/app/admin/user/quUserAdmin.js"></script>            
+        <script src="/public/app/appController.js"></script>            
+        <script src="/public/app/appRouter.js"></script>            
+        <script src="/public/app/about/quAbout.js"></script>            
+        <script src="/public/app/account/quAccount.js"></script>            
+        <script src="/public/app/account/quAuth.js"></script>            
+        <script src="/public/app/account/quIdentity.js"></script>            
+        <script src="/public/app/account/quUserAccount.js"></script>            
+        <script src="/public/app/account/quUserFactory.js"></script>            
+        <script src="/public/app/admin/quAdmin.js"></script>            
+        <script src="/public/app/blog/quBlog.js"></script>            
+        <script src="/public/app/blog/quBlogCategoryFactory.js"></script>            
+        <script src="/public/app/blog/quBlogFactory.js"></script>            
+        <script src="/public/app/blog/quBlogPost.js"></script>            
+        <script src="/public/app/blog/qublogStatusFactory.js"></script>            
+        <script src="/public/app/blog/quShortenBlog.js"></script>            
+        <script src="/public/app/blog/quTopPost.js"></script>            
+        <script src="/public/app/common/quNotifier.js"></script>            
+        <script src="/public/app/demo/quDemo.js"></script>            
+        <script src="/public/app/home/quHome.js"></script>            
+        <script src="/public/app/menu/quMenuFactory.js"></script>            
+        <script src="/public/app/register/quRegister.js"></script>            
         <!--endinject-->
-    </head>
-    <body>
-        <app-controller>                            
-        </app-controller>                                                     
+
     </body>
 </html>

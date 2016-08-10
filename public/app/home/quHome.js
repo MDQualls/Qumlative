@@ -4,7 +4,7 @@
     var module = angular.module('app');
 
     function controller() {
-
+        var vm = this;
     }
 
     module.component('quHome', {
