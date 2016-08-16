@@ -3,20 +3,32 @@
 
     module.exports = function() {
         var pub = './public/';
+        var ext = pub + 'ext-app/';
         var cssPath = pub + 'content/css/';
         var srv = './server/';
         var root = './';
         var config = {
-            //all js files to be linted
-            jsFiles: [pub + 'app/**/*.js',pub + 'ext-app/**/*.js',srv + '**/*.js'],
-            appJs: [pub + 'ext-app/**/*Module.js', pub + 'ext-app/**/*Cmpnt.js', pub + 'app/app.js', pub + 'app/**/*.js'],
-            less: [pub + 'content/css/qumlative.less'],
-            index: './index.html',
-            root: root,
-            css: cssPath + 'qumlative.css',
+
+            //server default port
             defaultPort: 5000,
+
+            //file paths - alphabetic
+            appJs: [pub + 'ext-app/**/*Module.js', pub + 'ext-app/**/*Cmpnt.js', pub + 'app/app.js', pub + 'app/**/*.js'],
+            build: root + 'build/',
+            css: cssPath + 'qumlative.css',
+            cssPath: cssPath,
+            ext: ext,
+            extLess: ext + '**/*.less',
+            less: [cssPath + 'qumlative.less'],
+            images: pub + 'content/img/**/*.*',
+            index: root + 'index.html',
+            jsFiles: [pub + 'app/**/*.js',pub + 'ext-app/**/*.js',srv + '**/*.js'],
+            nodeServer: root +  'server.js',
+            pub: pub,
+            root: root,
             srv: srv,
-            nodeServer: root +  'server.js'
+
+            browserReloadDelay: 1000
         };
 
         config.wiredepDefaultOptions = function() {

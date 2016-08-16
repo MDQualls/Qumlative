@@ -1,6 +1,5 @@
 
 (function()  {
-//'ngStorage',
     angular.module('app',
         [
             'ngResource',
@@ -18,6 +17,5 @@
             'extUtilModule',
             'extPagingModule'
         ]);
-
     angular.module('app').value('$routerRootComponent', 'appController');
 })();

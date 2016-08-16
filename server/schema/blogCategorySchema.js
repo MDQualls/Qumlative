@@ -21,6 +21,7 @@
 
         });
     }
+
     module.exports = {
         BlogCategory: BlogCategory,
         createDefaultCategories: createDefaultCategories
