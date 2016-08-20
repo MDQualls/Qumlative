@@ -8,7 +8,7 @@
     }
 
     module.component('extFooter', {
-        templateUrl: '/ext-app/footer/extFooter.html',
+        templateUrl: 'ext-app/footer/extFooter.html',
         controllerAs: 'ctrl',
         transclude: true,
         controller: [controller]

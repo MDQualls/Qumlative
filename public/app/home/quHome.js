@@ -8,7 +8,7 @@
     }
 
     module.component('quHome', {
-        templateUrl: '/app/home/quHome.html',
+        templateUrl: 'app/home/quHome.html',
         controllerAs: 'ctrl',
         controller: [controller]
     });

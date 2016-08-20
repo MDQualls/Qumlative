@@ -8,7 +8,7 @@
     }
 
     module.component('extSuspend', {
-        templateUrl: '/ext-app/user/extSuspend.html',
+        templateUrl: 'ext-app/user/extSuspend.html',
         controllerAs: 'ctrl',
         controller: [controller],
         bindings: {

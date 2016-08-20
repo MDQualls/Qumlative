@@ -48,7 +48,7 @@
         ctrl.openCategoryModal = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                templateUrl: '/app/admin/blog/quAdminCategoryDetail.html',
+                templateUrl: 'app/admin/blog/quAdminCategoryDetail.html',
                 controller: 'quAdminCategoryController as ctrl',
             }).result.then(function (result) {
                 ctrl.blogCategories.push(result);
@@ -75,7 +75,7 @@
     }
 
     module.component('quBlogAdminDetail', {
-        templateUrl: '/app/admin/blog/quBlogAdminDetail.html',
+        templateUrl: 'app/admin/blog/quBlogAdminDetail.html',
         controllerAs: 'ctrl',
         controller: ['quBlogFactory', 'quBlogCategoryFactory', 'quBlogStatusFactory', '$uibModal', 'extNotifierSvc', '$filter', controller],
         bindings: {

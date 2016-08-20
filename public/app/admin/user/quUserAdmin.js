@@ -56,7 +56,7 @@
     }
 
     module.component('quUserAdmin', {
-        templateUrl: '/app/admin/user/quUserAdmin.html',
+        templateUrl: 'app/admin/user/quUserAdmin.html',
         controllerAs: 'ctrl',
         controller: ['quUserFactory', 'extNotifierSvc', controller],
         bindings: {

@@ -29,7 +29,7 @@
     }
 
     module.component('extRegister', {
-        templateUrl: '/ext-app/login/extRegister.html',
+        templateUrl: 'ext-app/login/extRegister.html',
         controllerAs: 'ctrl',
         controller: [controller],
         bindings: {

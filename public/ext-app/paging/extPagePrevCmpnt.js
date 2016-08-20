@@ -21,7 +21,7 @@
     }
 
     module.component('extPagePrev', {
-        templateUrl: '/ext-app/paging/extPagePrev.html',
+        templateUrl: 'ext-app/paging/extPagePrev.html',
         controllerAs: 'ctrl',
         controller: [controller],
         bindings: {

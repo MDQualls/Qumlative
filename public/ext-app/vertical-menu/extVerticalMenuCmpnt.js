@@ -8,7 +8,7 @@
     }
 
     module.component('extVerticalMenu', {
-        templateUrl: '/ext-app/vertical-menu/extVerticalMenu.html',
+        templateUrl: 'ext-app/vertical-menu/extVerticalMenu.html',
         bindings: {
             menuItems: '<'
         },

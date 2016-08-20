@@ -21,7 +21,7 @@
     }
 
     module.component('extPageNext', {
-        templateUrl: '/ext-app/paging/extPageNext.html',
+        templateUrl: 'ext-app/paging/extPageNext.html',
         controllerAs: 'ctrl',
         controller: [controller],
         bindings: {

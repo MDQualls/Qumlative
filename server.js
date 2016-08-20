@@ -2,6 +2,8 @@ var express = require('express');
 
 var env = process.env.NODE_ENV;
 
+console.log(env);
+
 var app = express();
 
 var config = require('./server/config/config')[env];

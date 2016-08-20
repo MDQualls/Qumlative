@@ -25,7 +25,7 @@
     }
 
     module.component('quAdmin', {
-        templateUrl: '/app/admin/quAdmin.html',
+        templateUrl: 'app/admin/quAdmin.html',
         controllerAs: 'ctrl',
         controller: ['quIdentity', 'quAuth', 'extNotifierSvc', controller],
         bindings: {

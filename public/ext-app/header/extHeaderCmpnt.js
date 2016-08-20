@@ -8,7 +8,7 @@
     }
 
     module.component('extHeader', {
-        templateUrl: '/ext-app/header/extHeader.html',
+        templateUrl: 'ext-app/header/extHeader.html',
         bindings: {
             logoSrc: '<',
             menuItems: '<',

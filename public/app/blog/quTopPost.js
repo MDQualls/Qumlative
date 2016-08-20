@@ -20,7 +20,7 @@
     }
 
     module.component('quTopPost', {
-        templateUrl: '/app/blog/quTopPost.html',
+        templateUrl: 'app/blog/quTopPost.html',
         controllerAs: 'ctrl',
         controller: ['quBlogFactory', 'extNotifierSvc', '$filter', controller]
     });

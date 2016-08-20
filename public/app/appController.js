@@ -35,7 +35,7 @@
     }
 
     module.component('appController', {
-        templateUrl: '/app/appContent.html',
+        templateUrl: 'app/appContent.html',
         controllerAs: 'ctrl',
         controller: ['quMenuFactory', 'quAuth', 'quIdentity', 'extNotifierSvc', controller],
         $routeConfig: [

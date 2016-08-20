@@ -90,7 +90,7 @@
     }
 
     module.component('quBlog', {
-        templateUrl: '/app/blog/quBlog.html',
+        templateUrl: 'app/blog/quBlog.html',
         controllerAs: 'ctrl',
         controller: ['quBlogFactory','quBlogCategoryFactory', 'extNotifierSvc', '$filter', controller],
         bindings: {

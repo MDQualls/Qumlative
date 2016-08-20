@@ -8,7 +8,7 @@
     }
 
     module.component('extBan', {
-        templateUrl: '/ext-app/user/extBan.html',
+        templateUrl: 'ext-app/user/extBan.html',
         controllerAs: 'ctrl',
         controller: [controller],
         bindings: {

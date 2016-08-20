@@ -23,7 +23,7 @@
     }
 
     module.component('quBlogPost', {
-        templateUrl: '/app/blog/quBlogPost.html',
+        templateUrl: 'app/blog/quBlogPost.html',
         controllerAs: 'ctrl',
         controller: ['quBlogFactory', controller],
     });

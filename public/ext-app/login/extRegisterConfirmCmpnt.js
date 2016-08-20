@@ -8,7 +8,7 @@
     }
 
     module.component('extRegisterConfirm', {
-        templateUrl: '/ext-app/login/extRegisterConfirm.html',
+        templateUrl: 'ext-app/login/extRegisterConfirm.html',
         controllerAs: 'ctrl',
         controller: [controller]
     });

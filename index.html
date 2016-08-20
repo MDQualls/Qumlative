@@ -13,21 +13,25 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
         <script src="https://use.fontawesome.com/d76df77c58.js"></script>        
         
+        <!-- build:css styles/lib.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="/vendor/toastr/toastr.css" />
         <link rel="stylesheet" href="/vendor/textAngular/dist/textAngular.css" />
         <!-- endbower -->
+        <!-- endbuild -->
         
+        <!-- build:css styles/app.css-->
         <!--inject:css-->        
         <link rel="stylesheet" href="/public/content/css/qumlative.css">        
         <!--endinject-->
-        
+        <!-- endbuild -->
         
     </head>
     <body>
         <app-controller>                            
         </app-controller>                           
 
+        <!-- build:js js/lib.js -->
         <!-- bower:js -->
         <script src="/vendor/jquery/dist/jquery.js"></script>
         <script src="/vendor/toastr/toastr.js"></script>
@@ -51,13 +55,15 @@
         <script src="/vendor/textAngular/dist/textAngular-sanitize.js"></script>
         <script src="/vendor/textAngular/dist/textAngularSetup.js"></script>
         <!-- endbower -->
+        <!-- endbuild -->
                 
+        <!-- build:js js/app.js -->
         <!--inject:js-->            
         <script src="/public/ext-app/footer/extFooterModule.js"></script>            
         <script src="/public/ext-app/header/extHeaderModule.js"></script>            
         <script src="/public/ext-app/horizontal-menu/extHorizontalMenuModule.js"></script>            
-        <script src="/public/ext-app/login/extLoginModule.js"></script>            
         <script src="/public/ext-app/notifier/extNotifierModule.js"></script>            
+        <script src="/public/ext-app/login/extLoginModule.js"></script>            
         <script src="/public/ext-app/paging/extPagingModule.js"></script>            
         <script src="/public/ext-app/privacy/extPrivacyModule.js"></script>            
         <script src="/public/ext-app/user/extUserModule.js"></script>            
@@ -66,10 +72,10 @@
         <script src="/public/ext-app/footer/extFooterCmpnt.js"></script>            
         <script src="/public/ext-app/header/extHeaderCmpnt.js"></script>            
         <script src="/public/ext-app/horizontal-menu/extHorizontalMenuCmpnt.js"></script>            
+        <script src="/public/ext-app/notifier/extNotifierCmpnt.js"></script>            
         <script src="/public/ext-app/login/extLoginCmpnt.js"></script>            
         <script src="/public/ext-app/login/extRegisterCmpnt.js"></script>            
         <script src="/public/ext-app/login/extRegisterConfirmCmpnt.js"></script>            
-        <script src="/public/ext-app/notifier/extNotifierCmpnt.js"></script>            
         <script src="/public/ext-app/paging/extPageNextCmpnt.js"></script>            
         <script src="/public/ext-app/paging/extPagePrevCmpnt.js"></script>            
         <script src="/public/ext-app/paging/extPagerCmpnt.js"></script>            
@@ -100,12 +106,17 @@
         <script src="/public/app/blog/qublogStatusFactory.js"></script>            
         <script src="/public/app/blog/quShortenBlog.js"></script>            
         <script src="/public/app/blog/quTopPost.js"></script>            
-        <script src="/public/app/demo/quDemo.js"></script>            
         <script src="/public/app/common/quNotifier.js"></script>            
+        <script src="/public/app/demo/quDemo.js"></script>            
         <script src="/public/app/home/quHome.js"></script>            
         <script src="/public/app/menu/quMenuFactory.js"></script>            
         <script src="/public/app/register/quRegister.js"></script>            
         <!--endinject-->
 
+        <!-- inject:templates:js -->
+
+        <!-- endinject -->
+
+        <!-- endbuild -->
     </body>
 </html>

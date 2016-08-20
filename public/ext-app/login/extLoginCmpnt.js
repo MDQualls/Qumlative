@@ -45,7 +45,7 @@
     }
 
     module.component('extLogin', {
-        templateUrl: '/ext-app/login/extLogin.html',
+        templateUrl: 'ext-app/login/extLogin.html',
         controllerAs: 'ctrl',
         controller: [controller],
         bindings: {

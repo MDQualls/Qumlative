@@ -26,7 +26,7 @@
     }
 
     module.component('quUserAccount', {
-        templateUrl: '/app/account/quUserAccount.html',
+        templateUrl: 'app/account/quUserAccount.html',
         controllerAs: 'ctrl',
         controller: [controller],
         bindings: {

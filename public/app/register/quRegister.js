@@ -26,7 +26,7 @@
     }
 
     module.component('quRegister', {
-        templateUrl: '/app/register/quRegister.html',
+        templateUrl: 'app/register/quRegister.html',
         controllerAs: 'ctrl',
         controller: ['quUserFactory', 'extNotifierSvc', controller],
         bindings: {

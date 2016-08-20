@@ -8,7 +8,7 @@
     }
 
     module.component('extHorizontalMenu', {
-        templateUrl:'/ext-app/horizontal-menu/extHorizontalMenu.html',
+        templateUrl:'ext-app/horizontal-menu/extHorizontalMenu.html',
         bindings: {
             brand: '<',
             menuItems: '<'

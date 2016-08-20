@@ -7,18 +7,20 @@
         var cssPath = pub + 'content/css/';
         var srv = './server/';
         var root = './';
+        var temp = './temp/';
         var config = {
 
             //server default port
             defaultPort: 5000,
 
             //file paths - alphabetic
-            appJs: [pub + 'ext-app/**/*Module.js', pub + 'ext-app/**/*Cmpnt.js', pub + 'app/app.js', pub + 'app/**/*.js'],
+            appJs: [pub + 'ext-app/**/*Module.js', pub + 'ext-app/**/*Cmpnt.js', pub + 'app/app.js',pub + 'app/**/*.js'],
             build: root + 'build/',
             css: cssPath + 'qumlative.css',
             cssPath: cssPath,
             ext: ext,
             extLess: ext + '**/*.less',
+            html: pub + '**/*.html',
             less: [cssPath + 'qumlative.less'],
             images: pub + 'content/img/**/*.*',
             index: root + 'index.html',
@@ -27,7 +29,23 @@
             pub: pub,
             root: root,
             srv: srv,
+            temp: temp,
+            vendorPath: pub + '/vendor',
 
+            /**
+             * template cache
+             */
+            templateCache: {
+                file: 'templates.js',
+                options: {
+                    module: 'app',
+                    standAlone: false
+                }
+            },
+
+            /**
+             * browersync settings
+             */
             browserReloadDelay: 1000
         };
 

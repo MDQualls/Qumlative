@@ -34,7 +34,7 @@
     }
 
     module.component('quAccount', {
-        templateUrl: '/app/account/quAccount.html',
+        templateUrl: 'app/account/quAccount.html',
         controllerAs: 'ctrl',
         controller: ['quIdentity', 'extNotifierSvc', 'quUserFactory', controller],
         bindings: {

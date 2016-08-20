@@ -8,7 +8,7 @@
     }
 
     module.component('extPrivacy', {
-        templateUrl: '/ext-app/privacy/extPrivacy.html',
+        templateUrl: 'ext-app/privacy/extPrivacy.html',
         controllerAs: 'ctrl',
         controller: [controller]
     });

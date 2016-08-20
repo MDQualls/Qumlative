@@ -28,7 +28,7 @@
     }
 
     module.component('quBlogAdmin', {
-        templateUrl: '/app/admin/blog/quBlogAdmin.html',
+        templateUrl: 'app/admin/blog/quBlogAdmin.html',
         controllerAs: 'ctrl',
         controller: ['quIdentity','quBlogFactory', 'extNotifierSvc', controller],
         bindings: {

@@ -31,7 +31,7 @@
     }
 
     module.component('extPager', {
-        templateUrl: '/ext-app/paging/extPager.html',
+        templateUrl: 'ext-app/paging/extPager.html',
         controllerAs: 'ctrl',
         controller: [controller],
         bindings: {
