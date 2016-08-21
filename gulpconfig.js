@@ -1,21 +1,31 @@
 (function() {
     'use strict';
 
-    module.exports = function() {
+    module.exports = function() {        
         var pub = './public/';
         var ext = pub + 'ext-app/';
         var cssPath = pub + 'content/css/';
         var srv = './server/';
         var root = './';
         var temp = './temp/';
+        var build = root + 'build/';
         var config = {
 
             //server default port
             defaultPort: 5000,
 
             //file paths - alphabetic
-            appJs: [pub + 'ext-app/**/*Module.js', pub + 'ext-app/**/*Cmpnt.js', pub + 'app/app.js',pub + 'app/**/*.js'],
-            build: root + 'build/',
+            appJs: [
+                pub + 'ext-app/**/*Module.js', 
+                pub + 'ext-app/**/*Cmpnt.js', 
+                pub + 'app/core/*.js', 
+                //temp + '*.js', 
+                pub + 'app/app.js', 
+                pub + 'app/**/*.js'
+            ],
+            build: build,
+            buildCss: build + '**/*.css',
+            buildCssPath: build + 'styles/',
             css: cssPath + 'qumlative.css',
             cssPath: cssPath,
             ext: ext,
@@ -38,8 +48,9 @@
             templateCache: {
                 file: 'templates.js',
                 options: {
-                    module: 'app',
-                    standAlone: false
+                    module: 'app.core',
+                    standAlone: false,
+                    root: ''
                 }
             },
 

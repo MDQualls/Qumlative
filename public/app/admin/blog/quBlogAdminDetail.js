@@ -4,6 +4,7 @@
     var module = angular.module('app');
 
     function controller(quBlogFactory, quBlogCategoryFactory, quBlogStatusFactory, $uibModal, extNotifierSvc, $filter) {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.blogCategories = [];

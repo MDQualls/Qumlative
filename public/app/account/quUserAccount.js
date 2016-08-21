@@ -4,6 +4,7 @@
     var module = angular.module('app');
 
     function controller() {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.$onInit = function()  {
@@ -22,7 +23,7 @@
                 //call parent scope to update password
                 ctrl.doPasswordUpdate({'passwordUpdate': ctrl.passwordUpdate});
             }
-        }
+        };
     }
 
     module.component('quUserAccount', {

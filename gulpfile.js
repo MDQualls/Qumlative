@@ -79,7 +79,7 @@ gulp.task('templatecache', function() {
             .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('wiredep', function() {
+gulp.task('wiredep',['templatecache'], function() {
     var wiredep = require('wiredep').stream;
     var options = config.wiredepDefaultOptions();
 
@@ -90,7 +90,7 @@ gulp.task('wiredep', function() {
         .pipe(gulp.dest(config.root));
 });
 
-gulp.task('inject',['wiredep','build-css', 'templatecache'], function() {
+gulp.task('inject',['wiredep','build-css'], function() {
 
     return gulp
         .src(config.index)
@@ -102,21 +102,35 @@ gulp.task('optimize', ['inject'], function() {
     console.log('Optimizing the javascript, css, html');
 
     var templateCache = config.temp + config.templateCache.file;
-    //var assets = $.useref.assets({searchPath: config.root});
-    // var cssFilter = $.filter('**/*.css');
-    // var jsLibFilter = $.filter('**/' + config.optimized.lib);
-    // var jsAppFilter = $.filter('**/' + config.optimized.app);
 
     return gulp
         .src(config.index)
         .pipe($.plumber())
+        .pipe($.replacePath('/vendor', '/public/vendor'))    
         .pipe($.inject(gulp.src(templateCache, {read: false}), {
             starttag: '<!-- inject:templates:js -->'
-        }))
-        .pipe($.replacePath('/vendor', '/public/vendor'))        
-        .pipe($.useref({searchPath:'./'}))
+        }))    
+        .pipe($.useref())
         .pipe(gulp.dest(config.build)
     );
+});
+
+gulp.task('minify-css',['optimize'], function() {
+    console.log('Running css-optimize task');
+
+    return gulp
+        .src(config.build + '/**/*.css')       
+        .pipe($.csso())                
+        .pipe(gulp.dest(config.build));
+});
+
+gulp.task('minify-uglify-optimize',['minify-css'], function() {
+    console.log('Running js-uglify task');
+
+    return gulp
+        .src(config.build + '/**/*.js')       
+        .pipe($.uglify())                
+        .pipe(gulp.dest(config.build));
 });
 
 gulp.task('watch-less', function() {
@@ -124,7 +138,7 @@ gulp.task('watch-less', function() {
     gulp.watch([config.less,config.extLess], ['build-css']);  // Watch all the .less files, then run the less task
 });
 
-gulp.task('serve-build',['optimize'], function() {
+gulp.task('serve-build',['minify-uglify-optimize', 'deploy-images'], function() {
     serve(false);   //production
 });
 
@@ -132,7 +146,7 @@ gulp.task('serve-dev',['js-style', 'inject'], function() {
     serve(true);    //dev
 });
 
-//////////////////////
+////////////////////////////////////////////////
 
 function serve(isDev) {
     var options = {
@@ -178,7 +192,7 @@ function startBrowserSync(isDev)  {
         gulp.watch([config.less,config.extLess], ['build-css'])
             .on('change',function(event) { changeEvent(event); });
     } else {
-        gulp.watch([config.less,config.extLess,config.appJs,config.html], ['optimize', browserSync.reload])
+        gulp.watch([config.less,config.extLess,config.appJs,config.html], ['minify-uglify-optimize', 'css-optimize', browserSync.reload])
             .on('change',function(event) { changeEvent(event); });
     }
 

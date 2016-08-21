@@ -4,6 +4,7 @@
     var module = angular.module('app');
 
     function controller(quIdentity, quBlogFactory, extNotifierSvc) {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.blogs = [];

@@ -5,6 +5,6 @@
     bower install toastr --save    
 */
 (function() {
-    'use strict';
+    'use strict';    
     angular.module('extNotifierModule', []).value('quToaster',toastr);
 })();

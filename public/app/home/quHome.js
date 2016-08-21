@@ -4,6 +4,7 @@
     var module = angular.module('app');
 
     function controller() {
+        /*jshint validthis: true */
         var vm = this;
     }
 

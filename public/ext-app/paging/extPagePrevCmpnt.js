@@ -4,6 +4,7 @@
     var module = angular.module('extPagingModule');
 
     function controller() {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.prevButtonEnabled = function() {

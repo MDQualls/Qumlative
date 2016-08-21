@@ -2,12 +2,7 @@
     <div class="col-md-12">
         <div class="well well-sm"><h2>{{ctrl.title}}</h2></div>
     </div>
-    <div class="col-md-8">        
-        <ext-pager page="ctrl.pageModel.page" 
-            page-size="ctrl.pageModel.pageSize" 
-            total-records="ctrl.pageModel.totalRecords" 
-            do-navigate-next="ctrl.NavNextPage()" 
-            do-navigate-prev="ctrl.NavPrevPage()" />
+    <div class="col-md-8">                
         <div class="panel panel-info" ng-repeat="blog in ctrl.blogs | orderBy:'-datePosted'">
             <div class="panel-heading border-left">
                 <div class="pull-right">

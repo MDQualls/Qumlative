@@ -4,6 +4,7 @@
     var module = angular.module('app');
 
     function controller(quIdentity, extNotifierSvc, quAuth) {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.identity = quIdentity;

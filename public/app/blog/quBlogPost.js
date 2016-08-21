@@ -4,6 +4,7 @@
     var module = angular.module('app');
 
     function controller(quBlogFactory) {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.$routerOnActivate = function(next, previous) {

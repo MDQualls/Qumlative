@@ -29,6 +29,6 @@
         warningMsg: warningMsg,
         infoMsg: infoMsg,
         errorMsg: errorMsg
-    }
+    };
   }]);
-})()
+})();

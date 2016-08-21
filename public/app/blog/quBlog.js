@@ -4,6 +4,7 @@
     var module = angular.module('app');
 
     function controller(quBlogFactory, quBlogCategoryFactory, extNotifierSvc, $filter) {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.blogs = [];
@@ -18,8 +19,9 @@
         }
 
         function queryBlogs(page)  {
-            quBlogFactory.blogResourcePaged.query({page:page, pageSize:ctrl.pageModel.pageSize}, function(result) {
+            quBlogFactory.blogResourcePaged.query({page:page, pageSize:ctrl.pageModel.pageSize}, function(result) {                
                 ctrl.blogs = $filter('quShortenBlog')(result);
+                console.log(ctrl.blogs);
                 updatePageModel(page);
             }, function (error) { extNotifierSvc.errorMsg(error); console.log(error); });
         }

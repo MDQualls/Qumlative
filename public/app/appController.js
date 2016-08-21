@@ -4,6 +4,7 @@
     var module = angular.module('app');
 
     function controller(quMenuFactory,quAuth,quIdentity,extNotifierSvc) {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.currentUser = {};

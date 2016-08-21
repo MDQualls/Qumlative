@@ -4,6 +4,7 @@
     var module = angular.module('extLoginModule');
 
     function controller() {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.reset = function() {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="app" ng-strict-di>
     <head>
         <title>Qumlative</title>
         
@@ -62,8 +62,8 @@
         <script src="/public/ext-app/footer/extFooterModule.js"></script>            
         <script src="/public/ext-app/header/extHeaderModule.js"></script>            
         <script src="/public/ext-app/horizontal-menu/extHorizontalMenuModule.js"></script>            
-        <script src="/public/ext-app/notifier/extNotifierModule.js"></script>            
         <script src="/public/ext-app/login/extLoginModule.js"></script>            
+        <script src="/public/ext-app/notifier/extNotifierModule.js"></script>            
         <script src="/public/ext-app/paging/extPagingModule.js"></script>            
         <script src="/public/ext-app/privacy/extPrivacyModule.js"></script>            
         <script src="/public/ext-app/user/extUserModule.js"></script>            
@@ -72,10 +72,10 @@
         <script src="/public/ext-app/footer/extFooterCmpnt.js"></script>            
         <script src="/public/ext-app/header/extHeaderCmpnt.js"></script>            
         <script src="/public/ext-app/horizontal-menu/extHorizontalMenuCmpnt.js"></script>            
-        <script src="/public/ext-app/notifier/extNotifierCmpnt.js"></script>            
         <script src="/public/ext-app/login/extLoginCmpnt.js"></script>            
         <script src="/public/ext-app/login/extRegisterCmpnt.js"></script>            
         <script src="/public/ext-app/login/extRegisterConfirmCmpnt.js"></script>            
+        <script src="/public/ext-app/notifier/extNotifierCmpnt.js"></script>            
         <script src="/public/ext-app/paging/extPageNextCmpnt.js"></script>            
         <script src="/public/ext-app/paging/extPagePrevCmpnt.js"></script>            
         <script src="/public/ext-app/paging/extPagerCmpnt.js"></script>            
@@ -85,6 +85,7 @@
         <script src="/public/ext-app/util/extCompareToCmpnt.js"></script>            
         <script src="/public/ext-app/util/extUtcDateFilterCmpnt.js"></script>            
         <script src="/public/ext-app/vertical-menu/extVerticalMenuCmpnt.js"></script>            
+        <script src="/public/app/core/app.core.js"></script>            
         <script src="/public/app/app.js"></script>            
         <script src="/public/app/admin/blog/quAdminCategoryController.js"></script>            
         <script src="/public/app/admin/blog/quBlogAdmin.js"></script>            
@@ -111,11 +112,10 @@
         <script src="/public/app/home/quHome.js"></script>            
         <script src="/public/app/menu/quMenuFactory.js"></script>            
         <script src="/public/app/register/quRegister.js"></script>            
-        <!--endinject-->
+        <!--endinject-->        
 
         <!-- inject:templates:js -->
-
-        <!-- endinject -->
+        <!--endinject-->
 
         <!-- endbuild -->
     </body>

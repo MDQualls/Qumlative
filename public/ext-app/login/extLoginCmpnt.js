@@ -4,6 +4,7 @@
     var module = angular.module('extLoginModule');
 
     function controller() {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.showLoginForm = false;
@@ -41,7 +42,7 @@
 
         ctrl.isAdmin = function()  {
             return ctrl.user.roles && ctrl.user.roles.indexOf('admin') > -1;
-        }
+        };
     }
 
     module.component('extLogin', {

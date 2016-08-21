@@ -4,6 +4,7 @@
     var module = angular.module('app');
 
     function controller(quBlogFactory, extNotifierSvc, $filter) {
+        /*jshint validthis: true */
         var ctrl = this;
 
         ctrl.$onInit = function() {
