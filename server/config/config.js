@@ -4,6 +4,7 @@ var rootPath = path.normalize(__dirname + '/../../public');
 var prodPath = path.normalize(__dirname + '/../../build/');
 
 module.exports = {
+  rootPath: rootPath,
   development: {
     rootPath: rootPath,
     db: 'mongodb://localhost/qumlative',
