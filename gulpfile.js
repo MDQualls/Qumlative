@@ -21,8 +21,8 @@ gulp.task('js-style', function() {
         .pipe($.jshint.reporter('jshint-stylish',{verbose:true}));
 });
 
-gulp.task('clean', function(done) {
-    var delconfig = [].concat(config.build);
+gulp.task('clean-build', function(done) {
+    var delconfig = [].concat(config.build, config.temp);
     console.log('Cleaning: ' + $.util.colors.blue(delconfig));
     del(delconfig, done);
 });
@@ -106,10 +106,10 @@ gulp.task('optimize', ['inject'], function() {
     return gulp
         .src(config.index)
         .pipe($.plumber())
-        .pipe($.replacePath('/vendor', '/public/vendor'))    
+        .pipe($.replacePath('/vendor', '/public/vendor'))
         .pipe($.inject(gulp.src(templateCache, {read: false}), {
             starttag: '<!-- inject:templates:js -->'
-        }))    
+        }))
         .pipe($.useref())
         .pipe(gulp.dest(config.build)
     );
@@ -119,8 +119,8 @@ gulp.task('minify-css',['optimize'], function() {
     console.log('Running css-optimize task');
 
     return gulp
-        .src(config.build + '/**/*.css')       
-        .pipe($.csso())                
+        .src(config.build + '/**/*.css')
+        .pipe($.csso())
         .pipe(gulp.dest(config.build));
 });
 
@@ -128,14 +128,43 @@ gulp.task('minify-uglify-optimize',['minify-css'], function() {
     console.log('Running js-uglify task');
 
     return gulp
-        .src(config.build + '/**/*.js')       
-        .pipe($.uglify())                
+        .src(config.build + '/**/*.js')
+        .pipe($.uglify())
         .pipe(gulp.dest(config.build));
 });
 
 gulp.task('watch-less', function() {
     console.log('Compiling Less');
     gulp.watch([config.less,config.extLess], ['build-css']);  // Watch all the .less files, then run the less task
+});
+
+/**
+ * Bump the version
+ * --type=pre will bump the prerelease version *.*.*-x
+ * --type=patch or no flag will bump the patch version *.*.x
+ * --type=minor will bump the minor version *.x.*
+ * --type=major will bump the major version x.*.*
+ * --version=1.2.3 will bump to a specific version and ignore other flags
+ */
+gulp.task('bump', function() {
+    var msg = 'Bumping versions';
+    var type = args.type;
+    var version = args.version;
+    var options = {};
+    if (version) {
+        options.version = version;
+        msg += ' to ' + version;
+    } else {
+        options.type = type;
+        msg += ' for a ' + type;
+    }
+    console.log(msg);
+
+    return gulp
+        .src(config.packages)
+        .pipe($.print())
+        .pipe($.bump(options))
+        .pipe(gulp.dest(config.root));
 });
 
 gulp.task('serve-build',['minify-uglify-optimize', 'deploy-images'], function() {

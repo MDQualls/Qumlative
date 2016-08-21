@@ -1,10 +1,11 @@
 {
   "name": "qumlative",
+  "version": "0.2.0",
   "description": "Qumlative Site",
   "main": "index.html",
   "authors": [
     "Michael Qualls"
-  ],
+  ],  
   "license": "ISC",
   "homepage": "",
   "private": true,

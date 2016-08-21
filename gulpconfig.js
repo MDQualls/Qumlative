@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    module.exports = function() {        
+    module.exports = function() {
         var pub = './public/';
         var ext = pub + 'ext-app/';
         var cssPath = pub + 'content/css/';
@@ -16,11 +16,10 @@
 
             //file paths - alphabetic
             appJs: [
-                pub + 'ext-app/**/*Module.js', 
-                pub + 'ext-app/**/*Cmpnt.js', 
-                pub + 'app/core/*.js', 
-                //temp + '*.js', 
-                pub + 'app/app.js', 
+                pub + 'ext-app/**/*Module.js',
+                pub + 'ext-app/**/*Cmpnt.js',
+                pub + 'app/core/*.js',
+                pub + 'app/app.js',
                 pub + 'app/**/*.js'
             ],
             build: build,
@@ -41,6 +40,14 @@
             srv: srv,
             temp: temp,
             vendorPath: pub + '/vendor',
+
+            /**
+             * package locations
+             */
+            packages : [
+                './package.json',
+                './bower.json'
+            ],
 
             /**
              * template cache
