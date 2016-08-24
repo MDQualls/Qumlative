@@ -1,30 +1,15 @@
 (function() {
     'use strict';
 
-    var express = require('express');
     var menuController = require('../controllers/menuController');
     var auth = require('../config/auth');
 
-    var routes = function()  {
+    var routes = function(app)  {
 
-        var menuRouter = express.Router();
-
-        menuRouter.route('/')
-            .post(auth.requiresRole('admin'), function(req, res, next)  {
-                menuController.createMenuItem(req, res, next);
-            })
-            .get(function(req, res, next)  {
-                menuController.getMenu(req, res, next);
-            });
-
-        menuRouter.route('/:memberOfMenu')
-            .get(function(req, res, next)  {
-                menuController.getMenuMembers(req, res, next);
-            })
-            .put(function(req, res)  {
-
-            });
-        return menuRouter;
+        app.get('/api/menu', function(req, res, next) { menuController.getMenu(req, res, next); });
+        app.get('/api/menu/:memberOfMenu', function(req, res, next) { menuController.getMenuMembers(req, res, next); });
+        app.post('/api/menu', auth.requiresRole('admin'), function(req, res, next) { menuController.createMenuItem(req, res, next); });
+        app.put('/api/menu', auth.requiresRole('admin'), function(req, res, next) { menuController.updateMenuItem(req, res, next); });
     };
 
     module.exports = routes;

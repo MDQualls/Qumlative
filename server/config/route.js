@@ -1,76 +1,51 @@
 var auth = require('./auth');
 var mongoose = require('mongoose');
-var menuController = require('../controllers/menuController');
-var blogController = require('../controllers/blogController');
-var blogCategoryController = require('../controllers/blogCategoryController');
-var blogStatusController = require('../controllers/blogStatusController');
-var userController = require('../controllers/userController');
-var banController = require('../controllers/banController');
-var suspendController = require('../controllers/suspendController');
-var blogCatController = require('../controllers/blogCatController');
-var blogsForCatController = require('../controllers/blogsForCatController');
-var passwordController = require('../controllers/passwordController');
+var menuRouter = require('../routers/menuRouter');
+var blogRouter = require('../routers/blogRouter');
+var blogCategoryRouter = require('../routers/blogCategoryRouter');
+var blogStatusRouter = require('../routers/blogStatusRouter');
+var usersRouter = require('../routers/usersRouter');
+var bansRouter = require('../routers/bansRouter');
+var suspendRouter = require('../routers/suspendRouter');
+var blogCatRouter = require('../routers/blogCatRouter');
+var blogsForCatRouter = require('../routers/blogsForCatRouter');
+var passwordRouter = require('../routers/passwordRouter');
 
 module.exports = function(app) {
 
     //handle menu
-    app.get('/api/menu', function(req, res, next) { menuController.getMenu(req, res, next); });
-    app.get('/api/menu/:memberOfMenu', function(req, res, next) { menuController.getMenuMembers(req, res, next); });
-    app.post('/api/menu', auth.requiresRole('admin'), function(req, res, next) { menuController.createMenuItem(req, res, next); });
-    app.put('/api/menu', auth.requiresRole('admin'), function(req, res, next) { menuController.updateMenuItem(req, res, next); });
+    menuRouter(app);
 
     //handle blog
-    app.get('/api/blog', function(req, res, next) { blogController.getBlogs(req, res, next); });
-    app.get('/api/blog/:id', function(req, res, next) { blogController.getBlog(req, res, next); });
-    app.get('/api/blog/:page/:pageSize/page', function(req, res, next) { blogController.getBlogsByPage(req, res, next); });
-    app.get('/api/blog/:status', function(req, res, next) { blogController.getBlogsByStatus(req, res, next); });
-    app.post('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.createBlog(req, res, next); });
-    app.put('/api/blog', auth.requiresRole('admin'), function(req, res, next) { blogController.updateBlog(req, res, next); });
-
-    app.get('/api/blogtop', function(req, res, next) { blogController.topBlog(req, res, next); });
+    blogRouter(app);
 
     //handle blog categories
-    app.get('/api/blogCategory', function(req, res, next) { blogCategoryController.getBlogCategories(req, res, next); });
-    app.get('/api/blogCategory/:id', function(req, res, next) { blogCategoryController.getBlogCategory(req, res, next); });
-    app.post('/api/blogCategory', auth.requiresRole('admin'), function(req, res, next) { blogCategoryController.createBlogCategory(req, res, next); });
-    app.put('/api/blogCategory', auth.requiresRole('admin'), function(req, res, next) { blogCategoryController.updateBlogCategory(req, res, next); });
+    blogCategoryRouter(app);
 
     //handle blog statuses
-    app.get('/api/blogStatus', function(req, res, next) { blogStatusController.getBlogStatuses(req, res, next); });
-    app.get('/api/blogStatus/:id', function(req, res, next) { blogStatusController.getBlogStatus(req, res, next); });
-    app.post('/api/blogStatus', auth.requiresRole('admin'), function(req, res, next) { blogStatusController.createBlogStatus(req, res, next); });
-    app.put('/api/blogStatus', auth.requiresRole('admin'), function(req, res, next) { blogStatusController.updateBlogStatus(req, res, next); });
+    blogStatusRouter(app);
 
     //handle users
-    app.get('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.getUsers(req, res, next); });
-    app.post('/api/users', function(req, res, next) { userController.createUser(req, res, next); });
-    app.put('/api/users', auth.requiresRole('admin'), function(req, res, next) { userController.updateUser(req, res, next); });
+    usersRouter(app);
 
     //handle banning
-    app.get('/api/ban', auth.requiresRole('admin'), function(req, res, next) { banController.getBans(req, res, next); });
-    app.get('/api/ban/:id', auth.requiresRole('admin'), function(req, res, next) { banController.banUser(req, res, next); });
+    bansRouter(app);
 
     //handle suspending
-    app.get('/api/suspend', auth.requiresRole('admin'), function(req, res, next) { suspendController.getSuspends(req, res, next); });
-    app.get('/api/suspend/:id', auth.requiresRole('admin'), function(req, res, next) { suspendController.suspendUser(req, res, next); });
+    suspendRouter(app);
 
     //get aggregate counts of blog posts by category
-    app.get('/api/blogCat/', function(req, res, next) { blogCatController.getAggregateCount(req, res, next);});
+    blogCatRouter(app);
 
     //get blogs for a selected category
-    app.get('/api/blog/category/:category', function(req, res, next) { blogsForCatController.getBlogs(req, res, next);});
-    app.get('/api/blog/category/:category/:page/:pageSize/page', function(req, res, next) { blogsForCatController.getBlogsByPage(req, res, next);});
-
-    //get blog counts
-    app.get('/api/blogCount', function(req, res, next) { blogController.blogCount(req, res, next);});
-    app.get('/api/blogCount/:category', function(req, res, next) { blogController.blogCountCategory(req, res, next);});
+    blogsForCatRouter(app);
 
     //handle authentication
     app.post('/login', auth.authenticate);
     app.post('/logout', function(req, res) {  req.logout(); res.end(); });
 
     //update password
-    app.put('/api/password/:id', auth.requiresRole('user'), function(req, res, next) { passwordController.updatePassword(req, res, next);});
+    passwordRouter(app);
 
     //handle bad routes
     app.all('/api/*', function(req, res) {
