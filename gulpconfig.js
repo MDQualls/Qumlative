@@ -12,7 +12,7 @@
         var config = {
 
             //server default port
-            defaultPort: 5000,
+            defaultPort: 3000,
 
             //file paths - alphabetic
             appJs: [

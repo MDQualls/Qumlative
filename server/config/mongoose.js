@@ -6,6 +6,7 @@ var blogCategorySchema = require('../schema/blogCategorySchema');
 var statusCategorySchema = require('../schema/blogStatusSchema');
 
 module.exports = function(config) {
+  console.log('DB CONNECTING: ' + config.db);
   mongoose.connect(config.db);
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error'));
