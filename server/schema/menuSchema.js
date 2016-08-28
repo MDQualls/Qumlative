@@ -20,6 +20,10 @@ var Menu = mongoose.model('Menu', menuSchema);
 
 function createDefaultMenu() {
   Menu.find({}).exec(function(err, collection) {
+    if (err) {
+      console.log(err);
+      return;
+    }
     if (collection.length === 0) {
       Menu.create({memberOfMenu: 'topMain', id: 1, parentId: 0, active: 1, icon:'fa fa-home', title:'Home', position: 1, extUrl: '', target: '', link: "['Home']", roles: [], alignment: 'Left', hasChildren: 0});
       Menu.create({memberOfMenu: 'topMain', id: 2, parentId: 0, active: 1, icon:'fa fa-book', title:'Blog', position: 2, extUrl: '', target: '', link: "['Blog']", roles: [], alignment: 'Left', hasChildren: 0});

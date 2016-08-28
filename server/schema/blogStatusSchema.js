@@ -12,6 +12,10 @@
 
     function createDefaultStatuses()  {
         BlogStatus.find({}).exec(function(err, collection) {
+            if (err) {
+            console.log(err);
+            return;
+            }
             if (collection.length === 0)  {
                 BlogStatus.create({status: 'Post', Description: 'Currently active blog post'});
                 BlogStatus.create({status: 'Draft', Description: 'Saved for editing.  Not a current post'});

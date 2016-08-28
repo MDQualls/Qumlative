@@ -23,6 +23,10 @@ var User = mongoose.model('User', userSchema);
 
 function createDefaultUsers() {
   User.find({}).exec(function(err, collection) {
+    if (err) {
+      console.log(err);
+      return;
+    }
     if (collection.length === 0) {
       var salt, hash;
       salt = encrypt.createSalt();

@@ -12,6 +12,10 @@
 
     function createDefaultCategories() {
         BlogCategory.find({}).exec(function(err, collection) {
+            if (err) {
+            console.log(err);
+            return;
+            }
             if (collection.length === 0)  {
                 BlogCategory.create({category: 'AngularJS', description: ''});
                 BlogCategory.create({category: 'NodeJS', description: ''});
