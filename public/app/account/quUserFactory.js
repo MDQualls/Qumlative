@@ -1,7 +1,7 @@
 
 (function() {
   'use strict';
-  angular.module('app').factory('quUserFactory', function($resource) {
+  angular.module('app').factory('quUserFactory', ['$resource', function($resource) {
 
     var UserResource = $resource('/api/users/:id', {id: '@id', isArray:true},
       {update: {method:'PUT',isArray:false}
@@ -21,5 +21,5 @@
       SuspendResource: SuspendResource,
       PasswordResource: PasswordResource
     };
-  });
+  }]);
 })();
