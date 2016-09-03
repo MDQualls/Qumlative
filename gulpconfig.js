@@ -64,7 +64,19 @@
             /**
              * browersync settings
              */
-            browserReloadDelay: 1000
+            browserReloadDelay: 1000,
+
+            /**
+             * ftp settings
+             */
+            ftp: {
+                user: 'bitnami',
+                host: '54.175.35.131',
+                remotePath: '/opt/bitnami/apps/qumlative/htdocs/build',
+                key: {
+                    location: root + 'z4zzr4st3rdr4g0n.pem'
+                }
+            }
         };
 
         config.wiredepDefaultOptions = function() {

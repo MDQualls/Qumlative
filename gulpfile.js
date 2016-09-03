@@ -175,6 +175,19 @@ gulp.task('serve-dev',['js-style', 'inject'], function() {
     serve(true);    //dev
 });
 
+gulp.task('ftp-aws',['minify-uglify-optimize', 'deploy-images'], function() {
+    return gulp.src(config.build + '/**/*')
+        .pipe($.plumber())
+        .pipe($.sftp({
+            host: config.ftp.host,
+            user: config.ftp.user,
+            key: {
+                location: config.ftp.key.location
+            },
+            remotePath: config.ftp.remotePath
+        }));
+});
+
 ////////////////////////////////////////////////
 
 function serve(isDev) {
@@ -227,7 +240,7 @@ function startBrowserSync(isDev)  {
 
     var options = {
         proxy: 'localhost:' + port,
-        port: 3000,
+        port: 5000,
         files: isDev ?  [
             config.pub + '**/*.*',
             '!' + config.less,
