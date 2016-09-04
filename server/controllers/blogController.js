@@ -122,7 +122,7 @@
 
     //get the most recent blog
     exports.topBlog = function(req, res, next)  {
-        Blog.find({'datePosted': {$lte: new Date()}, 'status': 'Post'}).exec(function(err, collection) {
+        Blog.find({'status': 'Post'}).limit(1).sort({$natural:-1}).exec(function(err, collection) {
             if (err) {
                 if (err) {return next(err);}
             }
