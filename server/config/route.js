@@ -10,6 +10,7 @@ var suspendRouter = require('../routers/suspendRouter');
 var blogCatRouter = require('../routers/blogCatRouter');
 var blogsForCatRouter = require('../routers/blogsForCatRouter');
 var passwordRouter = require('../routers/passwordRouter');
+var commentRouter = require('../routers/commentRouter');
 
 module.exports = function(app) {
 
@@ -24,6 +25,9 @@ module.exports = function(app) {
 
     //handle blog statuses
     blogStatusRouter(app);
+
+    //handle comments
+    commentRouter(app);
 
     //handle users
     usersRouter(app);

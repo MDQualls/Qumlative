@@ -1,0 +1,54 @@
+public class QuestionMatchFactory : IQuestionMatchFactory
+    {
+        public IQuestionMatch Get(string client)
+        {
+            if (client == null) throw new ArgumentNullException(nameof(client));
+
+            IQuestionMatch result = null;
+            foreach (Type type in Assembly.GetExecutingAssembly().GetTypes()
+                .Where(type => type.GetInterface(typeof(IQuestionMatch).ToString()) != null
+                               && type.CustomAttributes.All(a => a.AttributeType.Name != "ObsoleteAttribute")))
+            {
+                if (!type.Name.ToUpper().StartsWith(client.ToUpper())) continue;
+                result = Activator.CreateInstance(type) as IQuestionMatch;
+                break;
+            }
+
+            return result;
+     }
+}
+
+
+namespace CMR.ProBids.SeeClickFix
+{
+    public class ScfIncidentSearchFactory : IScfIncidentSearchFactory
+    {
+
+        private readonly IScfPhoneticFactory phoneticFactory;
+        private readonly IQuestionMatchFactory questionMatchFactory;
+        private readonly ProBidsDatabaseContext context;
+
+        public ScfIncidentSearchFactory(ProBidsDatabaseContext context, IScfPhoneticFactory phoneticFactory, IQuestionMatchFactory questionMatchFactory)
+        {
+            if (context == null) throw new ArgumentNullException(nameof(context));
+            if (phoneticFactory == null) throw new ArgumentNullException(nameof(phoneticFactory));
+            if (questionMatchFactory == null) throw new ArgumentNullException(nameof(questionMatchFactory));
+            this.context = context;
+            this.phoneticFactory = phoneticFactory;
+            this.questionMatchFactory = questionMatchFactory;
+        }
+
+        public IScfIncidentSearch CreateInstance(string clientName)
+        {
+            if (clientName == null) throw new ArgumentNullException(nameof(clientName));
+
+            var result = (from type in Assembly.GetExecutingAssembly().GetTypes()
+                            .Where(type => type.GetInterface(typeof (IScfIncidentSearch).ToString()) != null 
+                            && type.CustomAttributes.All(a => a.AttributeType.Name != "ObsoleteAttribute"))
+                            where type.Name.ToUpper().Contains(clientName.ToUpper())
+                            select Activator.CreateInstance(type, context, phoneticFactory, questionMatchFactory) as IScfIncidentSearch)
+                            .FirstOrDefault();
+            return result;
+        }
+    }
+}

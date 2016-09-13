@@ -4,6 +4,7 @@ var menuSchema = require('../schema/menuSchema');
 var blogSchema = require('../schema/blogSchema');
 var blogCategorySchema = require('../schema/blogCategorySchema');
 var statusCategorySchema = require('../schema/blogStatusSchema');
+var commentSchema = require('../schema/commentSchema');
 
 module.exports = function(config) {
   console.log('DB CONNECTING: ' + config.db);

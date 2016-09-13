@@ -13,9 +13,7 @@
         }
 
         Blog.findById({_id: id}).exec(function(err, collection) {
-            if (err) {
-                if (err) {return next(err);}
-            }
+            if (err) {return next(err);}
             res.send(collection);
         });
     };
