@@ -37,7 +37,7 @@
 
     //query all blogs regardless of status
     exports.getBlogs = function(req, res, next)  {
-        Blog.find().exec(function(err, collection) {
+        Blog.find().sort({'datePosted': -1}).exec(function(err, collection) {
             if (err) {
                 if (err) {return next(err);}
             }
@@ -50,7 +50,9 @@
         var page = parseFloat(req.params.page);
         var pageSize = parseFloat(req.params.pageSize);
 
-        Blog.find({'datePosted': {$lte: new Date()}, 'status': 'Post'}).skip((page * pageSize) - pageSize).limit(pageSize).exec(function(err, collection) {
+        var utc = new Date().toJSON();
+
+        Blog.find({'datePosted': {$lte: utc}, 'status': 'Post'}).sort({'datePosted': -1}).skip((page * pageSize) - pageSize).limit(pageSize).exec(function(err, collection) {
             if (err) {
                 if (err) {return next(err);}
             }

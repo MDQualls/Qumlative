@@ -27,7 +27,7 @@
             }
             ctrl.moreRecords = (parseFloat(ctrl.isoPage * ctrl.isoPageSize) < parseFloat(ctrl.isoTotalRecords)) ? true : false;
             ctrl.prevRecords = (ctrl.isoPage > 1) ? true : false;
-            ctrl.isoPages = (ctrl.isoTotalRecords / ctrl.isoPageSize > 1) ? ctrl.isoTotalRecords / ctrl.isoPageSize : 1;
+            ctrl.isoPages = (ctrl.isoTotalRecords / ctrl.isoPageSize > 1) ? Math.ceil(ctrl.isoTotalRecords / ctrl.isoPageSize) : 1;
         };
     }
 
