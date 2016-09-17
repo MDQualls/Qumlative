@@ -10,7 +10,7 @@
         ctrl.doRegister = function(registration) {
             quUserFactory.UserResource.save(registration,
                 function(response) {
-                    extNotifierSvc.successMsg('New user registered for qumlative.io');
+                    extNotifierSvc.successMsg('New user registered for qumlative.net');
                     ctrl.$router.navigate(['Registered']);
                 },
                 function(err) {
