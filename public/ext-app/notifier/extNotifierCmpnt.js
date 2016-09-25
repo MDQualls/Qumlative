@@ -6,22 +6,18 @@
 
             function successMsg(msg) {
                 quToaster.success(msg);
-                console.log(msg);
             }
 
             function warningMsg(msg) {
                 quToaster.warning(msg);
-                console.log(msg);
             }
 
             function infoMsg(msg) {
                 quToaster.info(msg);
-                console.log(msg);
             }
 
             function errorMsg(msg) {
                 quToaster.error(msg);
-                console.log(msg);
             }
 
             return {

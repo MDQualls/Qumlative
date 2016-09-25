@@ -3,7 +3,7 @@
 
     var module = angular.module('app');
 
-    function controller(quMenuFactory,quAuth,quIdentity,extNotifierSvc) {
+    function controller(quMenuFactory,quAuth,quIdentity,extNotifierSvc,$rootScope) {
         /*jshint validthis: true */
         var ctrl = this;
 
@@ -14,6 +14,7 @@
             .then(function(response) {
               if (response.data.success === true) {
                 extNotifierSvc.successMsg('You have successfully signed in!');
+                $rootScope.$broadcast('login');
                 ctrl.currentUser = quIdentity.currentUser();
               } else {
                 extNotifierSvc.warningMsg(response.data.reason);
@@ -25,6 +26,7 @@
             quAuth.logoutUser()
                 .then(function() {
                     ctrl.currentUser = quIdentity.currentUser();
+                    $rootScope.$broadcast('logout');
                 });
         };
 
@@ -38,7 +40,7 @@
     module.component('appController', {
         templateUrl: 'app/appContent.html',
         controllerAs: 'ctrl',
-        controller: ['quMenuFactory', 'quAuth', 'quIdentity', 'extNotifierSvc', controller],
+        controller: ['quMenuFactory', 'quAuth', 'quIdentity', 'extNotifierSvc', '$rootScope', controller],
         $routeConfig: [
             {path:'/home', component: 'quHome', name: 'Home'},
             {path:'/blog', component: 'quBlog', name: 'Blog'},

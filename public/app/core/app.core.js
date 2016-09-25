@@ -14,6 +14,7 @@
         'extUserModule',
         'extLoginModule',
         'extUtilModule',
-        'extPagingModule'
+        'extPagingModule',
+        'ngSanitize'
     ]);
 })();

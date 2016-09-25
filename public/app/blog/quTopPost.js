@@ -11,7 +11,6 @@
            quBlogFactory.maxResource.query(
                function(result) {
                     ctrl.post = $filter('quShortenBlog')(result)[0];
-                    console.log(result);
                },
                function(err) {
                    extNotifierSvc.errorMsg('An error occurred while loading the most recent blog post');

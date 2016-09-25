@@ -2,10 +2,11 @@
     'use strict';
 
     var Blog = require('mongoose').model('Blog');
+    var sanitize = require('mongo-sanitize');
 
     //query a specific blog by id
     exports.getBlog = function(req, res, next)  {
-        var id = req.params.id;
+        var id = sanitize(req.params.id);
 
         if (id === undefined)  {
             res.status(400);
@@ -20,7 +21,7 @@
 
     //query all blogs for a status
     exports.getBlogsByStatus = function(req, res, next)  {
-        var status = req.params.status;
+        var status = sanitize(req.params.status);
 
         if (status === undefined)  {
             res.status(400);
@@ -47,8 +48,8 @@
 
     //query all blogs regardless of status
     exports.getBlogsByPage = function(req, res, next)  {
-        var page = parseFloat(req.params.page);
-        var pageSize = parseFloat(req.params.pageSize);
+        var page = sanitize(parseFloat(req.params.page));
+        var pageSize = sanitize(parseFloat(req.params.pageSize));
 
         var utc = new Date().toJSON();
 
@@ -61,7 +62,7 @@
     };
 
     exports.createBlog = function(req, res, next) {
-        var blogData = req.body;
+        var blogData = sanitize(req.body);
         Blog.create(blogData, function(err, blog) {
             if (err) {
                 res.status(400);
@@ -72,8 +73,8 @@
     };
 
     exports.updateBlog = function(req, res, next) {
-        var id = req.body._id;
-        var blogData = req.body;
+        var id = sanitize(req.body._id);
+        var blogData = sanitize(req.body);
 
         Blog.findById({_id:id}, function(err, blog)  {
             if (err) {
@@ -109,7 +110,7 @@
     };
 
     exports.blogCountCategory = function(req, res, next) {
-        var cat = req.params.category;
+        var cat = sanitize(req.params.category);
 
         Blog.find({category:cat}).count().exec(function(err, collection) {
             if (err) {

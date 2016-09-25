@@ -2,6 +2,7 @@
     'use strict';
 
     var Menu = require('mongoose').model('Menu');
+    var sanitize = require('mongo-sanitize');
 
     exports.getMenu = function(req, res, next)  {
         Menu.find({}).exec(function(err, collection) {
@@ -25,7 +26,7 @@
     };
 
     exports.createMenuItem = function(req, res, next) {
-        var menuData = req.body;
+        var menuData = sanitize(req.body);
         Menu.create(menuData, function(err, menu) {
             if (err) {
                 if (err.toString().indexOf('E11000') > -1) {

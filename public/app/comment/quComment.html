@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading border-left">
+                <h2>Comments</h2>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div ng-if="!ctrl.user" class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-body bg-warning">Login or Register to comment ...</div>
+                        </div>    
+                    </div>
+                    <div ng-if="ctrl.user" class="col-md-12">                        
+                        <form id="ctrl.frmComment" name="ctrl.frmComment" ng-submit="ctrl.callParentAddComment()" novalidate>
+                            <div class="form-group" ng-class="{'has-error':ctrl.frmComment.NewComment.$invalid && (ctrl.frmComment.$submitted || ctrl.frmComment.NewComment.$touched)}" >
+                                <label class="control-label" for="NewComment">New Comment</label> <small>Chars: {{ctrl.newComment.length || 0}}</small>                            
+                                <button  ng-disabled="ctrl.frmComment.$invalid" type="submit" class="btn-xs btn-success">Submit</button>                                                        
+                                <textarea 
+                                    class="form-control" 
+                                    id="NewComment" 
+                                    name="NewComment" 
+                                    placeholder="Enter new comment" 
+                                    ng-model="ctrl.newComment" 
+                                    required ng-minlength="5" 
+                                    ng-maxlength="500">
+                                </textarea>
+                                <span class="help-block has-error" ng-show="ctrl.frmComment.$submitted || ctrl.frmComment.NewComment.$touched">
+                                <span ng-show="ctrl.frmComment.NewComment.$invalid">
+                                    Comment must be between 5 and 500 characters
+                                </span>
+                            </div>                                                        
+                        </form>                        
+                    </div>
+                </div>
+                
+                <div ng-repeat="comment in ctrl.comments">
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <div>@ {{comment.dateOfComment | date:'MM/dd/yyyy hh:mma'}} <span class="text-info">{{comment.username}}</span> commented ...</div>
+                            {{comment.comment}}
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

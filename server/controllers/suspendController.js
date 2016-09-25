@@ -2,6 +2,7 @@
     'use strict';
     var User = require('mongoose').model('User');
     var builder = require('../util/userDtos');
+    var sanitize = require('mongo-sanitize');
 
     exports.getSuspends = function(req, res, next) {
         User.find({suspended:1}).exec(function(err, collection)  {
@@ -15,7 +16,7 @@
     };
 
     exports.suspendUser = function(req, res, next)  {
-        var id = req.params.id;
+        var id = sanitize(req.params.id);
         var user = {};
 
         if (id === undefined)  {

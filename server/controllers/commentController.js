@@ -2,9 +2,10 @@
     'use strict';
 
     var Comment = require('mongoose').model('Comment');
+    var sanitize = require('mongo-sanitize');
 
     exports.getComment = function(req, res, next) {
-        var id = req.params.id;
+        var id = sanitize(req.params.id);
 
         if (id === undefined)  {
             res.status(400);
@@ -18,21 +19,21 @@
     };
 
     exports.getComments = function(req, res, next) {
-        var commentForId = req.params.forId;
+        var commentForId = sanitize(req.params.forId);
 
         if (commentForId === undefined) {
             res.status(400);
             return res.send({reason:'forId is a required pararmeter'});
         }
 
-        Comment.find({commentForId: commentForId}).exec(function(err, collection) {
+        Comment.find({commentForId: commentForId}).sort({'dateOfComment': -1}).exec(function(err, collection) {
             if (err) {return next(err);}
             res.send(collection);
         });
     };
 
     exports.addComment = function(req, res, next) {
-        var commentData = req.body;
+        var commentData = sanitize(req.body);
         Comment.create(commentData, function(err, comment) {
             if (err) {
                 res.status(400);
@@ -43,9 +44,9 @@
     };
 
     exports.updateComment = function(req, res, next) {
-        var id = req.body._id;
-        var username = req.body.username;
-        var commentData = req.body;
+        var id = sanitize(req.body._id);
+        var username = sanitize(req.body.username);
+        var commentData = sanitize(req.body);
 
         Comment.findById({_id:id, username: username}, function(err, comment) {
             if (err) {
@@ -70,8 +71,8 @@
     };
 
     exports.deleteComment = function(req, res, next) {
-        var id = req.body._id;
-        var username = req.body.username;
+        var id = sanitize(req.body._id);
+        var username = sanitize(req.body.username);
 
         if (id === undefined)  {
             res.status(400);

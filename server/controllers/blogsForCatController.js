@@ -2,9 +2,10 @@
     'use strict';
 
     var Blog = require('mongoose').model('Blog');
+    var sanitize = require('mongo-sanitize');
 
     exports.getBlogs = function(req, res, next)  {
-        var category = decodeURI(req.params.category);
+        var category = sanitize(decodeURI(req.params.category));
 
         Blog.find({category:category}).exec(function(err, collection) {
 
@@ -16,9 +17,9 @@
     };
 
     exports.getBlogsByPage = function(req, res, next)  {
-        var category = decodeURI(req.params.category);
-        var page = parseFloat(req.params.page);
-        var pageSize = parseFloat(req.params.pageSize);
+        var category = sanitize(decodeURI(req.params.category));
+        var page = sanitize(parseFloat(req.params.page));
+        var pageSize = sanitize(parseFloat(req.params.pageSize));
 
         Blog.find({category:category}).skip((page * pageSize) - pageSize).limit(pageSize).exec(function(err, collection) {
 

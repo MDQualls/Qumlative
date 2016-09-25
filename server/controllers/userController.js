@@ -4,6 +4,7 @@
     var User = require('mongoose').model('User');
     var Encrypt = require('../util/encryption');
     var builder = require('../util/userDtos');
+    var sanitize = require('mongo-sanitize');
 
     exports.getUsers = function(req, res, next) {
         User.find({}).exec(function(err, collection)  {
@@ -17,7 +18,7 @@
     };
 
     exports.getUser = function(req, res, next)  {
-        var id = req.params.id;
+        var id = sanitize(req.params.id);
 
         if (id === undefined)  {
             res.status(400);
@@ -33,7 +34,7 @@
     };
 
     exports.createUser = function(req, res, next) {
-        var userData = req.body;
+        var userData = sanitize(req.body);
 
         userData.username = userData.username.toLowerCase();
         userData.salt = Encrypt.createSalt();
@@ -57,7 +58,7 @@
     };
 
     exports.updateUser = function(req, res, next) {
-        var userUpdates = req.body;
+        var userUpdates = sanitize(req.body);
 
         if (req.user._id !== userUpdates._id && !req.user.hasRole('admin')) {
             res.status(403);

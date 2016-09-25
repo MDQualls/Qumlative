@@ -2,6 +2,7 @@
     'use strict';
 
     var BlogStatus = require('mongoose').model('BlogStatus');
+    var sanitize = require('mongo-sanitize');
 
     exports.getBlogStatuses = function(req, res, next)  {
 
@@ -14,7 +15,7 @@
     };
 
     exports.getBlogStatus = function(req, res, next)  {
-        var id = req.params.id;
+        var id = sanitize(req.params.id);
 
         if (id === undefined)  {
             res.status(400);
@@ -30,7 +31,7 @@
     };
 
     exports.createBlogStatus = function(req, res, next) {
-        var blogStatusData = req.body;
+        var blogStatusData = sanitize(req.body);
         BlogStatus.create(blogStatusData, function(err, status) {
             if (err) {
                 res.status(400);
@@ -41,8 +42,8 @@
     };
 
     exports.updateBlogStatus = function(req, res, next) {
-        var id = req.params.id;
-        var blogStatusData = req.body;
+        var id = sanitize(req.params.id);
+        var blogStatusData = sanitize(req.body);
 
         BlogStatus.findById({_id:id}, function(err, status)  {
             if (err) {

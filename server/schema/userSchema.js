@@ -32,7 +32,7 @@ function createDefaultUsers() {
       salt = encrypt.createSalt();
       hash = encrypt.hashPwd(salt, '$dr4g0n!');
       User.create({firstName: 'Michael', lastName: 'Qualls', username:'MichaelQ', emailAddress:'qumlative@gmail.com',
-                      salt: salt, hashedPwd: hash, banned:0, suspended:0, suspendDate: '', roles: ['admin']});
+                      salt: salt, hashedPwd: hash, banned:0, suspended:0, suspendDate: '', roles: ['admin','user']});
 
       salt = encrypt.createSalt();
       hash = encrypt.hashPwd(salt, 'thing1');

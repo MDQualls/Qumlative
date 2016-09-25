@@ -2,6 +2,7 @@
     'use strict';
 
     var BlogCategory = require('mongoose').model('BlogCategory');
+    var sanitize = require('mongo-sanitize');
 
     exports.getBlogCategories = function(req, res, next)  {
 
@@ -14,7 +15,7 @@
     };
 
     exports.getBlogCategory = function(req, res, next)  {
-        var id = req.params.id;
+        var id = sanitize(req.params.id);
 
         if (id === undefined)  {
             res.status(400);
@@ -30,7 +31,7 @@
     };
 
     exports.createBlogCategory = function(req, res, next) {
-        var blogCategoryData = req.body;
+        var blogCategoryData = sanitize(req.body);
         BlogCategory.create(blogCategoryData, function(err, category) {
             if (err) {
                 res.status(400);
@@ -41,8 +42,8 @@
     };
 
     exports.updateBlogCategory = function(req, res, next) {
-        var id = req.params.id;
-        var blogCategoryData = req.body;
+        var id = sanitize(req.params.id);
+        var blogCategoryData = sanitize(req.body);
 
         BlogCategory.findById({_id:id}, function(err, category)  {
             if (err) {
