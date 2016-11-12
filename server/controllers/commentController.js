@@ -58,7 +58,7 @@
             }
 
             comment.comment = commentData.comment;
-            comment.dateUpdated = new Date();
+            comment.dateUpdated = new Date().toJSON();;
 
             comment.save(function(err) {
                 if (err) {

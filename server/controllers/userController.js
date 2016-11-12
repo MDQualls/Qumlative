@@ -40,6 +40,9 @@
         userData.salt = Encrypt.createSalt();
         userData.hashedPwd = Encrypt.hashPwd(userData.salt, userData.password);
         userData.roles = ['user'];
+        userData.banned = 0;
+        userData.suspended = 0;
+        userData.suspendDate = '';
 
         User.create(userData, function(err, user) {
             if (err) {
