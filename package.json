@@ -22,7 +22,7 @@
     "express-session": "^1.13.0",
     "gulp": "^3.9.1",
     "mongo-sanitize": "^1.0.0",
-    "mongoose": "^4.4.19",
+    "mongoose": "^5.8.5",
     "morgan": "^1.7.0",
     "node": "0.0.0",
     "passport": "^0.3.2",
